@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: book-flow-php
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+
+  mysql:
+    image: mysql:8.3.0
+    container_name: book-flow-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: book_DB
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./book_DB.sql:/docker-entrypoint-initdb.d/book_DB.sql
