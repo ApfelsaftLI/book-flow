@@ -9,5 +9,5 @@ try {
 
     echo 'Juhuuu Verbindig stoht!!';
 } catch (PDOException $e) {
-    echo "Ohje :( ->  ".$e->getMessage();
+    echo "Ohje :( ->  " . $e->getMessage();
 }

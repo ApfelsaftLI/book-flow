@@ -1,6 +1,7 @@
 # MySQL data folder
 mysql_data
 
+.idea
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/phpstorm+all
