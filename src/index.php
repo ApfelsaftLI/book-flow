@@ -1,3 +1,6 @@
+<?php
+include "includes/functions.php"
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +11,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Helloooooo</h1>
-        <?php include 'includes/db.php' ?>
-    </body>
+<h1>Helloooooo</h1>
+<?php listFullUserNames() ?>
+</body>
 </html>
