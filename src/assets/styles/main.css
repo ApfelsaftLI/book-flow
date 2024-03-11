@@ -1,0 +1,14 @@
+@import "fonts.css";
+@import "reset.css";
+
+:root {
+    --background-primary: #FFEEE0;
+    --background-secondary: #FFE4CF;
+    --accent-color: #38703E;
+    --text-color: #4E2323;
+}
+
+body {
+    background-color: var(--background-secondary);
+    font-family: Inter, sans-serif;
+}
