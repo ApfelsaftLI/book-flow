@@ -1,8 +1,22 @@
 @font-face {
-  font-family: interRegular;
+  font-family: inter;
   src: url(../font/static/Inter-Regular.ttf);
+  font-weight: regular;
 }
+
+@font-face {
+  font-family: inter;
+  src: url(../font/static/Inter-Bold.ttf);
+  font-weight: bold;
+}
+@font-face  {
+  font-family: inter;
+  src: url(../font/static/Inter-SemiBold.ttf);
+  font-weight: semiBold;
+}
+
 body{
     background-color: #FFE4CF;
-    font-family: interRegular;
+    font-family: inter;
+    font-weight: regular;
 }
