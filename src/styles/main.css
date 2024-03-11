@@ -1,3 +1,8 @@
+@font-face {
+  font-family: interRegular;
+  src: url(..\font\static\Inter-Regular.ttf);
+}
 body{
     background-color: #FFE4CF;
+    font-family: interRegular;
 }
