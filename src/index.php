@@ -1,4 +1,7 @@
 <?php
+if (session_status() == PHP_SESSION_NONE){
+    session_start();
+}
 include "includes/functions.php"
 ?>
 <!doctype html>
@@ -12,7 +15,6 @@ include "includes/functions.php"
     <title>Document</title>
 </head>
 <body>
-<h1>Helloooooo</h1>
 <?php listFullUserNames() ?>
 </body>
 </html>
