@@ -1,0 +1,25 @@
+.welcome-box    {
+    background-color: #FFEEE0;
+    border-radius: 50px;
+    padding: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+#welcome-text1   {
+    font-weight: bold;
+    font-size: 57pt;
+}
+#welcome-text2 {
+    font-weight: regular;
+    font-size: 40pt;
+}
+#welcome-button {
+    background-color: #38703E;
+    padding: 1.2%;
+    border-radius: 50px;
+}
+#welcome-button-text {
+    font-size: 35pt;
+    font-weight: 600;
+    color: #FFEEE0;
+}
