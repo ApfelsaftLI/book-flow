@@ -4,12 +4,17 @@ by Lynn und Tim
 ***
 ## Start Application
 ```shell
-docker build book-flow-php-image .
 docker-compose up -d
 ```
-## Informations
-**Website Port:** `8080`
+## Dev
 
-**MySQL User:** `root`
+| Informations |  |
+|--------------|--|
+|**Website Port** | `8080` |
+| **MySQL User** | `root` |
+| **MySQL Password** | `root` |
 
-**MySQL Password:** `root`
+#### Configure SASS
+```shell
+sass --watch src/assets/styles/sass:src/assets/styles
+```
