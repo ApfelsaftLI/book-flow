@@ -2,9 +2,7 @@ version: '3'
 
 services:
   php:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: book-flow-php-image
     container_name: book-flow-php
     ports:
       - "8080:80"
