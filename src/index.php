@@ -10,13 +10,10 @@ if (session_status() == PHP_SESSION_NONE) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/main.scss">
     <title>Document</title>
 </head>
-<body>
-<?php
+<body class="grid-container">
 
-include_once "includes/functions.php";
-listFullUserNames() ?>
 </body>
 </html>
