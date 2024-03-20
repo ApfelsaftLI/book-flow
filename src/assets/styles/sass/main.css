@@ -16,7 +16,6 @@ body {
 header {
   grid-column: 1/13;
 }
-
 header img {
   width: 200pt;
 }
@@ -31,12 +30,10 @@ header img {
   left: 1rem;
   overflow-wrap: break-word;
 }
-
 .error b {
   font-weight: 600;
   font-size: 14pt;
 }
-
 .error p {
   font-weight: normal;
   font-size: 12pt;
@@ -52,6 +49,5 @@ header img {
     left: 1rem;
   }
 }
-
 
 /*# sourceMappingURL=main.css.map */

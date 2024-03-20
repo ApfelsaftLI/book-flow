@@ -1,6 +1,8 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
+    $_SESSION["admin"] = false;
+    $_SESSION["loggedIn"] = false;
 }
 ?>
 <!doctype html>
@@ -14,6 +16,17 @@ if (session_status() == PHP_SESSION_NONE) {
     <title>Document</title>
 </head>
 <body class="grid-container">
+<?php include_once "templates/header.php" ?>
 
+<main>
+
+</main>
+
+<footer>
+
+</footer>
 </body>
+<style> a[href="/"] {
+        font-weight: bold
+    }</style>
 </html>
