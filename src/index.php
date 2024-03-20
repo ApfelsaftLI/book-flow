@@ -1,8 +1,7 @@
 <?php
-if (session_status() == PHP_SESSION_NONE){
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-include "includes/functions.php"
 ?>
 <!doctype html>
 <html lang="en">
@@ -15,6 +14,9 @@ include "includes/functions.php"
     <title>Document</title>
 </head>
 <body>
-<?php listFullUserNames() ?>
+<?php
+
+include_once "includes/functions.php";
+listFullUserNames() ?>
 </body>
 </html>
