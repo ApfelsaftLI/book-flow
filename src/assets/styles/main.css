@@ -1,5 +1,5 @@
-@import "fonts.css";
-@import "reset.css";
+@import "../fonts.css";
+@import "../reset.css";
 body {
   background-color: #FFE4CF;
   font-family: Inter, sans-serif;
@@ -15,10 +15,12 @@ body {
   left: 1rem;
   overflow-wrap: break-word;
 }
+
 .error b {
   font-weight: 600;
   font-size: 14pt;
 }
+
 .error p {
   font-weight: normal;
   font-size: 12pt;
@@ -34,5 +36,6 @@ body {
     left: 1rem;
   }
 }
+
 
 /*# sourceMappingURL=main.css.map */
