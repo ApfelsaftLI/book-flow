@@ -4,6 +4,7 @@ by Lynn und Tim
 ***
 ## Start Application
 ```shell
+docker build book-flow-php-image .
 docker-compose up -d
 ```
 ## Informations
