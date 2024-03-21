@@ -1,4 +1,4 @@
-![BookFlow](https://github.com/ApfelsaftLI/book-flow/blob/main/src/assets/img/BookFlow_Logo.svg)
+![BookFlow](https://github.com/ApfelsaftLI/book-flow/blob/main/src/assets/images/BookFlow_Logo.svg)
 
 by Lynn und Tim
 ***
