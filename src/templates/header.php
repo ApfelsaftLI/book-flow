@@ -4,10 +4,17 @@
     </a>
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/books">Bücherkatalog</a></li>
-            <?php if ($_SESSION["admin"]) echo "<li><a href='/users'>Nutzer</a></li>" ?>
-            <?php if (!$_SESSION["loggedIn"]) echo "<li><a href='/login'>Login</a></li>" ?>
+            <li class="text-small-semi"><a href="/">Home</a></li>
+            <li class="text-small-semi"><a href="/books.php">Bücherkatalog</a></li>
+            <?php if ($_SESSION["user"]["admin"] == "true") echo "<li class='text-small-semi'><a href='/users.php'>Nutzer</a></li>" ?>
+            <?php if (!isset($_SESSION["user"])) {
+                echo "<li class='text-small-semi'><a href='/login.php'>Login</a></li>";
+                echo "<a href='/login.php' class='profile-picture'></a>";
+            } else {
+                include_once "includes/functions.php";
+                echo "<a href='/login.php' class='profile-picture' style='background-image: url(\"" . getProfilePicture($_SESSION["user"]) . "\")'></a>";
+            }
+            ?>
         </ul>
     </nav>
 </header>

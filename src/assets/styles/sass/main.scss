@@ -20,12 +20,40 @@ body {
   margin-inline: auto;
 }
 
+.text-small-semi > * {
+  font-weight: 600;
+  font-size: 14pt;
+  text-decoration: none;
+  color: $text-color;
+}
+
 header {
   grid-column: 1/13;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 10pt;
+
   img {
     width: 200pt;
   }
 
+  nav {
+    ul {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+
+      .profile-picture {
+        width: 40pt;
+        height: 40pt;
+        border-radius: 50%;
+        background-image: linear-gradient($background-primary, #737373);
+      }
+    }
+  }
 }
 
 
