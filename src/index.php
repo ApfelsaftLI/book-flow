@@ -1,9 +1,11 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-    $_SESSION["admin"] = false;
-    $_SESSION["loggedIn"] = false;
-}
+//if (session_status() == PHP_SESSION_NONE) {
+//    session_start();
+$_SESSION = [];
+$_SESSION["user"]["admin"] = $_GET["admin"];
+$_SESSION["user"]["name"] = $_GET["name"];
+$_SESSION["user"]["firstName"] = $_GET["firstName"];
+//}
 ?>
 <!doctype html>
 <html lang="en">
@@ -17,9 +19,7 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 <body class="grid-container">
 <?php include_once "templates/header.php" ?>
-
 <main>
-
 </main>
 
 <footer>
