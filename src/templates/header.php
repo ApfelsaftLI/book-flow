@@ -12,7 +12,7 @@
                 echo "<a href='/login.php' class='profile-picture'></a>";
             } else {
                 include_once "includes/functions.php";
-                echo "<a href='/login.php' class='profile-picture' style='background-image: url(\"" . getProfilePicture($_SESSION["user"]) . "\")'></a>";
+                echo "<a href='/login.php' class='profile-picture' style='background-image: url(\"" . getProfilePicture($_SESSION["user"]) . "\")'></a>"; // If the IDE shows an error IGNORE IT!!
             }
             ?>
         </ul>
