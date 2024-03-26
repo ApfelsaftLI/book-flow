@@ -1,3 +1,9 @@
+<?php
+include_once "includes/functions.php";
+$isLoggedIn = array_key_exists("user", $_SESSION);
+$isAdmin = ($_SESSION["user"]["admin"] == "true");
+?>
+
 <header>
     <a href="/">
         <img src="../assets/images/BookFlow_Logo.svg" alt="BookFlow Logo">
@@ -6,15 +12,24 @@
         <ul>
             <li class="text-small-semi"><a href="/">Home</a></li>
             <li class="text-small-semi"><a href="/books.php">Bücherkatalog</a></li>
-            <?php if ($_SESSION["user"]["admin"] == "true") echo "<li class='text-small-semi'><a href='/users.php'>Nutzer</a></li>" ?>
-            <?php if (!isset($_SESSION["user"])) {
-                echo "<li class='text-small-semi'><a href='/login.php'>Login</a></li>";
-                echo "<a href='/login.php' class='profile-picture'></a>";
-            } else {
-                include_once "includes/functions.php";
-                echo "<a href='/login.php' class='profile-picture' style='background-image: url(\"" . getProfilePicture($_SESSION["user"]) . "\")'></a>"; // If the IDE shows an error IGNORE IT!!
+            <?php
+            if (!$isLoggedIn) {
+                echo "<li class='text-small-semi'><a href='/login.php'>Login</a></li>" . PHP_EOL;
+            } else if ($isAdmin) {
+                echo "<li class='text-small-semi' ><a href = '/users.php' > Nutzer</a ></li>" . PHP_EOL;
             }
             ?>
         </ul>
+
+        <?php
+        if ($isLoggedIn) {
+            echo "<a href='/login.php' class='profile-picture'
+                 style='background-image: url(\"" . getProfilePicture($_SESSION["user"]) . "\")'>AAAA</a>" . PHP_EOL;
+            // If the IDE shows an error IGNORE IT!!
+        } else {
+
+            echo "<li><a href='/login.php' class='profile-picture'></a></li>" . PHP_EOL;
+        }
+        ?>
     </nav>
 </header>
