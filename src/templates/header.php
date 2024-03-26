@@ -1,7 +1,7 @@
 <?php
 include_once "includes/functions.php";
 $isLoggedIn = array_key_exists("user", $_SESSION);
-$isAdmin = ($_SESSION["user"]["admin"] == "true");
+$isAdmin = $isLoggedIn && $_SESSION["user"]["admin"] == "true";
 ?>
 
 <header>
@@ -24,11 +24,11 @@ $isAdmin = ($_SESSION["user"]["admin"] == "true");
         <?php
         if ($isLoggedIn) {
             echo "<a href='/login.php' class='profile-picture'
-                 style='background-image: url(\"" . getProfilePicture($_SESSION["user"]) . "\")'>AAAA</a>" . PHP_EOL;
+                 style='background-image: url(\"" . getProfilePicture($_SESSION["user"]) . "\")'></a>" . PHP_EOL;
             // If the IDE shows an error IGNORE IT!!
         } else {
 
-            echo "<li><a href='/login.php' class='profile-picture'></a></li>" . PHP_EOL;
+            echo "<a href='/login.php' class='profile-picture'></a>" . PHP_EOL;
         }
         ?>
     </nav>
