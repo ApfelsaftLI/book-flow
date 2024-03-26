@@ -13,20 +13,19 @@ if (session_status() == PHP_SESSION_NONE) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/home.css">
     <link rel="shortcut icon" href="assets/images/BookFlow_Icon.svg" type="image/svg">
     <title>Home | BookFlow</title>
-
-    <style> a[href="/"] {
-            font-weight: bold
-        }</style>
-
 </head>
+
 <body class="grid-container">
 <?php include_once "templates/header.php" ?>
-<main>
-    <h3>
-        <?php print_r($_SESSION) ?>
-    </h3>
+<main class="grid-container">
+    <div class="large-container">
+        <h1 class="text-large-bold">Herzlich willkommen</h1>
+        <p class="text-medium-normal">bei <strong>BookFlow</strong>, Ihrem online Buchantiquariat</p>
+        <a href="/books.php" class="big-button" id="stoebern-button">Bücher stöbern</a>
+    </div>
 </main>
 
 <footer>

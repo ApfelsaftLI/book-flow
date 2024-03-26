@@ -6,25 +6,17 @@ $background-secondary: #FFE4CF;
 $accent-color: #38703E;
 $text-color: #4E2323;
 $error-color: #ce555b;
+$drop-shadow: drop-shadow(rgba(0, 0, 0, 0.15) 0 2pt 5pt);
 
 body {
   background-color: $background-secondary;
   font-family: Inter, sans-serif;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 6pt;
   width: 80vw;
   margin-inline: auto;
 }
 
-.text-small-semi > * {
-  font-weight: 600;
-  font-size: 14pt;
-  text-decoration: none;
-  color: $text-color;
+main {
+  grid-column: 1/13;
 }
 
 header {
@@ -61,6 +53,52 @@ header {
   }
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 6pt;
+}
+
+.text-small-semi > * {
+  font-weight: 600;
+  font-size: 14pt;
+  text-decoration: none;
+  color: $text-color;
+}
+
+.text-large-bold {
+  font-weight: bold;
+  font-size: 28pt;
+  color: $text-color;
+  margin-block: 2pt;
+}
+
+.text-medium-normal {
+  font-weight: normal;
+  font-size: 20pt;
+  color: $text-color;
+  margin-block: 2pt;
+}
+
+.big-button {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20pt;
+  color: $background-primary;
+  background-color: $accent-color;
+  border-radius: 50vh;
+  padding: 5pt 10pt;
+  display: inline-block;
+}
+
+.large-container {
+  grid-column: 2/12;
+  background-color: $background-primary;
+  padding: 40pt 80pt;
+  border-radius: 15pt;
+  filter: $drop-shadow;
+}
+
 .error {
   background-color: $error-color;
   position: absolute;
@@ -82,6 +120,7 @@ header {
 
   }
 }
+
 
 @keyframes whoosh {
   from {
