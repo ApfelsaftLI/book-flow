@@ -3,21 +3,12 @@
 body {
   background-color: #FFE4CF;
   font-family: Inter, sans-serif;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 6pt;
   width: 80vw;
   margin-inline: auto;
 }
 
-.text-small-semi > * {
-  font-weight: 600;
-  font-size: 14pt;
-  text-decoration: none;
-  color: #4E2323;
+main {
+  grid-column: 1/13;
 }
 
 header {
@@ -52,6 +43,52 @@ header nav .profile-picture {
   height: 40pt;
   border-radius: 50%;
   background-image: linear-gradient(#FFEEE0, #737373);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 6pt;
+}
+
+.text-small-semi > * {
+  font-weight: 600;
+  font-size: 14pt;
+  text-decoration: none;
+  color: #4E2323;
+}
+
+.text-large-bold {
+  font-weight: bold;
+  font-size: 28pt;
+  color: #4E2323;
+  margin-block: 2pt;
+}
+
+.text-medium-normal {
+  font-weight: normal;
+  font-size: 20pt;
+  color: #4E2323;
+  margin-block: 2pt;
+}
+
+.big-button {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20pt;
+  color: #FFEEE0;
+  background-color: #38703E;
+  border-radius: 50vh;
+  padding: 5pt 10pt;
+  display: inline-block;
+}
+
+.large-container {
+  grid-column: 2/12;
+  background-color: #FFEEE0;
+  padding: 40pt 80pt;
+  border-radius: 15pt;
+  filter: drop-shadow(rgba(0, 0, 0, 0.15) 0 2pt 5pt);
 }
 
 .error {
