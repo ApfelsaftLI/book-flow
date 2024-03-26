@@ -39,23 +39,27 @@ header {
   }
 
   nav {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
     ul {
       list-style-type: none;
       padding: 0;
       display: flex;
       gap: 15px;
       align-items: center;
+    }
 
-      .profile-picture {
-        width: 40pt;
-        height: 40pt;
-        border-radius: 50%;
-        background-image: linear-gradient($background-primary, #737373);
-      }
+    .profile-picture {
+      display: inline-block;
+      width: 40pt;
+      height: 40pt;
+      border-radius: 50%;
+      background-image: linear-gradient($background-primary, #737373);
     }
   }
 }
-
 
 .error {
   background-color: $error-color;

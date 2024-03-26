@@ -30,6 +30,11 @@ header {
 header img {
   width: 200pt;
 }
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
 header nav ul {
   list-style-type: none;
   padding: 0;
@@ -37,7 +42,8 @@ header nav ul {
   gap: 15px;
   align-items: center;
 }
-header nav ul .profile-picture {
+header nav .profile-picture {
+  display: inline-block;
   width: 40pt;
   height: 40pt;
   border-radius: 50%;
