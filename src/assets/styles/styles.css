@@ -1,18 +1,18 @@
 @font-face {
   font-family: Inter;
-  src: url(../../../fonts/Inter-Regular.ttf);
+  src: url(../fonts/Inter-Regular.ttf);
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: Inter;
-  src: url(../../../fonts/Inter-Bold.ttf);
+  src: url(../fonts/Inter-Bold.ttf);
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: Inter;
-  src: url(../../../fonts/Inter-SemiBold.ttf);
+  src: url(../fonts/Inter-SemiBold.ttf);
   font-weight: 600;
   font-style: normal;
 }
@@ -33,7 +33,7 @@ main {
   gap: 6pt;
 }
 
-.text-small-semi > * {
+.text-small-semi {
   font-weight: 600;
   font-size: 14pt;
   text-decoration: none;
@@ -294,13 +294,13 @@ header nav .profile-picture {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  grid-column: 1/13;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-block: 10pt;
+  position: absolute;
+  bottom: 0;
+  width: 80vw;
 }
 footer nav {
   display: flex;
