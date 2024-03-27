@@ -23,7 +23,7 @@ $isAdmin = $isLoggedIn && $_SESSION["user"]["admin"] == "true";
 
         <?php
         if ($isLoggedIn) {
-            echo "<a href='/login.php' class='profile-picture'
+            echo "<a href='/profile.php' class='profile-picture'
                  style='background-image: url(\"" . getProfilePicture($_SESSION["user"]) . "\")'></a>" . PHP_EOL;
             // If the IDE shows an error IGNORE IT!!
         } else {
