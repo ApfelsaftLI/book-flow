@@ -1,14 +1,13 @@
+@import "../abstracts/variables";
+
 footer {
-
-  position: absolute;
-  bottom: 0;
-
-  grid-column: 1/13;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-block: 10pt;
-
+  position: absolute;
+  bottom: 0;
+  width: $body-width;
 
   nav {
     display: flex;

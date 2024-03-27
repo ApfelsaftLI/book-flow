@@ -4,7 +4,7 @@ $isAdmin = $isLoggedIn && $_SESSION["user"]["admin"] == "true";
 ?>
 
 <footer>
-    <p>&copy; BookFlow <?php echo date("Y") ?></p>
+    <p class="text-small-semi">&copy; BookFlow <?php echo date("Y") ?></p>
     <nav>
         <ul>
             <li class="text-small-semi"><a href="/">Home</a></li>
