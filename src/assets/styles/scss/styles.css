@@ -1,5 +1,5 @@
-@import "../fonts.css";
-@import "../reset.css";
+@import "abstracts/_variables.scss";
+@import "base/_reset.scss";
 body {
   background-color: #FFE4CF;
   font-family: Inter, sans-serif;
@@ -18,17 +18,14 @@ header {
   align-items: center;
   padding-block: 10pt;
 }
-
 header img {
   width: 200pt;
 }
-
 header nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-
 header nav ul {
   list-style-type: none;
   padding: 0;
@@ -36,7 +33,6 @@ header nav ul {
   gap: 15px;
   align-items: center;
 }
-
 header nav .profile-picture {
   display: inline-block;
   width: 40pt;
@@ -101,12 +97,10 @@ header nav .profile-picture {
   left: 1rem;
   overflow-wrap: break-word;
 }
-
 .error b {
   font-weight: 600;
   font-size: 14pt;
 }
-
 .error p {
   font-weight: normal;
   font-size: 12pt;
@@ -123,5 +117,4 @@ header nav .profile-picture {
   }
 }
 
-
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=styles.css.map */

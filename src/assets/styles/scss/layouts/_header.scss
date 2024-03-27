@@ -1,0 +1,35 @@
+@import "../abstracts/_variables.scss";
+
+header {
+  grid-column: 1/13;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 10pt;
+
+  img {
+    width: 200pt;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .profile-picture {
+      display: inline-block;
+      width: 40pt;
+      height: 40pt;
+      border-radius: 50%;
+      background-image: linear-gradient($background-primary, #737373);
+    }
+  }
+}
