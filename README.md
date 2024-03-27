@@ -16,5 +16,5 @@ docker-compose up -d
 
 #### Configure SASS
 ```shell
-sass --watch src/assets/styles/sass:src/assets/styles
+sass --watch src/assets/styles/scss/:src/assets/styles/
 ```

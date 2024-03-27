@@ -1,13 +1,3 @@
-@import "../fonts.css";
-@import "../reset.css";
-
-$background-primary: #FFEEE0;
-$background-secondary: #FFE4CF;
-$accent-color: #38703E;
-$text-color: #4E2323;
-$error-color: #ce555b;
-$drop-shadow: drop-shadow(rgba(0, 0, 0, 0.15) 0 2pt 5pt);
-
 body {
   background-color: $background-secondary;
   font-family: Inter, sans-serif;
@@ -19,39 +9,6 @@ main {
   grid-column: 1/13;
 }
 
-header {
-  grid-column: 1/13;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-block: 10pt;
-
-  img {
-    width: 200pt;
-  }
-
-  nav {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
-
-    .profile-picture {
-      display: inline-block;
-      width: 40pt;
-      height: 40pt;
-      border-radius: 50%;
-      background-image: linear-gradient($background-primary, #737373);
-    }
-  }
-}
 
 .grid-container {
   display: grid;
@@ -78,17 +35,6 @@ header {
   font-size: 20pt;
   color: $text-color;
   margin-block: 2pt;
-}
-
-.big-button {
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 20pt;
-  color: $background-primary;
-  background-color: $accent-color;
-  border-radius: 50vh;
-  padding: 5pt 10pt;
-  display: inline-block;
 }
 
 .large-container {
