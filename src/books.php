@@ -20,7 +20,17 @@ if (session_status() == PHP_SESSION_NONE) {
 <body class="grid-container">
 <?php include_once "templates/header.php" ?>
 <main class="grid-container">
-    <h1 class="text-large-bold">Bücher</h1>
+    <div class="search-container">
+        <form method = "GET" action = "">
+        <div class="search-container">
+            <div class="search-bar-container">
+                <input class="search-bar" type="search" name="search" id="book-search" placeholder="Suche...">
+                 <div class="search-icon">🔍</div>
+            </div>
+        </div>
+        </form>
+    </div>
+
 </main>
 <?php include_once "templates/footer.php"?>
 </body>

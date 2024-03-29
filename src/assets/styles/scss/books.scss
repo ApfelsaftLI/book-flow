@@ -1,3 +1,39 @@
+//Abstracts
+@import "abstracts/__abstracts-dir";
+
+//Base Styles
+@import "base/__base-dir";
+
+//Components
+@import "components/__components-dir";
+
+//Layout
+@import "layouts/__layouts-dir";
+
 a[href="/books.php"] {
   font-weight: bold;
 }
+
+.search-container {
+  grid-column: 4/8;
+  .search-bar {
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     font-size: 16px;
+     background-color: $background-primary;
+    }
+  .search-icon {
+     position: absolute;
+     right: 10px; 
+     top: 50%;
+     transform: translateY(-50%);
+  }
+  .search-bar-container {
+     position: relative;
+     display: inline-block;
+  }
+ }
+ 
+
+
+
