@@ -21,6 +21,11 @@ if (session_status() == PHP_SESSION_NONE) {
 <?php include_once "templates/header.php" ?>
 <main class="grid-container">
     <h1 class="text-large-bold">HEEELOOO</h1>
+    <div class="search-bar">
+        <form method="get">
+            <input type="search" name="search-query" id="search-query" placeholder="Search...">
+        </form>
+    </div>
 </main>
 <?php include_once "templates/footer.php"?>
 </body>
