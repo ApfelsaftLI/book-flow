@@ -27,6 +27,24 @@ if (session_status() == PHP_SESSION_NONE) {
                 <input class="search-bar" type="search" name="search" id="book-search" placeholder="Suche...">
                  <div class="search-icon">🔍</div>
             </div>
+            <div class="dropdown">
+                <div class="filter-container">
+                        <select class="filter" name="filter">
+                            <option value="Filter">Filter</option>
+                            <option value="saab">Saab</option>
+                            <option value="fiat">Fiat</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                </div>
+                <div class="sort-container">
+                        <select class="sort" name="sort">
+                            <option value="Sortieren">Sortieren</option>
+                            <option value="saab">Saab</option>
+                            <option value="fiat">Fiat</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                </div>
+            </div>
         </div>
         </form>
     </div>

@@ -1,30 +1,124 @@
+@charset "UTF-8";
 a[href="/books.php"] {
   font-weight: bold;
 }
 
 .search-container {
-  grid-column: 4/8;
+  grid-column: 4/10;
 }
-
 .search-container .search-bar {
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 80px;
+  font-size: 16pt;
+  height: 33px;
+  width: 100%;
   background-color: #FFEEE0;
+  text-indent: 10px;
 }
-
 .search-container .search-icon {
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
 }
-
 .search-container .search-bar-container {
   position: relative;
-  display: inline-block;
+  margin-bottom: 20px;
+  display: flex;
+  /* Use flexbox for layout */
+  justify-content: center;
+  /* Center the search bar */
+  width: 100%;
+  /* Ensure the container takes up the full width */
 }
-
-
+.search-container .dropdown {
+  display: inline;
+  padding-top: 20px;
+}
+.search-container .dropdown .filter-container {
+  display: block;
+}
+.search-container .dropdown .filter {
+  border: 1px solid #ccc;
+  border-radius: 80px;
+  font-size: 14pt;
+  height: 25px;
+  background-color: #FFEEE0;
+  text-indent: 5px;
+  display: inline-block;
+  width: 12%;
+  padding-right: 20px;
+  /* Make room for the custom arrow */
+  position: relative;
+  /* Needed for absolute positioning of the pseudo-element */
+}
+.search-container .dropdown .filter::after {
+  content: "▼";
+  position: absolute;
+  right: 10px;
+  /* Adjust the position as needed */
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black;
+  /* Change the color as needed */
+  pointer-events: none;
+  /* Ensures the arrow does not interfere with the select element */
+}
+.search-container .dropdown {
+  display: inline;
+  padding-top: 20px;
+}
+.search-container .dropdown .filter-container {
+  display: block;
+}
+.search-container .dropdown .filter {
+  border: 1px solid #ccc;
+  border-radius: 80px;
+  font-size: 14pt;
+  height: 25px;
+  background-color: #FFEEE0;
+  text-indent: 5px;
+  display: inline-block;
+  width: 12%;
+  padding-right: 20px;
+  position: relative;
+}
+.search-container .dropdown .filter::after {
+  content: "▼";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  pointer-events: none;
+}
+.search-container .dropdown .sort-container {
+  display: block;
+}
+.search-container .dropdown .sort {
+  border: 1px solid #ccc;
+  border-radius: 80px;
+  font-size: 14pt;
+  height: 25px;
+  background-color: #FFEEE0;
+  text-indent: 5px;
+  display: inline-block;
+  width: 12%;
+  padding-right: 20px;
+  position: relative;
+}
+.search-container .dropdown .sort::after {
+  content: "▼";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  pointer-events: none;
+}
 
 /*# sourceMappingURL=books.css.map */
