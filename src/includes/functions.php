@@ -25,9 +25,9 @@ function searchBosok(string $searchInput){
     if (!$_SESSION["dbConnection"]) return;
     global $connection;
     echo print_r($connection);
-    $sql = 'FROM buecher SELECT kurztitle, nummer WHERE kurztitle LIKE "' . $searchInput .'%"';
+    $sql = 'FROM buecher SELECT kurztitle, nummer, id WHERE kurztitle LIKE "' . $searchInput .'%"';
     foreach ($connection->query($sql) as $row) {
-        echo $row['kurztitel'] . " " . $row['nummer'] . "<br/>";
+        echo $row['kurztitel'] . " " . $row['nummer'] . "" .$row['id'] . "<br/>";
     }
 }
 function searchBook(string $searchInput){
@@ -38,15 +38,12 @@ function searchBook(string $searchInput){
     if (!$_SESSION["dbConnection"]) return;
     global $connection;
     $connection = new PDO("mysql:host=$server;port=3306;dbname=book_DB", $username, $password);
-    echo print_r($connection); 
-
-    $sql = 'SELECT kurztitle, nummer FROM buecher WHERE kurztitle LIKE :searchInput'; // Query
+    $sql = 'SELECT kurztitle, nummer, id FROM buecher WHERE kurztitle LIKE :searchInput'; // Query
     $statement = $connection->prepare($sql); //prepare query
     $statement->bindValue(':searchInput', $searchInput . '%', PDO::PARAM_STR); // bind parameter
     $statement->execute();  //execute query
     $results = $statement->fetchAll(PDO::FETCH_ASSOC); //fetch results
-    echo print_r($connection);
     foreach ($results as $row) {
-        echo "Kurztitle: " . $row['kurztitle'] . ", Number: " . $row['nummer'] . "<br>";
+        echo "Kurztitle: " . $row['kurztitle'] . ", Number: " . $row['nummer'] . ", ID:" .$row['id']. "<br>";
     }
 }

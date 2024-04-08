@@ -9,7 +9,6 @@ try {
     $connection = new PDO("mysql:host=$server;port=3306;dbname=book_DB", $username, $password);
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $_SESSION["dbConnection"] = true;
-    echo "<div class='error'>".print_r($connection)."</div>";
 
 } catch (PDOException $e) {
     echo "<div class='error'><b>Die Verbindung zur Datenbank konnte nicht hergestellt werden:</b><p>" . $e->getMessage() . "</p></div>";
