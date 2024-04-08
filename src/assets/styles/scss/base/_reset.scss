@@ -82,12 +82,10 @@ ul {
  */
 
 button,
-input,
+input, /*Took select out so maybe my code now working*/
 optgroup,
-select,
 textarea {
     -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
     overflow: visible;
     border: 0;
@@ -99,6 +97,7 @@ textarea {
     background: none;
     vertical-align: top;
 }
+
 
 /**
  * Avoid no background on Edge and IE

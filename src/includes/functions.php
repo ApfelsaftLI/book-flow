@@ -19,3 +19,14 @@ function getFirstLetter(string $str)
 {
     return substr($str, 0, 1);
 }
+
+function searchBook(string $searchInput){
+    require_once 'db.php';
+    if (!$_SESSION["dbConnection"]) return;
+    global $connection;
+    echo print_r($connection);
+    $sql = 'FROM buecher SELECT kurztitle, nummer WHERE kurztitle LIKE "' . $searchInput .'%"';
+    foreach ($connection->query($sql) as $row) {
+        echo $row['kurztitel'] . " " . $row['nummer'] . "<br/>";
+    }
+}
