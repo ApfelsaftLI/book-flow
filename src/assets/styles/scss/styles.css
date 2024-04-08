@@ -168,11 +168,10 @@ ul {
 button,
 input,
 optgroup,
-select,
 textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none;
+       appearance: none;
   overflow: visible;
   border: 0;
   outline: 0;
@@ -319,6 +318,4 @@ footer nav ul {
   display: flex;
   gap: 15px;
   align-items: center;
-}
-
-/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */
