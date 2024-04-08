@@ -14,3 +14,30 @@ try {
     echo "<div class='error'><b>Die Verbindung zur Datenbank konnte nicht hergestellt werden:</b><p>" . $e->getMessage() . "</p></div>";
     $_SESSION["dbConnection"] = false;
 }
+
+
+function listBooks(string $kurztitleSearchQuery)
+{
+    if (!$_SESSION["dbConnection"]) return;
+    require_once 'db.php';
+    global $connection;
+    $sqlQuery = 'SELECT kurztitle, nummer, id FROM buecher WHERE kurztitle LIKE :searchInput';
+    $statement = $connection->prepare($sqlQuery);
+    $statement->bindValue(':searchInput', $kurztitleSearchQuery . '%', PDO::PARAM_STR);
+    $statement->execute();
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($results as $row) {
+        echo "Kurztitle: " . $row['kurztitle'] . ", Number: " . $row['nummer'] . ", ID:" . $row['id'] . "<br>";
+    }
+}
+
+function listFullUserNames()
+{
+    if (!$_SESSION["dbConnection"]) return;
+    require_once 'db.php';
+    global $connection;
+    $sql = "SELECT vorname, name from benutzer";
+    foreach ($connection->query($sql) as $row) {
+        echo $row['vorname'] . " " . $row['name'] . "<br/>";
+    }
+}
