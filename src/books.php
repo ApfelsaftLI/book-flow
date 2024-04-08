@@ -26,7 +26,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <form method="GET" action="">
                 <div class="search-container">
                     <div class="search-bar-container">
-                        <input class="search-bar" type="search" name="search" id="book-search" placeholder="Suche..."> 
+                        <input class="search-bar" type="search" name="search" id="book-search" placeholder="Suche...">
                         <div class="search-icon">🔍</div>
                     </div>
                     <div class="dropdown">
@@ -52,7 +52,15 @@ if (session_status() == PHP_SESSION_NONE) {
         </div>
         <?php
         include_once "includes/functions.php";
-        searchBook("")
+
+        // Check if the search input is submitted
+        if (isset($_GET['search'])) {
+            $searchInput = $_GET['search'];
+            searchBook($searchInput); // Pass the search input to the searchBook function
+        } else {
+            // If no search input is submitted, pass an empty string to the searchBook function
+            searchBook("");
+        }
         ?>
     </main>
     <?php include_once "templates/footer.php" ?>
