@@ -16,14 +16,22 @@ try {
 }
 
 
-function listBooks(string $kurztitleSearchQuery)
+function listBooks(string $searchQuery, string $filterInput, string $sortInput, bool $isNummeric)
 {
-    if (!$_SESSION["dbConnection"]) return;
+    if (!$_SESSION["dbConnection"])
+        return;
     require_once 'db.php';
     global $connection;
-    $sqlQuery = 'SELECT kurztitle, nummer, id FROM buecher WHERE kurztitle LIKE :searchInput';
-    $statement = $connection->prepare($sqlQuery);
-    $statement->bindValue(':searchInput', $kurztitleSearchQuery . '%', PDO::PARAM_STR);
+    if ($isNummeric) {
+        $sqlQuery = "SELECT kurztitle, nummer, id FROM buecher WHERE $filterInput = :searchQuery ORDER BY $sortInput";
+        $statement = $connection->prepare($sqlQuery);
+        $statement->bindParam(':searchQuery', $searchQuery, PDO::PARAM_INT);
+    } else {
+        $sqlQuery = "SELECT kurztitle, nummer, id FROM buecher WHERE $filterInput LIKE :searchInput ORDER BY $sortInput";
+        $statement = $connection->prepare($sqlQuery);
+        $searchInput = $searchQuery . '%';
+        $statement->bindParam(':searchInput', $searchInput, PDO::PARAM_STR);
+    }
     $statement->execute();
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
     foreach ($results as $row) {
@@ -33,7 +41,8 @@ function listBooks(string $kurztitleSearchQuery)
 
 function listFullUserNames()
 {
-    if (!$_SESSION["dbConnection"]) return;
+    if (!$_SESSION["dbConnection"])
+        return;
     require_once 'db.php';
     global $connection;
     $sql = "SELECT vorname, name from benutzer";

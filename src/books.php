@@ -5,14 +5,14 @@ if (session_status() == PHP_SESSION_NONE) {
     $_SESSION["user"] = ["admin" => "true", "name" => "Bernardini", "vorname" => "Vincent"];
 }
 include 'includes/db.php'
-?>
+    ?>
 <!doctype html>
 <html lang="de">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/styles/styles.css">
     <link rel="stylesheet" href="assets/styles/books.css">
@@ -21,50 +21,80 @@ include 'includes/db.php'
 </head>
 
 <body class="grid-container">
-<?php include_once "templates/header.php" ?>
-<main class="grid-container">
-    <div class="search-container">
-        <form method="GET" action="">
-            <div class="search-container">
-                <div class="search-bar-container">
-                    <?php echo '<input class="search-bar" type="search" name="search" id="book-search" placeholder="Suche..." value="' . $_GET["search"] . '">'; ?>
-                    <div class="search-icon">🔍</div>
-                </div>
-                <div class="dropdown">
-                    <div class="filter-container">
-                        <select class="filter" name="filter">
-                            <option value="Filter">Filter</option>
-                            <option value="saab">Saab</option>
-                            <option value="fiat">Fiat</option>
-                            <option value="audi">Audi</option>
-                        </select>
+    <?php include_once "templates/header.php" ?>
+    <main class="grid-container">
+        <div class="search-container">
+            <form method="GET" action="<?= $_SERVER['PHP_SELF']; ?>">
+                <div class="search-container">
+                    <div class="search-bar-container">
+                        <?php if (isset($_GET['search'])) {
+                            echo '<input class="search-bar" type="search" name="search" id="book-search" placeholder="Suche..." value="' . $_GET["search"] . '">';
+                        } else
+                            echo '<input class="search-bar" type="search" name="search" id="book-search" placeholder="Suche...">';
+                        ?>
+                        <div class="search-icon">🔍</div>
                     </div>
-                    <div class="sort-container">
-                        <select class="sort" name="sort">
-                            <option value="Sortieren">Sortieren</option>
-                            <option value="saab">Saab</option>
-                            <option value="fiat">Fiat</option>
-                            <option value="audi">Audi</option>
-                        </select>
+                    <div class="dropdown">
+                        <div class="filter-container">
+                            <select class="filter" name="filter">
+                                <option value="">Filter</option>
+                                <option value="id">id</option>
+                                <option value="nummer">Nummer</option>
+                                <option value="">Audi</option>
+                            </select>
+                        </div>
+                        <div class="sort-container">
+                            <select class="sort" name="sort">
+                                <option value="">Sortieren</option>
+                                <option value="kurztitle ASC">Kurztitel aufsteigend</option>
+                                <option value="kurztitle DESC">Kurztitel absteigend</option>
+                                <option value="">Audi</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
-    </div>
-    <?php
-    include_once "includes/functions.php";
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <?php
+        include_once "includes/functions.php";
+        /* 
+        Check if sort is set. If not it will be set to kurztitle to avoid errors and have an 
+        output. If it is set, the set value will be given to the query.
+        */
+        if (isset($_GET['sort'])) {
+            $sortInput = $_GET['sort'];
+        } else {
+            $sortInput = 'kurztitle ASC';
+        }
+        /* 
+        Check if filter is set. If not it will be set to kurztitle to avoid errors and have an 
+        output. If it is set, the set value will be given to the query.
+        */
+        if (isset($_GET['filter'])) {
+            $filterInput = $_GET['filter'];
+        } else {
+            $filterInput = 'kurztitle';
+        }
+        
+        $nummericFilters = ['id', 'nummer'];
+        $isNummeric = false;
+        if (in_array($filterInput, $nummericFilters)) {
+            $isNummeric = true;
+        } else{
+            $isNummeric = false;
+        }
 
-    // Check if the search input is submitted
-    if (isset($_GET['search'])) {
-        $searchInput = $_GET['search'];
-        listBooks($searchInput); // Pass the search input to the searchBook function
-    } else {
-        // If no search input is submitted, pass an empty string to the searchBook function
-        listBooks("");
-    }
-    ?>
-</main>
-<?php include_once "templates/footer.php" ?>
+        // Check if the search input is submitted
+        if (isset($_GET['search'])) {
+            $searchInput = htmlspecialchars(trim($_GET['search']));
+            listBooks($searchInput, $filterInput, $sortInput, $isNummeric);
+        } else {
+            listBooks("", $filterInput, $sortInput, $isNummeric);
+        }
+        ?>
+    </main>
+    <?php include_once "templates/footer.php" ?>
 
 </body>
 
