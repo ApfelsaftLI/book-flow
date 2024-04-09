@@ -4,15 +4,6 @@ if (session_status() == PHP_SESSION_NONE) {
     $_SESSION = [];
     $_SESSION["user"] = ["admin" => "true", "name" => "Bernardini", "vorname" => "Vincent"];
 }
-include 'includes/db.php';
-
-
-function displayUser(array $user)
-{
-    echo '<div class="user-container">';
-    echo "<div class='profile-picture' style='background-image: url(\"" . getProfilePicture($user) . "\")'></div>" . PHP_EOL;
-    echo '</div>';
-}
 ?>
 <!doctype html>
 <html lang="de">
@@ -30,10 +21,6 @@ function displayUser(array $user)
 <?php include_once "templates/header.php" ?>
 <main class="grid-container">
 
-        <?php
-        listFullUserNames();
-        displayUser($_SESSION["user"]);
-        ?>
 </main>
 <?php include_once "templates/footer.php"?>
 </body>
