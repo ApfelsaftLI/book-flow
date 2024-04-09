@@ -27,13 +27,13 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput)
     if (!in_array($filterInput, $allowedFilters) || !in_array($sortInput, $allowedSorts)) {
         $filterInput = 'kurztitle';
         $sortInput = 'kurztitle ASC';
-        return;
     }
     $sqlQuery = "SELECT kurztitle, nummer, id FROM buecher WHERE $filterInput LIKE :searchInput ORDER BY $sortInput";
     $statement = $connection->prepare($sqlQuery);
     $searchInput = $searchQuery . '%';
     $statement->bindParam(':searchInput', $searchInput, PDO::PARAM_STR);
-    $statement->execute(); 
+
+    $statement->execute();     
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
     foreach ($results as $row) {
         echo "Kurztitle: " . $row['kurztitle'] . ", Number: " . $row['nummer'] . ", ID:" . $row['id'] . "<br>";

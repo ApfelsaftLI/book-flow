@@ -27,7 +27,7 @@ include 'includes/db.php'
             <form method="GET" action="<?= $_SERVER['PHP_SELF']; ?>">
                 <div class="search-container">
                     <div class="search-bar-container">
-                        <?php if (isset($_GET["search"])) {
+                        <?php if (isset($_GET['search'])) {
                             echo '<input class="search-bar" type="search" name="search" id="book-search" placeholder="Suche..." value="' . $_GET["search"] . '">';
                         } else
                             echo '<input class="search-bar" type="search" name="search" id="book-search" placeholder="Suche...">';
