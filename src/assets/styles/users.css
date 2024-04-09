@@ -1,3 +1,17 @@
+.user-container {
+  grid-column: 4/10;
+  background-color: #FFEEE0;
+  border-radius: 15pt;
+  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+}
+.user-container .profile-picture {
+  display: inline-block;
+  width: 40pt;
+  height: 40pt;
+  border-radius: 50%;
+  background-image: linear-gradient(#FFEEE0, #737373);
+}
+
 a[href="/users.php"] {
   font-weight: bold;
 }

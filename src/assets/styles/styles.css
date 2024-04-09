@@ -72,12 +72,10 @@ main {
   left: 1rem;
   overflow-wrap: break-word;
 }
-
 .error b {
   font-weight: 600;
   font-size: 14pt;
 }
-
 .error p {
   font-weight: normal;
   font-size: 12pt;
@@ -170,10 +168,8 @@ ul {
 button,
 input,
 optgroup,
-select,
 textarea {
   -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   overflow: visible;
   border: 0;
@@ -269,6 +265,20 @@ table {
   background-color: #FFEEE0;
 }
 
+.user-container {
+  grid-column: 4/10;
+  background-color: #FFEEE0;
+  border-radius: 15pt;
+  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+}
+.user-container .profile-picture {
+  display: inline-block;
+  width: 40pt;
+  height: 40pt;
+  border-radius: 50%;
+  background-image: linear-gradient(#FFEEE0, #737373);
+}
+
 header {
   grid-column: 1/13;
   display: flex;
@@ -277,17 +287,14 @@ header {
   padding-block: 10pt;
   height: 80pt;
 }
-
 header img {
   width: 200pt;
 }
-
 header nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-
 header nav ul {
   list-style-type: none;
   padding: 0;
@@ -295,7 +302,6 @@ header nav ul {
   gap: 15px;
   align-items: center;
 }
-
 header nav .profile-picture {
   display: inline-block;
   width: 40pt;
@@ -314,13 +320,11 @@ footer {
   width: 80vw;
   height: 50pt;
 }
-
 footer nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-
 footer nav ul {
   list-style-type: none;
   padding: 0;
@@ -328,7 +332,5 @@ footer nav ul {
   gap: 15px;
   align-items: center;
 }
-
-
 
 /*# sourceMappingURL=styles.css.map */
