@@ -59,7 +59,7 @@ include 'includes/db.php'
         <?php
         include_once "includes/functions.php";
         /* 
-        Check if filter is set. If not it will be set to kurztitle to avoid errors and have an 
+        Check if sort is set. If not it will be set to kurztitle to avoid errors and have an 
         output. If it is set, the set value will be given to the query.
         */
         if (isset($_GET['sort'])) {
@@ -76,14 +76,21 @@ include 'includes/db.php'
         } else {
             $filterInput = 'kurztitle';
         }
+        
+        $nummericFilters = ['id', 'nummer'];
+        $isNummeric = false;
+        if (in_array($filterInput, $nummericFilters)) {
+            $isNummeric = true;
+        } else{
+            $isNummeric = false;
+        }
 
         // Check if the search input is submitted
         if (isset($_GET['search'])) {
             $searchInput = htmlspecialchars(trim($_GET['search']));
-            listBooks($searchInput, $filterInput, $sortInput); // Pass the search input to the searchBook function
+            listBooks($searchInput, $filterInput, $sortInput, $isNummeric);
         } else {
-            // If no search input is submitted, pass an empty string to the searchBook function
-            listBooks("", $filterInput, $sortInput);
+            listBooks("", $filterInput, $sortInput, $isNummeric);
         }
         ?>
     </main>
