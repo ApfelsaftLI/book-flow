@@ -16,7 +16,7 @@ try {
 }
 
 
-function listBooks(string $kurztitleSearchQuery, string $filterInput, string $sortInput)
+function listBooks(string $searchQuery, string $filterInput, string $sortInput)
 {
     if (!$_SESSION["dbConnection"]) return;
     require_once 'db.php';
@@ -31,7 +31,7 @@ function listBooks(string $kurztitleSearchQuery, string $filterInput, string $so
     }
     $sqlQuery = "SELECT kurztitle, nummer, id FROM buecher WHERE $filterInput LIKE :searchInput ORDER BY $sortInput";
     $statement = $connection->prepare($sqlQuery);
-    $searchInput = $kurztitleSearchQuery . '%';
+    $searchInput = $searchQuery . '%';
     $statement->bindParam(':searchInput', $searchInput, PDO::PARAM_STR);
     $statement->execute(); 
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
