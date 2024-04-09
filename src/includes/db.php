@@ -21,7 +21,14 @@ function listBooks(string $kurztitleSearchQuery, string $filterInput, string $so
     if (!$_SESSION["dbConnection"]) return;
     require_once 'db.php';
     global $connection;
-    
+    //preventing any sql-injections
+    $allowedFilters = ['kurztitle', 'nummer', 'id'];
+    $allowedSorts = ['kurztitle ASC', 'kurztitle DESC', 'nummer', 'id'];
+    if (!in_array($filterInput, $allowedFilters) || !in_array($sortInput, $allowedSorts)) {
+        $filterInput = 'kurztitle';
+        $sortInput = 'kurztitle ASC';
+        return;
+    }
     $sqlQuery = "SELECT kurztitle, nummer, id FROM buecher WHERE $filterInput LIKE :searchInput ORDER BY $sortInput";
     $statement = $connection->prepare($sqlQuery);
     $searchInput = $kurztitleSearchQuery . '%';

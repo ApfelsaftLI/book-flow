@@ -65,7 +65,7 @@ include 'includes/db.php'
         if (isset($_GET['sort'])) {
             $sortInput = $_GET['sort'];
         } else {
-            $sortInput = 'kurztitel ASC';
+            $sortInput = 'kurztitle ASC';
         }
         /* 
         Check if filter is set. If not it will be set to kurztitle to avoid errors and have an 
@@ -74,7 +74,7 @@ include 'includes/db.php'
         if (isset($_GET['filter'])) {
             $filterInput = $_GET['filter'];
         } else {
-            $filterInput = 'kurztitel';
+            $filterInput = 'kurztitle';
         }
 
         // Check if the search input is submitted
