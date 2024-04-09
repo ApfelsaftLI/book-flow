@@ -27,7 +27,7 @@ include 'includes/db.php'
             <form method="GET" action="<?= $_SERVER['PHP_SELF']; ?>">
                 <div class="search-container">
                     <div class="search-bar-container">
-                        <?php if (isset($_GET["search"])) {
+                        <?php if (isset($_GET['search'])) {
                             echo '<input class="search-bar" type="search" name="search" id="book-search" placeholder="Suche..." value="' . $_GET["search"] . '">';
                         } else
                             echo '<input class="search-bar" type="search" name="search" id="book-search" placeholder="Suche...">';
@@ -59,13 +59,13 @@ include 'includes/db.php'
         <?php
         include_once "includes/functions.php";
         /* 
-        Check if filter is set. If not it will be set to kurztitle to avoid errors and have an 
+        Check if sort is set. If not it will be set to kurztitle to avoid errors and have an 
         output. If it is set, the set value will be given to the query.
         */
         if (isset($_GET['sort'])) {
             $sortInput = $_GET['sort'];
         } else {
-            $sortInput = 'kurztitel ASC';
+            $sortInput = 'kurztitle ASC';
         }
         /* 
         Check if filter is set. If not it will be set to kurztitle to avoid errors and have an 
@@ -74,16 +74,23 @@ include 'includes/db.php'
         if (isset($_GET['filter'])) {
             $filterInput = $_GET['filter'];
         } else {
-            $filterInput = 'kurztitel';
+            $filterInput = 'kurztitle';
+        }
+        
+        $nummericFilters = ['id', 'nummer'];
+        $isNummeric = false;
+        if (in_array($filterInput, $nummericFilters)) {
+            $isNummeric = true;
+        } else{
+            $isNummeric = false;
         }
 
         // Check if the search input is submitted
         if (isset($_GET['search'])) {
             $searchInput = htmlspecialchars(trim($_GET['search']));
-            listBooks($searchInput, $filterInput, $sortInput); // Pass the search input to the searchBook function
+            listBooks($searchInput, $filterInput, $sortInput, $isNummeric);
         } else {
-            // If no search input is submitted, pass an empty string to the searchBook function
-            listBooks("", $filterInput, $sortInput);
+            listBooks("", $filterInput, $sortInput, $isNummeric);
         }
         ?>
     </main>
