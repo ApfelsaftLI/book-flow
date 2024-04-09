@@ -16,15 +16,17 @@ try {
 }
 
 
-function listBooks(string $kurztitleSearchQuery)
+function listBooks(string $kurztitleSearchQuery, string $filterInput, string $sortInput)
 {
     if (!$_SESSION["dbConnection"]) return;
     require_once 'db.php';
     global $connection;
-    $sqlQuery = 'SELECT kurztitle, nummer, id FROM buecher WHERE kurztitle LIKE :searchInput';
+    
+    $sqlQuery = "SELECT kurztitle, nummer, id FROM buecher WHERE $filterInput LIKE :searchInput ORDER BY $sortInput";
     $statement = $connection->prepare($sqlQuery);
-    $statement->bindValue(':searchInput', $kurztitleSearchQuery . '%', PDO::PARAM_STR);
-    $statement->execute();
+    $searchInput = $kurztitleSearchQuery . '%';
+    $statement->bindParam(':searchInput', $searchInput, PDO::PARAM_STR);
+    $statement->execute(); 
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
     foreach ($results as $row) {
         echo "Kurztitle: " . $row['kurztitle'] . ", Number: " . $row['nummer'] . ", ID:" . $row['id'] . "<br>";
