@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
     $_SESSION = [];
-    $_SESSION["user"] = ["admin" => "true", "name" => "Bernardini", "firstName" => "Vincent"];
+    $_SESSION["user"] = ["admin" => "true", "name" => "Bernardini", "vorname" => "Vincent"];
 }
 ?>
 <!doctype html>
@@ -20,7 +20,6 @@ if (session_status() == PHP_SESSION_NONE) {
 <body class="grid-container">
 <?php include_once "templates/header.php" ?>
 <main class="grid-container">
-    <h1 class="text-large-bold">Login</h1>
 </main>
 <?php include_once "templates/footer.php"?>
 </body>

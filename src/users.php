@@ -2,9 +2,8 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
     $_SESSION = [];
-    $_SESSION["user"] = ["admin" => "true", "name" => "Bernardini", "firstName" => "Vincent"];
+    $_SESSION["user"] = ["admin" => "true", "name" => "Bernardini", "vorname" => "Vincent"];
 }
-include 'includes/db.php'
 ?>
 <!doctype html>
 <html lang="de">
@@ -21,16 +20,7 @@ include 'includes/db.php'
 <body class="grid-container">
 <?php include_once "templates/header.php" ?>
 <main class="grid-container">
-    <h1 class="text-large-bold">HEEELOOO</h1>
-    <div class="search-bar">
-        <form method="get">
-            <input type="search" name="search-query" id="search-query" placeholder="Search...">
-        </form>
 
-        <?php
-        listFullUserNames();
-        ?>
-    </div>
 </main>
 <?php include_once "templates/footer.php"?>
 </body>
