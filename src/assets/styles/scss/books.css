@@ -4,18 +4,28 @@ a[href="/books.php"] {
 
 .search-container {
   grid-column: 4/10;
+  margin-top: 40pt;
 }
 .search-container .search-bar {
-  border-radius: 80px;
+  border-radius: 15pt;
   width: 100%;
   background-color: #FFEEE0;
   text-indent: 10px;
+  padding: 6pt;
+  font-size: 14pt;
+  color: #4E2323;
+  font-weight: 600;
+  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
 }
 .search-container .search-icon {
   position: absolute;
-  right: 10px;
+  right: 16pt;
   top: 50%;
   transform: translateY(-50%);
+  width: 14pt;
+  aspect-ratio: 1;
+  background-image: url("../images/Search_Icon.svg");
+  background-size: cover;
 }
 .search-container .search-bar-container {
   position: relative;
@@ -26,24 +36,32 @@ a[href="/books.php"] {
 }
 .search-container .dropdown {
   padding-top: 10px;
-}
-.search-container .dropdown .filter-container {
-  display: inline-block;
+  display: flex;
+  gap: 20pt;
 }
 .search-container .dropdown .filter-container .filter {
-  border-radius: 80px;
+  border-radius: 15pt;
   width: fit-content;
-  text-indent: 2px;
+  font-size: 11pt;
+  font-weight: 600;
+  color: #4E2323;
   background-color: #FFEEE0;
-}
-.search-container .dropdown .sort-container {
-  display: inline-block;
+  padding: 7pt 10pt;
+  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
 }
 .search-container .dropdown .sort-container .sort {
-  border-radius: 80px;
+  border-radius: 15pt;
   width: fit-content;
-  text-indent: 2px;
+  font-size: 11pt;
+  font-weight: 600;
+  color: #4E2323;
   background-color: #FFEEE0;
+  padding: 7pt 10pt;
+  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+}
+
+.result-container {
+  grid-column: 1/13;
 }
 
 /*# sourceMappingURL=books.css.map */
