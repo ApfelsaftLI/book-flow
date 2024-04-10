@@ -16,6 +16,14 @@ main {
   gap: 6pt;
 }
 
+.text-small-normal {
+  font-weight: normal;
+  font-size: 12pt;
+  text-decoration: none;
+  color: $text-color;
+}
+
+
 .text-small-semi > * {
   font-weight: 600;
   font-size: 14pt;

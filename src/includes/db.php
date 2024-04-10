@@ -34,7 +34,10 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput, 
     }
     $statement->execute();
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    include_once 'functions.php';
+    shortenShortTitles($results);
     foreach ($results as $row) {
+        $row=shortenShortTitles($row);
         echo "Kurztitle: " . $row['kurztitle'] . ", Number: " . $row['nummer'] . ", ID:" . $row['id'] . "<br>";
     }
 }

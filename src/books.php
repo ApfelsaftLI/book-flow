@@ -5,6 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
     $_SESSION["user"] = ["admin" => "true", "name" => "Bernardini", "vorname" => "Vincent"];
 }
 include 'includes/db.php'
+
     ?>
 <!doctype html>
 <html lang="de">
@@ -18,6 +19,26 @@ include 'includes/db.php'
     <link rel="stylesheet" href="assets/styles/books.css">
     <link rel="shortcut icon" href="assets/images/BookFlow_Icon.svg" type="image/svg">
     <title>Bücher | BookFlow</title>
+    <script>
+        //some js so there is no submitbutton needed
+        document.addEventListener("DOMContentLoaded", function () {
+            const filterSelect = document.querySelector('.filter');
+            const sortSelect = document.querySelector('.sort');
+
+            function submitForm() {
+                document.querySelector('form').submit();
+            }
+
+            filterSelect.addEventListener('change', function () {
+                submitForm();
+            });
+
+            sortSelect.addEventListener('change', function () {
+                submitForm();
+            });
+        });
+    </script>
+
 </head>
 
 <body class="grid-container">
@@ -35,53 +56,102 @@ include 'includes/db.php'
                         <div class="search-icon">🔍</div>
                     </div>
                     <div class="dropdown">
+                        <input type="hidden" name="filter" id="filter-hidden"
+                            value="<?= isset($_GET['filter']) ? $_GET['filter'] : 'default'; ?>">
+                        <input type="hidden" name="sort" id="sort-hidden"
+                            value="<?= isset($_GET['sort']) ? $_GET['sort'] : 'default'; ?>">
                         <div class="filter-container">
-                            <select class="filter" name="filter">
-                                <option value="">Filter</option>
-                                <option value="id">id</option>
-                                <option value="nummer">Nummer</option>
-                                <option value="">Audi</option>
+                            <select class="filter text-small-normal" onchange="updateHiddenValue('filter')" name="filter">
+                                <option value="default" <?= isset($_GET['filter']) && $_GET['filter'] == 'default' ? 'selected' : ''; ?>>Filter</option>
+                                <option value="id" <?= isset($_GET['filter']) && $_GET['filter'] == 'id' ? 'selected' : ''; ?>>id</option>
+                                <option value="katalog" <?= isset($_GET['filter']) && $_GET['filter'] == 'katalog' ? 'selected' : ''; ?>>Katalog</option>
+                                <option value="nummer" <?= isset($_GET['filter']) && $_GET['filter'] == 'nummer' ? 'selected' : ''; ?>>Nummer</option>
+                                <option value="default" <?= isset($_GET['filter']) && $_GET['filter'] == 'default' ? 'selected' : ''; ?>>Kurztitel</option>
+                                <option value="kategorie" <?= isset($_GET['filter']) && $_GET['filter'] == 'kategorie' ? 'selected' : ''; ?>>Kategorie</option>
+                                <option value="verkauft" <?= isset($_GET['filter']) && $_GET['filter'] == 'verkauft' ? 'selected' : ''; ?>>Verkauft</option>
+                                <option value="autor" <?= isset($_GET['filter']) && $_GET['filter'] == 'autor' ? 'selected' : ''; ?>>Kaufer</option>
+                                <option value="title" <?= isset($_GET['filter']) && $_GET['filter'] == 'title' ? 'selected' : ''; ?>>Title</option>
+                                <option value="sprache" <?= isset($_GET['filter']) && $_GET['filter'] == 'sprache' ? 'selected' : ''; ?>>Sprache</option>
+                                <option value="verfasser" <?= isset($_GET['filter']) && $_GET['filter'] == 'verfasser' ? 'selected' : ''; ?>>Verfasser</option>
+                                <option value="zustand" <?= isset($_GET['filter']) && $_GET['filter'] == 'zustand' ? 'selected' : ''; ?>>Zustand</option>
                             </select>
                         </div>
                         <div class="sort-container">
-                            <select class="sort" name="sort">
-                                <option value="">Sortieren</option>
-                                <option value="kurztitle ASC">Kurztitel aufsteigend</option>
-                                <option value="kurztitle DESC">Kurztitel absteigend</option>
-                                <option value="">Audi</option>
+                            <select class="sort" onchange="updateHiddenValue('sort')" name="sort">
+                                <option value="default" <?= isset($_GET['sort']) && $_GET['sort'] == 'default' ? 'selected' : ''; ?>>Sortieren</option>
+                                <option value="id ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'id ASC' ? 'selected' : ''; ?>>ID aufsteigend</option>
+                                <option value="id DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'id DESC' ? 'selected' : ''; ?>>ID absteigend</option>
+                                <option value="katalog ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'katalog ASC' ? 'selected' : ''; ?>>Katalog aufsteigend</option>
+                                <option value="katalog DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'katalog DESC' ? 'selected' : ''; ?>>Katalog absteigend</option>
+                                <option value="nummer ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'nummer ASC' ? 'selected' : ''; ?>>Nummer aufsteigend</option>
+                                <option value="nummer DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'nummer DESC' ? 'selected' : ''; ?>>Nummer absteigend</option>
+                                <option value="kurztitle ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'kurztitle ASC' ? 'selected' : ''; ?>>Kurztitel aufsteigend</option>
+                                <option value="kurztitle DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'kurztitle DESC' ? 'selected' : ''; ?>>Kurztitel absteigend</option>
+                                <option value="kategorie ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'kategorie ASC' ? 'selected' : ''; ?>>Kategorie aufsteigend</option>
+                                <option value="kategorie DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'kategorie DESC' ? 'selected' : ''; ?>>Kategorie absteigend</option>
+                                <option value="verkauft ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verkauft ASC' ? 'selected' : ''; ?>>Verkauft aufsteigend</option>
+                                <option value="verkauft DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verkauft DESC' ? 'selected' : ''; ?>>Verkauft absteigend</option>
+                                <option value="autor ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'autor ASC' ? 'selected' : ''; ?>>Käufer aufsteigend</option>
+                                <option value="autor DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'autor DESC' ? 'selected' : ''; ?>>Käufer absteigend</option>
+                                <option value="title ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'title ASC' ? 'selected' : ''; ?>>Title aufsteigend</option>
+                                <option value="title DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'title DESC' ? 'selected' : ''; ?>>Title absteigend</option>
+                                <option value="sprache ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'sprache ASC' ? 'selected' : ''; ?>>Sprache aufsteigend</option>
+                                <option value="sprache DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'sprache DESC' ? 'selected' : ''; ?>>Sprache absteigend</option>
+                                <option value="verfasser ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verfasser ASC' ? 'selected' : ''; ?>>Verfasser aufsteigend</option>
+                                <option value="verfasser DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verfasser DESC' ? 'selected' : ''; ?>>Verfasser absteigend</option>
+                                <option value="zustand ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'zustand ASC' ? 'selected' : ''; ?>>Zustand aufsteigend</option>
+                                <option value="zustand DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'zustand DESC' ? 'selected' : ''; ?>>Zustand absteigend</option>
                             </select>
                         </div>
                     </div>
                 </div>
-                <button type="submit">Submit</button>
             </form>
+
+            <script>
+                //some js to not reset the filter or sort inputs
+                function updateHiddenValue(type) {
+                    const selectedValue = document.querySelector(`.${type}`).value;
+                    document.getElementById(`${type}-hidden`).value = selectedValue;
+                }
+            </script>
+
         </div>
         <?php
+        error_reporting(E_ERROR | E_PARSE);
         include_once "includes/functions.php";
         /* 
         Check if sort is set. If not it will be set to kurztitle to avoid errors and have an 
         output. If it is set, the set value will be given to the query.
         */
-        if (isset($_GET['sort'])) {
+        if ($_GET['sort'] !== 'default') {
             $sortInput = $_GET['sort'];
         } else {
             $sortInput = 'kurztitle ASC';
         }
+
         /* 
         Check if filter is set. If not it will be set to kurztitle to avoid errors and have an 
         output. If it is set, the set value will be given to the query.
         */
-        if (isset($_GET['filter'])) {
+        if ($_GET['filter'] !== 'default') {
             $filterInput = $_GET['filter'];
+
         } else {
             $filterInput = 'kurztitle';
         }
-        
-        $nummericFilters = ['id', 'nummer'];
+        if ($filterInput == NULL) {
+            $filterInput = "kurztitle";
+        }
+        if ($sortInput == NULL) {
+            $sortInput = "kurztitle ASC";
+        }
+
+
+        $nummericFilters = ['id', 'nummer', 'katalog', 'kategorie', 'verfasser'];
         $isNummeric = false;
         if (in_array($filterInput, $nummericFilters)) {
             $isNummeric = true;
-        } else{
+        } else {
             $isNummeric = false;
         }
 

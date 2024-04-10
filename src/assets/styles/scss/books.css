@@ -1,4 +1,3 @@
-@charset "UTF-8";
 a[href="/books.php"] {
   font-weight: bold;
 }
@@ -29,44 +28,31 @@ a[href="/books.php"] {
   width: 100%;
 }
 .search-container .dropdown {
-  display: inline-block;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 .search-container .dropdown .filter-container {
-  display: block;
+  display: inline-block;
 }
 .search-container .dropdown .filter-container .filter {
   border: 1px solid #ccc;
   border-radius: 80px;
-  font-size: 14pt;
+  font-size: small;
   height: 25px;
-  width: 80px;
+  width: -moz-fit-content;
+  width: fit-content;
   text-indent: 4px;
   background-color: #FFEEE0;
-  display: inline-block;
 }
 .search-container .dropdown .sort-container {
-  display: block;
+  display: inline-block;
 }
-.search-container .dropdown .sort {
+.search-container .dropdown .sort-container .sort {
   border: 1px solid #ccc;
   border-radius: 80px;
   font-size: 14pt;
   height: 25px;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-indent: 4px;
   background-color: #FFEEE0;
-  text-indent: 5px;
-  display: inline-block;
-  width: 12%;
-  padding-right: 20px;
-  position: relative;
-}
-.search-container .dropdown .sort::after {
-  content: "▼";
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  pointer-events: none;
 }/*# sourceMappingURL=books.css.map */
