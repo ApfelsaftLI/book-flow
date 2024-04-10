@@ -32,7 +32,6 @@ a[href="/books.php"] {
 }
 .search-container .dropdown .filter-container .filter {
   border-radius: 80px;
-  width: -moz-fit-content;
   width: fit-content;
   text-indent: 2px;
   background-color: #FFEEE0;
@@ -42,8 +41,9 @@ a[href="/books.php"] {
 }
 .search-container .dropdown .sort-container .sort {
   border-radius: 80px;
-  width: -moz-fit-content;
   width: fit-content;
   text-indent: 2px;
   background-color: #FFEEE0;
-}/*# sourceMappingURL=books.css.map */
+}
+
+/*# sourceMappingURL=books.css.map */
