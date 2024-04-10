@@ -6,10 +6,7 @@ a[href="/books.php"] {
   grid-column: 4/10;
 }
 .search-container .search-bar {
-  border: 1px solid #ccc;
   border-radius: 80px;
-  font-size: 16pt;
-  height: 33px;
   width: 100%;
   background-color: #FFEEE0;
   text-indent: 10px;
@@ -34,24 +31,18 @@ a[href="/books.php"] {
   display: inline-block;
 }
 .search-container .dropdown .filter-container .filter {
-  border: 1px solid #ccc;
   border-radius: 80px;
-  font-size: 14pt;
-  height: 25px;
   width: fit-content;
-  text-indent: 4px;
+  text-indent: 2px;
   background-color: #FFEEE0;
 }
 .search-container .dropdown .sort-container {
   display: inline-block;
 }
 .search-container .dropdown .sort-container .sort {
-  border: 1px solid #ccc;
   border-radius: 80px;
-  font-size: 14pt;
-  height: 25px;
   width: fit-content;
-  text-indent: 4px;
+  text-indent: 2px;
   background-color: #FFEEE0;
 }
 
