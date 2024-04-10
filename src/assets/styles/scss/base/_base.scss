@@ -5,6 +5,11 @@ body {
   margin-inline: auto;
 }
 
+* {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+}
+
 main {
   grid-column: 1/13;
 }

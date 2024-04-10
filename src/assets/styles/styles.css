@@ -23,6 +23,11 @@ body {
   margin-inline: auto;
 }
 
+* {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+}
+
 main {
   grid-column: 1/13;
 }
@@ -85,10 +90,12 @@ main {
   left: 1rem;
   overflow-wrap: break-word;
 }
+
 .error b {
   font-weight: 600;
   font-size: 14pt;
 }
+
 .error p {
   font-weight: normal;
   font-size: 12pt;
@@ -286,14 +293,17 @@ header {
   padding-block: 10pt;
   height: 80pt;
 }
+
 header img {
   width: 200pt;
 }
+
 header nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
+
 header nav ul {
   list-style-type: none;
   padding: 0;
@@ -301,6 +311,7 @@ header nav ul {
   gap: 15px;
   align-items: center;
 }
+
 header nav .profile-picture {
   display: inline-block;
   width: 40pt;
@@ -319,11 +330,13 @@ footer {
   width: 80vw;
   height: 50pt;
 }
+
 footer nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
+
 footer nav ul {
   list-style-type: none;
   padding: 0;
@@ -331,5 +344,7 @@ footer nav ul {
   gap: 15px;
   align-items: center;
 }
+
+
 
 /*# sourceMappingURL=styles.css.map */
