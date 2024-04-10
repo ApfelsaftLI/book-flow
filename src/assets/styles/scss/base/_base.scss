@@ -23,8 +23,13 @@ main {
   color: $text-color;
 }
 
+.text-small-semi-bold {
+  font-weight: bold;
+  font-size: 14pt;
+  color: $text-color;
+}
 
-.text-small-semi > * {
+.text-small-semi>* {
   font-weight: 600;
   font-size: 14pt;
   text-decoration: none;
