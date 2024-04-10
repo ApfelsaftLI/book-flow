@@ -60,10 +60,10 @@ include 'includes/db.php'
                             value="<?= isset($_GET['filter']) ? $_GET['filter'] : 'default'; ?>">
                         <input type="hidden" name="sort" id="sort-hidden"
                             value="<?= isset($_GET['sort']) ? $_GET['sort'] : 'default'; ?>">
-                        <div class="filter-container">
-                            <select class="filter text-small-normal" onchange="updateHiddenValue('filter')" name="filter">
+                        <div class="filter-container text-small-semi-bold">
+                            <select class="filter text-small-semi-bold" onchange="updateHiddenValue('filter')" name="filter">
                                 <option value="default" <?= isset($_GET['filter']) && $_GET['filter'] == 'default' ? 'selected' : ''; ?>>Filter</option>
-                                <option value="id" <?= isset($_GET['filter']) && $_GET['filter'] == 'id' ? 'selected' : ''; ?>>id</option>
+                                <option value="id" <?= isset($_GET['filter']) && $_GET['filter'] == 'id' ? 'selected' : ''; ?>>ID</option>
                                 <option value="katalog" <?= isset($_GET['filter']) && $_GET['filter'] == 'katalog' ? 'selected' : ''; ?>>Katalog</option>
                                 <option value="nummer" <?= isset($_GET['filter']) && $_GET['filter'] == 'nummer' ? 'selected' : ''; ?>>Nummer</option>
                                 <option value="default" <?= isset($_GET['filter']) && $_GET['filter'] == 'default' ? 'selected' : ''; ?>>Kurztitel</option>
@@ -76,8 +76,8 @@ include 'includes/db.php'
                                 <option value="zustand" <?= isset($_GET['filter']) && $_GET['filter'] == 'zustand' ? 'selected' : ''; ?>>Zustand</option>
                             </select>
                         </div>
-                        <div class="sort-container">
-                            <select class="sort" onchange="updateHiddenValue('sort')" name="sort">
+                        <div class="sort-container text-small-semi-bold">
+                            <select class="sort text-small-semi-bold" onchange="updateHiddenValue('sort')" name="sort">
                                 <option value="default" <?= isset($_GET['sort']) && $_GET['sort'] == 'default' ? 'selected' : ''; ?>>Sortieren</option>
                                 <option value="id ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'id ASC' ? 'selected' : ''; ?>>ID aufsteigend</option>
                                 <option value="id DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'id DESC' ? 'selected' : ''; ?>>ID absteigend</option>

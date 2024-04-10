@@ -33,6 +33,19 @@ main {
   gap: 6pt;
 }
 
+.text-small-normal {
+  font-weight: normal;
+  font-size: 12pt;
+  text-decoration: none;
+  color: #4E2323;
+}
+
+.text-small-semi-bold {
+  font-weight: bold;
+  font-size: 14pt;
+  color: #4E2323;
+}
+
 .text-small-semi > * {
   font-weight: 600;
   font-size: 14pt;
