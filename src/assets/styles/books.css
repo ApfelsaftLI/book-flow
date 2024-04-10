@@ -5,18 +5,21 @@ a[href="/books.php"] {
 .search-container {
   grid-column: 4/10;
 }
+
 .search-container .search-bar {
   border-radius: 80px;
   width: 100%;
   background-color: #FFEEE0;
   text-indent: 10px;
 }
+
 .search-container .search-icon {
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
 }
+
 .search-container .search-bar-container {
   position: relative;
   margin-bottom: 20px;
@@ -24,26 +27,33 @@ a[href="/books.php"] {
   justify-content: center;
   width: 100%;
 }
+
 .search-container .dropdown {
   padding-top: 10px;
 }
+
 .search-container .dropdown .filter-container {
   display: inline-block;
 }
+
 .search-container .dropdown .filter-container .filter {
   border-radius: 80px;
   width: fit-content;
   text-indent: 2px;
   background-color: #FFEEE0;
 }
+
 .search-container .dropdown .sort-container {
   display: inline-block;
 }
+
 .search-container .dropdown .sort-container .sort {
   border-radius: 80px;
   width: fit-content;
   text-indent: 2px;
   background-color: #FFEEE0;
 }
+
+
 
 /*# sourceMappingURL=books.css.map */
