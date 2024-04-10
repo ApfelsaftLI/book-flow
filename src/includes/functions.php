@@ -8,10 +8,6 @@ function getFirstLetter(string $str) {
 }
 
 function shortenShortTitles(array $dbResults) {
-    $shortShortTitles = $dbResults['kurztitle'];
-    foreach ($shortShortTitles as $i => $title) {
-        $shortTitles[$i] = substr($title, 0, 20);
-    }
-    $dbResults['kurztitle'] = $shortShortTitles;
+    $dbResults['kurztitle'] = substr($dbResults['kurztitle'], 0, 20);;
     return $dbResults;
 }
