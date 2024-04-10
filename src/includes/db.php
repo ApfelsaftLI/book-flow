@@ -50,3 +50,16 @@ function listFullUserNames()
         echo $row['vorname'] . " " . $row['name'] . "<br/>";
     }
 }
+
+function getRandomBooks(int $amount) {
+    if (!$_SESSION["dbConnection"]) return;
+    global $connection;
+
+    $sqlQuery = "SELECT kurztitle, autor FROM buecher ORDER BY RAND() LIMIT $amount";
+
+    include_once 'functions.php';
+    foreach ($connection->query($sqlQuery) as $book) {
+        $book = shortenShortTitles($book);
+        echo $book['kurztitle'] . " " . $book['autor'] . "<br/>";
+    }
+}
