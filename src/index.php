@@ -4,6 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
     $_SESSION = [];
     $_SESSION["user"] = ["admin" => "true", "name" => "Bernardini", "vorname" => "Vincent"];
 }
+include 'includes/db.php'
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,7 +27,12 @@ if (session_status() == PHP_SESSION_NONE) {
         <p class="text-medium-normal">bei <strong>BookFlow</strong>, Ihrem online Buchantiquariat</p>
         <a href="/books.php" class="big-button" id="stoebern-button">Bücher stöbern</a>
     </div>
+    <div class="book-carousel">
+        <?php
+        getRandomBooks(10);
+        ?>
+    </div>
 </main>
-<?php include_once "templates/footer.php"?>
+<?php include_once "templates/footer.php" ?>
 </body>
 </html>
