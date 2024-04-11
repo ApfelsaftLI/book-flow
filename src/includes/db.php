@@ -16,7 +16,7 @@ try {
 }
 
 
-function listBooks(string $searchQuery, string $filterInput, string $sortInput, bool $isNummeric)
+function listBooks(string $searchQuery, string $filterInput, string $sortInput, bool $isNumeric)
 {
     $results = [];
     $resultCount = 0; // Initialize result count
@@ -24,12 +24,12 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput, 
         return ['results' => $results, 'count' => $resultCount];
     require_once 'db.php';
     global $connection;
-    if ($isNummeric) {
-        $sqlQuery = "SELECT kurztitle, autor, foto FROM buecher WHERE $filterInput = :searchQuery ORDER BY $sortInput";
+    if ($isNumeric) {
+        $sqlQuery = "SELECT kurztitle, autor, foto, id FROM buecher WHERE $filterInput = :searchQuery ORDER BY $sortInput";
         $statement = $connection->prepare($sqlQuery);
         $statement->bindParam(':searchQuery', $searchQuery, PDO::PARAM_INT);
     } else {
-        $sqlQuery = "SELECT kurztitle, autor, foto FROM buecher WHERE $filterInput LIKE :searchInput ORDER BY $sortInput";
+        $sqlQuery = "SELECT kurztitle, autor, foto, id FROM buecher WHERE $filterInput LIKE :searchInput ORDER BY $sortInput";
         $statement = $connection->prepare($sqlQuery);
         $searchInput = $searchQuery . '%';
         $statement->bindParam(':searchInput', $searchInput, PDO::PARAM_STR);
@@ -43,12 +43,60 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput, 
     foreach ($results as &$row) {
         $row = shortenShortTitlesShorter($row);
         $row = shortenAutor($row);
-        $resultString = "<div><img src='assets/images/" . $row['foto'] . "' alt='gugus'><div class='info-text'><h2>" . $row['kurztitle'] . "</h2><p>" . $row['autor'] . "</p></div></div>";
+        $resultString = "<div><img src='assets/images/" . $row['foto'] . "' alt='gugus'><div class='info-text'><h2>" . $row['kurztitle'] . "</h2><p>" . $row['autor'] . "</p><form action='book.php' method='POST'>
+    <input type='hidden' name='book_id' value='" . $row['id'] . "'>
+    <button class='send-value-button'>Details</button>
+</form></div></div>";
         $formattedResults[] = $resultString;
     }
-    return ['results' => $formattedResults, 'count' => $resultCount]; // Return formatted results and count
+    return ['results' => $formattedResults, 'count' => $resultCount];
 }
 
+
+function listBook(int $bookID)
+{
+    $result = [];
+    $resultCount = 0;
+    if (!$_SESSION["dbConnection"])
+        echo "Connection Failed";
+    require_once 'db.php';
+    global $connection;
+    $sqlQuery = "SELECT * FROM buecher WHERE id = :bookID";
+    $statement = $connection->prepare($sqlQuery);
+    $statement->bindParam(':bookID', $bookID, PDO::PARAM_INT);
+    $statement->execute();
+
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    $id = $result['id'];
+    $katalog = $result['katalog'];
+    $nummer = $result['nummer'];
+    $kurztitle = $result['kurztitle'];
+    $kategorie = $result['kategorie'];
+    $verkauft = $result['verkauft'];
+    $kaufer = $result['kaufer'];
+    $autor = $result['autor'];
+    $title = $result['title'];
+    $sprache = $result['sprache'];
+    $foto = $result['foto'];
+    $verfasser = $result['verfasser'];
+    $zustand = $result['zustand'];
+
+    return [
+        'id' => $id,
+        'katalog' => $katalog,
+        'nummer' => $nummer,
+        'kurztitle' => $kurztitle,
+        'kategorie' => $kategorie,
+        'verkauft' => $verkauft,
+        'kaufer' => $kaufer,
+        'autor' => $autor,
+        'title' => $title,
+        'sprache' => $sprache,
+        'foto' => $foto,
+        'verfasser' => $verfasser,
+        'zustand' => $zustand,
+    ];
+}
 
 function listFullUserNames()
 {
@@ -62,7 +110,8 @@ function listFullUserNames()
     }
 }
 
-function getRandomBooks(int $amount) {
+function getRandomBooks(int $amount)
+{
     if (!$_SESSION["dbConnection"]) return;
     global $connection;
 

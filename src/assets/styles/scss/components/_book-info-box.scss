@@ -3,7 +3,7 @@
   grid-column: span 3;
   padding: 10px;
   border-radius: 15pt;
-  filter: dropshadow();
+  filter: $drop-shadow;
   height: 315px;
   background-color: $background-primary;
   position: relative;
@@ -40,12 +40,19 @@
   }
 
     img {
-      width: calc(100% - 20px);
+      justify-content: center;
+      max-width: calc(100% - 20px);
+      width: auto;
       height: calc(100% - 80px);
       padding-bottom: 0;
       border-radius: 15pt;
       position: absolute;
       z-index: 1;
       background: linear-gradient(to bottom, rgba(252, 81, 71, 1) 100%, rgba(255, 238, 224, 1) 100%);
+
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
     }
 }
