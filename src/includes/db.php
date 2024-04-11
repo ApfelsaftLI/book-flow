@@ -19,8 +19,9 @@ try {
 function listBooks(string $searchQuery, string $filterInput, string $sortInput, bool $isNummeric)
 {
     $results = [];
+    $resultCount = 0; // Initialize result count
     if (!$_SESSION["dbConnection"])
-        return $results;
+        return ['results' => $results, 'count' => $resultCount];
     require_once 'db.php';
     global $connection;
     if ($isNummeric) {
@@ -35,16 +36,19 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput, 
     }
     $statement->execute();
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $resultCount = count($results);
     include_once 'functions.php';
     shortenShortTitles($results);
+    $formattedResults = [];
     foreach ($results as &$row) {
         $row = shortenShortTitlesShorter($row);
         $row = shortenAutor($row);
         $resultString = "<div><img src='assets/images/" . $row['foto'] . "' alt='gugus'><div class='info-text'><h2>" . $row['kurztitle'] . "</h2><p>" . $row['autor'] . "</p></div></div>";
         $formattedResults[] = $resultString;
     }
-    return $formattedResults;
+    return ['results' => $formattedResults, 'count' => $resultCount]; // Return formatted results and count
 }
+
 
 function listFullUserNames()
 {

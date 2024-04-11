@@ -79,3 +79,17 @@ a[href="/books.php"] {
   grid-template-columns: repeat(12, 1fr);
   gap: 6pt;
 }
+.pagination {
+  margin-top: 20px;
+  margin-bottom: 40pt;
+  display: flex;
+  justify-content: center;
+
+  a {
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #000;
+    border: 1px solid #ccc;
+    margin: 0 5px;
+  }
+}

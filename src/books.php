@@ -214,55 +214,44 @@ include 'includes/db.php'
         <?php
         error_reporting(E_ERROR | E_PARSE);
         include_once "includes/functions.php";
-        /* 
-        Check if sort is set. If not it will be set to kurztitle to avoid errors and have an 
-        output. If it is set, the set value will be given to the query.
-        */
-        if ($_GET['sort'] !== 'default') {
-            $sortInput = $_GET['sort'];
-        } else {
-            $sortInput = 'kurztitle ASC';
-        }
 
-        /* 
-        Check if filter is set. If not it will be set to kurztitle to avoid errors and have an 
-        output. If it is set, the set value will be given to the query.
-        */
-        if ($_GET['filter'] !== 'default') {
-            $filterInput = $_GET['filter'];
+        // Sanitize user inputs
+        $searchInput = isset($_GET['search']) ? htmlspecialchars(trim($_GET['search'])) : '';
+        $filterInput = isset($_GET['filter']) ? $_GET['filter'] : 'kurztitle';
+        $sortInput = isset($_GET['sort']) ? $_GET['sort'] : 'kurztitle ASC';
 
-        } else {
-            $filterInput = 'kurztitle';
-        }
-        if ($filterInput == NULL) {
-            $filterInput = "kurztitle";
-        }
-        if ($sortInput == NULL) {
-            $sortInput = "kurztitle ASC";
-        }
+        // Validate and sanitize sort and filter inputs
+        $sortInput = ($sortInput !== 'default') ? $sortInput : 'kurztitle ASC';
+        $filterInput = ($filterInput !== 'default') ? $filterInput : 'kurztitle';
 
+        // Determine if the filter is numeric
+        $numericFilters = ['id', 'nummer', 'katalog', 'kategorie', 'verfasser'];
+        $isNumeric = in_array($filterInput, $numericFilters);
 
-        $nummericFilters = ['id', 'nummer', 'katalog', 'kategorie', 'verfasser'];
-        $isNummeric = false;
-        if (in_array($filterInput, $nummericFilters)) {
-            $isNummeric = true;
-        } else {
-            $isNummeric = false;
-        }
+        // Get paginated results
+        $currentPage = max(1, intval($_GET['page'] ?? 1));
+        $resultsPerPage = 16;
+        $offset = ($currentPage - 1) * $resultsPerPage;
 
-        // Check if the search input is submitted
-        if (isset($_GET['search'])) {
-            $searchInput = htmlspecialchars(trim($_GET['search']));
-            $results = listBooks($searchInput, $filterInput, $sortInput, $isNummeric);
-        } else {
-            $results = listBooks("", $filterInput, $sortInput, $isNummeric);
-        }
+        $results = isset($_GET['search']) ? listBooks($searchInput, $filterInput, $sortInput, $isNumeric) : listBooks("", $filterInput, $sortInput, $isNumeric);
+        $resultCount = $results['count'];
+        $pagesNeeded = ceil($resultCount / $resultsPerPage);
+        $currentPaginatedResults = array_slice($results['results'], $offset, $resultsPerPage);
 
-        foreach ($results as $result) {
+        // Output HTML
+        foreach ($currentPaginatedResults as $result) {
             echo '<div class="book-info-box">' . $result . '</div>';
         }
         ?>
     </div>
+        <!-- Pagination -->
+        <div class="pagination">
+            <?php for ($i = max(1, $currentPage - 2); $i <= min($pagesNeeded, $currentPage + 2); $i++): ?>
+                <a href="?page=<?php echo $i; ?>" <?php if ($i === $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
+            <?php endfor; ?>
+        </div>
+
+
 </main>
 <?php include_once "templates/footer.php" ?>
 
