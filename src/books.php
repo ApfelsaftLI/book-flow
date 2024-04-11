@@ -212,9 +212,8 @@ include 'includes/db.php'
     </div>
     <div class="result-container">
         <?php
-        error_reporting(E_ERROR | E_PARSE);
         include_once "includes/functions.php";
-
+        error_reporting(E_ERROR | E_PARSE);
         // Sanitize user inputs
         $searchInput = isset($_GET['search']) ? htmlspecialchars(trim($_GET['search'])) : '';
         $filterInput = isset($_GET['filter']) ? $_GET['filter'] : 'kurztitle';

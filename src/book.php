@@ -51,6 +51,7 @@ if (session_status() == PHP_SESSION_NONE) {
         <?php if(isset($autor)): ?>
             <p><?php echo $autor; ?></p>
         <?php endif; ?>
+        <div class="line"></div>
     </div>
 </main>
 <?php include_once "templates/footer.php" ?>
