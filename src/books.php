@@ -230,7 +230,7 @@ include 'includes/db.php'
 
         // Get paginated results
         $currentPage = max(1, intval($_GET['page'] ?? 1));
-        $resultsPerPage = 16;
+        $resultsPerPage = 12;
         $offset = ($currentPage - 1) * $resultsPerPage;
 
         $results = isset($_GET['search']) ? listBooks($searchInput, $filterInput, $sortInput, $isNumeric) : listBooks("", $filterInput, $sortInput, $isNumeric);
