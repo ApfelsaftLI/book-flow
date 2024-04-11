@@ -287,39 +287,53 @@ table {
   grid-column: span 3;
   padding: 10px;
   border-radius: 15pt;
-  filter: dropshadow();
+  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
   height: 315px;
   background-color: #FFEEE0;
   position: relative;
 }
-
-.info-text {
+.book-info-box .info-text {
   position: absolute;
   z-index: 2;
   padding: 10px;
   bottom: 0;
+  overflow: hidden;
 }
-.info-text p {
+.book-info-box .info-text p {
   text-decoration: none;
   font-weight: normal;
   font-size: 12pt;
   position: relative;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-.info-text h2 {
+.book-info-box .info-text h2 {
   text-decoration: none;
   font-weight: bold;
   font-size: 20pt;
   position: relative;
+  max-width: 100%;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-
 .book-info-box img {
-  width: calc(100% - 20px);
+  justify-content: center;
+  max-width: calc(100% - 20px);
+  width: auto;
   height: calc(100% - 80px);
   padding-bottom: 0;
   border-radius: 15pt;
   position: absolute;
   z-index: 1;
-  background: linear-gradient(to bottom, rgba(252, 81, 71, 0) 0%, rgb(255, 238, 224) 100%);
+  background: linear-gradient(to bottom, rgb(252, 81, 71) 100%, rgb(255, 238, 224) 100%);
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 header {

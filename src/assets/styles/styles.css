@@ -90,10 +90,12 @@ main {
   left: 1rem;
   overflow-wrap: break-word;
 }
+
 .error b {
   font-weight: 600;
   font-size: 14pt;
 }
+
 .error p {
   font-weight: normal;
   font-size: 12pt;
@@ -287,11 +289,12 @@ table {
   grid-column: span 3;
   padding: 10px;
   border-radius: 15pt;
-  filter: dropshadow();
+  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
   height: 315px;
   background-color: #FFEEE0;
   position: relative;
 }
+
 .book-info-box .info-text {
   position: absolute;
   z-index: 2;
@@ -299,6 +302,7 @@ table {
   bottom: 0;
   overflow: hidden;
 }
+
 .book-info-box .info-text p {
   text-decoration: none;
   font-weight: normal;
@@ -309,6 +313,7 @@ table {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 .book-info-box .info-text h2 {
   text-decoration: none;
   font-weight: bold;
@@ -320,14 +325,21 @@ table {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 .book-info-box img {
-  width: calc(100% - 20px);
+  justify-content: center;
+  max-width: calc(100% - 20px);
+  width: auto;
   height: calc(100% - 80px);
   padding-bottom: 0;
   border-radius: 15pt;
   position: absolute;
   z-index: 1;
   background: linear-gradient(to bottom, rgb(252, 81, 71) 100%, rgb(255, 238, 224) 100%);
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 header {
@@ -338,14 +350,17 @@ header {
   padding-block: 10pt;
   height: 80pt;
 }
+
 header img {
   width: 200pt;
 }
+
 header nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
+
 header nav ul {
   list-style-type: none;
   padding: 0;
@@ -353,6 +368,7 @@ header nav ul {
   gap: 15px;
   align-items: center;
 }
+
 header nav .profile-picture {
   display: inline-block;
   width: 40pt;
@@ -372,11 +388,13 @@ footer {
   height: 50pt;
   z-index: 2;
 }
+
 footer nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
+
 footer nav ul {
   list-style-type: none;
   padding: 0;
@@ -384,5 +402,7 @@ footer nav ul {
   gap: 15px;
   align-items: center;
 }
+
+
 
 /*# sourceMappingURL=styles.css.map */
