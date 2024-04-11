@@ -106,3 +106,19 @@ a[href="/books.php"] {
     margin: 0 5px;
   }
 }
+.no-result {
+  padding: 6pt;
+  grid-column: 4/10;
+  margin-top: 40pt;
+  border-radius: 15pt;
+  background-color: $background-primary;
+  filter: $drop-shadow;
+  margin-bottom: 40pt;
+
+  h3 {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 20pt;
+
+  }
+}

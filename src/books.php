@@ -241,6 +241,9 @@ include 'includes/db.php'
         foreach ($currentPaginatedResults as $result) {
             echo '<div class="book-info-box">' . $result . '</div>';
         }
+        if ($resultCount==0){
+            echo '<div class="no-result"><h3>Leider konnte kein Resultat gefunden werden, versuchen Sie es doch mit einer neuen Suche.</h3></di>';
+        }
         ?>
     </div>
         <!-- Pagination -->
