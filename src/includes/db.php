@@ -18,16 +18,17 @@ try {
 
 function listBooks(string $searchQuery, string $filterInput, string $sortInput, bool $isNummeric)
 {
+    $results = [];
     if (!$_SESSION["dbConnection"])
-        return;
+        return $results;
     require_once 'db.php';
     global $connection;
     if ($isNummeric) {
-        $sqlQuery = "SELECT kurztitle, nummer, id FROM buecher WHERE $filterInput = :searchQuery ORDER BY $sortInput";
+        $sqlQuery = "SELECT kurztitle, autor, foto FROM buecher WHERE $filterInput = :searchQuery ORDER BY $sortInput";
         $statement = $connection->prepare($sqlQuery);
         $statement->bindParam(':searchQuery', $searchQuery, PDO::PARAM_INT);
     } else {
-        $sqlQuery = "SELECT kurztitle, nummer, id FROM buecher WHERE $filterInput LIKE :searchInput ORDER BY $sortInput";
+        $sqlQuery = "SELECT kurztitle, autor, foto FROM buecher WHERE $filterInput LIKE :searchInput ORDER BY $sortInput";
         $statement = $connection->prepare($sqlQuery);
         $searchInput = $searchQuery . '%';
         $statement->bindParam(':searchInput', $searchInput, PDO::PARAM_STR);
@@ -36,10 +37,12 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput, 
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
     include_once 'functions.php';
     shortenShortTitles($results);
-    foreach ($results as $row) {
-        $row=shortenShortTitles($row);
-        echo "Kurztitle: " . $row['kurztitle'] . ", Number: " . $row['nummer'] . ", ID:" . $row['id'] . "<br>";
+    foreach ($results as &$row) {
+        $row = shortenShortTitles($row);
+        $resultString = "<div><img src='assets/images/" . $row['foto'] . "' alt=''><h2>" . $row['kurztitle'] . "</h2><p>" . $row['autor'] . "</p></div>";
+        $formattedResults[] = $resultString;
     }
+    return $formattedResults;
 }
 
 function listFullUserNames()

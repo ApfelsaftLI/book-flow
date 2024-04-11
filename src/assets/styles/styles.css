@@ -90,12 +90,10 @@ main {
   left: 1rem;
   overflow-wrap: break-word;
 }
-
 .error b {
   font-weight: 600;
   font-size: 14pt;
 }
-
 .error p {
   font-weight: normal;
   font-size: 12pt;
@@ -285,6 +283,43 @@ table {
   background-color: #FFEEE0;
 }
 
+.book-info-box {
+  grid-column: span 3;
+  padding: 10px;
+  border-radius: 15pt;
+  filter: dropshadow();
+  height: 315px;
+  background-color: #FFEEE0;
+  position: relative;
+  display: inline-block;
+}
+
+.book-info-box p {
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 12pt;
+  position: relative;
+  z-index: 2;
+}
+
+.book-info-box h2 {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20pt;
+  position: relative;
+  z-index: 2;
+}
+
+.book-info-box img {
+  width: auto;
+  max-height: 100%;
+  border-radius: 15pt;
+  position: absolute;
+  padding: 10px 10px 30px 10px; /* Top, Right, Bottom, Left */
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);
+}
+
 header {
   grid-column: 1/13;
   display: flex;
@@ -293,17 +328,14 @@ header {
   padding-block: 10pt;
   height: 80pt;
 }
-
 header img {
   width: 200pt;
 }
-
 header nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-
 header nav ul {
   list-style-type: none;
   padding: 0;
@@ -311,7 +343,6 @@ header nav ul {
   gap: 15px;
   align-items: center;
 }
-
 header nav .profile-picture {
   display: inline-block;
   width: 40pt;
@@ -330,13 +361,11 @@ footer {
   width: 80vw;
   height: 50pt;
 }
-
 footer nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-
 footer nav ul {
   list-style-type: none;
   padding: 0;
@@ -344,7 +373,5 @@ footer nav ul {
   gap: 15px;
   align-items: center;
 }
-
-
 
 /*# sourceMappingURL=styles.css.map */

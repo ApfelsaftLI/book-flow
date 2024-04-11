@@ -93,7 +93,7 @@ include 'includes/db.php'
                             </option>
                             <option
                                 value="autor" <?= isset($_GET['filter']) && $_GET['filter'] == 'autor' ? 'selected' : ''; ?>>
-                                Kaufer
+                                Autor
                             </option>
                             <option
                                 value="title" <?= isset($_GET['filter']) && $_GET['filter'] == 'title' ? 'selected' : ''; ?>>
@@ -106,10 +106,6 @@ include 'includes/db.php'
                             <option
                                 value="verfasser" <?= isset($_GET['filter']) && $_GET['filter'] == 'verfasser' ? 'selected' : ''; ?>>
                                 Verfasser
-                            </option>
-                            <option
-                                value="zustand" <?= isset($_GET['filter']) && $_GET['filter'] == 'zustand' ? 'selected' : ''; ?>>
-                                Zustand
                             </option>
                         </select>
                     </div>
@@ -169,11 +165,11 @@ include 'includes/db.php'
                             </option>
                             <option
                                 value="autor ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'autor ASC' ? 'selected' : ''; ?>>
-                                Käufer aufsteigend
+                                Autor aufsteigend
                             </option>
                             <option
                                 value="autor DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'autor DESC' ? 'selected' : ''; ?>>
-                                Käufer absteigend
+                                Autor absteigend
                             </option>
                             <option
                                 value="title ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'title ASC' ? 'selected' : ''; ?>>
@@ -198,14 +194,6 @@ include 'includes/db.php'
                             <option
                                 value="verfasser DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verfasser DESC' ? 'selected' : ''; ?>>
                                 Verfasser absteigend
-                            </option>
-                            <option
-                                value="zustand ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'zustand ASC' ? 'selected' : ''; ?>>
-                                Zustand aufsteigend
-                            </option>
-                            <option
-                                value="zustand DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'zustand DESC' ? 'selected' : ''; ?>>
-                                Zustand absteigend
                             </option>
                         </select>
                     </div>
@@ -265,9 +253,13 @@ include 'includes/db.php'
         // Check if the search input is submitted
         if (isset($_GET['search'])) {
             $searchInput = htmlspecialchars(trim($_GET['search']));
-            listBooks($searchInput, $filterInput, $sortInput, $isNummeric);
+            $results = listBooks($searchInput, $filterInput, $sortInput, $isNummeric);
         } else {
-            listBooks("", $filterInput, $sortInput, $isNummeric);
+            $results = listBooks("", $filterInput, $sortInput, $isNummeric);
+        }
+
+        foreach ($results as $result) {
+            echo '<div class="book-info-box">' . $result . '</div>';
         }
         ?>
     </div>

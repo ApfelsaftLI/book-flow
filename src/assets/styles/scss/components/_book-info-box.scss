@@ -1,0 +1,37 @@
+.book-info-box {
+  grid-column: span 3;
+  padding: 10px;
+  border-radius: 15pt;
+  filter: dropshadow();
+  height: 315px;
+  background-color: $background-primary;
+  position: relative;
+  display: inline-block;
+}
+
+.book-info-box p {
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 12pt;
+  position: relative;
+  z-index: 2;
+}
+
+.book-info-box h2 {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20pt;
+  position: relative;
+  z-index: 2;
+}
+
+.book-info-box img {
+  width: auto;
+  max-height: 100%;
+  border-radius: 15pt;
+  position: absolute;
+  padding: 10px 10px 30px 10px; /* Top, Right, Bottom, Left */
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+
+}

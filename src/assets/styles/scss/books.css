@@ -62,6 +62,9 @@ a[href="/books.php"] {
 
 .result-container {
   grid-column: 1/13;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 6pt;
 }
 
 /*# sourceMappingURL=books.css.map */
