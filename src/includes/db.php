@@ -39,7 +39,7 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput, 
     shortenShortTitles($results);
     foreach ($results as &$row) {
         $row = shortenShortTitles($row);
-        $resultString = "<div><img src='assets/images/" . $row['foto'] . "' alt=''><h2>" . $row['kurztitle'] . "</h2><p>" . $row['autor'] . "</p></div>";
+        $resultString = "<div><img src='assets/images/" . $row['foto'] . "' alt='gugus'><div class='info-text'><h2>" . $row['kurztitle'] . "</h2><p>" . $row['autor'] . "</p></div></div>";
         $formattedResults[] = $resultString;
     }
     return $formattedResults;
