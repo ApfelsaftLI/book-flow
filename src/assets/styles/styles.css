@@ -90,12 +90,10 @@ main {
   left: 1rem;
   overflow-wrap: break-word;
 }
-
 .error b {
   font-weight: 600;
   font-size: 14pt;
 }
-
 .error p {
   font-weight: normal;
   font-size: 12pt;
@@ -154,7 +152,6 @@ body {
  * All Headings look the same
  */
 h1,
-h2,
 h3,
 h4,
 h5 {
@@ -286,6 +283,7 @@ table {
 }
 
 .book-info-box {
+  margin-top: 10px;
   grid-column: span 3;
   padding: 10px;
   border-radius: 15pt;
@@ -293,33 +291,43 @@ table {
   height: 315px;
   background-color: #FFEEE0;
   position: relative;
-  display: inline-block;
 }
-
-.book-info-box p {
+.book-info-box .info-text {
+  position: absolute;
+  z-index: 2;
+  padding: 10px;
+  bottom: 0;
+  overflow: hidden;
+}
+.book-info-box .info-text p {
   text-decoration: none;
   font-weight: normal;
   font-size: 12pt;
   position: relative;
-  z-index: 2;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-
-.book-info-box h2 {
+.book-info-box .info-text h2 {
   text-decoration: none;
   font-weight: bold;
   font-size: 20pt;
   position: relative;
-  z-index: 2;
+  max-width: 100%;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-
 .book-info-box img {
-  width: auto;
-  max-height: 100%;
+  width: calc(100% - 20px);
+  height: calc(100% - 80px);
+  padding-bottom: 0;
   border-radius: 15pt;
   position: absolute;
-  padding: 10px 10px 30px 10px; /* Top, Right, Bottom, Left */
   z-index: 1;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);
+  background: linear-gradient(to bottom, rgb(252, 81, 71) 100%, rgb(255, 238, 224) 100%);
 }
 
 header {
@@ -330,17 +338,14 @@ header {
   padding-block: 10pt;
   height: 80pt;
 }
-
 header img {
   width: 200pt;
 }
-
 header nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-
 header nav ul {
   list-style-type: none;
   padding: 0;
@@ -348,7 +353,6 @@ header nav ul {
   gap: 15px;
   align-items: center;
 }
-
 header nav .profile-picture {
   display: inline-block;
   width: 40pt;
@@ -368,13 +372,11 @@ footer {
   height: 50pt;
   z-index: 2;
 }
-
 footer nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-
 footer nav ul {
   list-style-type: none;
   padding: 0;
@@ -382,7 +384,5 @@ footer nav ul {
   gap: 15px;
   align-items: center;
 }
-
-
 
 /*# sourceMappingURL=styles.css.map */

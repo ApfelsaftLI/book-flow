@@ -13,13 +13,17 @@
     z-index: 2;
     padding: 10px;
     bottom: 0;
+    overflow: hidden;
 
     p {
       text-decoration: none;
       font-weight: normal;
       font-size: 12pt;
       position: relative;
-
+      line-height: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
     h2 {
@@ -27,6 +31,11 @@
       font-weight: bold;
       font-size: 20pt;
       position: relative;
+      max-width: 100%;
+      line-height: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 

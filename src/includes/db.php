@@ -38,7 +38,8 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput, 
     include_once 'functions.php';
     shortenShortTitles($results);
     foreach ($results as &$row) {
-        $row = shortenShortTitles($row);
+        $row = shortenShortTitlesShorter($row);
+        $row = shortenAutor($row);
         $resultString = "<div><img src='assets/images/" . $row['foto'] . "' alt='gugus'><div class='info-text'><h2>" . $row['kurztitle'] . "</h2><p>" . $row['autor'] . "</p></div></div>";
         $formattedResults[] = $resultString;
     }
