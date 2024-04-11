@@ -26,20 +26,73 @@ if (session_status() == PHP_SESSION_NONE) {
     include_once "includes/db.php";
     $book_id = $_POST["book_id"];
     $result = listBook($book_id);
-    $nummer = $result['nummer'];
     $id = $result['id'];
-    $katalog = $result['katalog'];
     $nummer = $result['nummer'];
     $kurztitle = $result['kurztitle'];
     $kategorie = $result['kategorie'];
     $verkauft = $result['verkauft'];
-    $kaufer = $result['kaufer'];
     $autor = $result['autor'];
     $title = $result['title'];
     $sprache = $result['sprache'];
     $foto = $result['foto'];
-    $verfasser = $result['verfasser'];
     $zustand = $result['zustand'];
+
+    switch ($kategorie) {
+        case 1:
+            $kategorie = 'Alte Drucke, Bibeln, Klassische Autoren in den Originalsprachen';
+            break;
+        case 2:
+            $kategorie = 'Geographie und Reisen';
+            break;
+        case 3:
+            $kategorie = 'Geschichtswissenschaften';
+            break;
+        case 4:
+            $kategorie = 'Naturwissenschaften';
+            break;
+        case 5:
+            $kategorie = 'Kinderbücher';
+            break;
+        case 6:
+            $kategorie = 'Moderne Literatur und Kunst';
+            break;
+        case 7:
+            $kategorie = 'Moderne Kunst und Künstlergraphik';
+            break;
+        case 8:
+            $kategorie = 'Kunstwissenschaften';
+            break;
+        case 9:
+            $kategorie = 'Architektur';
+            break;
+        case 10:
+            $kategorie = 'Technik';
+            break;
+        case 11:
+            $kategorie = 'Naturwissenschaften - Medizin';
+            break;
+        case 12:
+            $kategorie = 'Ozeanien';
+            break;
+        case 13:
+            $kategorie = 'Afrika';
+            break;
+        default:
+            $kategorie = 'Invalid category';
+            break;
+    }
+    switch ($zustand) {
+        case 'G':
+            $zustand = 'gut';
+            break;
+        case 'M':
+            $zustand = 'mittel';
+            break;
+        case 'S':
+            $zustand = 'schlecht';
+            break;
+    }
+
     ?>
     <div class="book-box">
         <?php if(isset($foto)): ?>
@@ -50,8 +103,32 @@ if (session_status() == PHP_SESSION_NONE) {
         <?php endif; ?>
         <?php if(isset($autor)): ?>
             <p><?php echo $autor; ?></p>
-        <?php endif; ?>
+        <?php endif; ?><br>
         <div class="line"></div>
+        <h2>Beschreibung</h2>
+        <div class="line"></div>
+        <?php if(isset($title)): ?>
+            <p><?php echo $title; ?></p>
+        <?php endif; ?><br>
+        <div class="line"></div>
+        <h2>Weitere Informationen</h2>
+        <div class="line"></div><br>
+        <?php if(isset($nummer)): ?>
+            <p>Referenznummer: <?php echo $nummer; ?></p>
+        <?php endif; ?>
+        <?php if(isset($id)): ?>
+            <p>Referenz-ID: <?php echo $id; ?></p>
+        <?php endif; ?>
+        <?php if(isset($nummer)): ?>
+            <p>Kategorie: <?php echo $kategorie; ?></p>
+        <?php endif; ?>
+        <?php if(isset($sprache)): ?>
+            <p>Sprache: <?php echo $sprache; ?></p>
+        <?php endif; ?>
+        <?php if(isset($zustand)): ?>
+            <p>Das Buch ist in einem <?php echo $zustand; ?> Zustand.</p>
+        <?php endif; ?>
+
     </div>
 </main>
 <?php include_once "templates/footer.php" ?>

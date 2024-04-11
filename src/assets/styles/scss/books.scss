@@ -92,15 +92,17 @@ a[href="/books.php"] {
 .pagination {
   grid-column: 4/10;
   margin-top: 20px;
-  margin-bottom: 40pt;
+  margin-bottom: 50pt;
   display: flex;
   justify-content: center;
 
   a {
     padding: 8px 16px;
+    border-radius: 15pt;
+
     text-decoration: none;
-    color: #000;
-    border: 1px solid #ccc;
+    background-color: $background-primary;
+    color: $text-color;
     margin: 0 5px;
   }
 }

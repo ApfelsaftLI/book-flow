@@ -12,8 +12,12 @@ a[href="/books.php"] {
   filter: $drop-shadow;
   margin-bottom: 40pt;
 
+
   img {
     border-radius: 15pt;
+    justify-content: center;
+    margin: auto;
+
   }
 
   h2 {
@@ -30,7 +34,10 @@ a[href="/books.php"] {
 
   }
   .line {
+    position: absolute;
+    left: 0;
     width: 100%;
-    color: black;
+    height: 2px;
+    background-color: $text-color;
   }
 }
