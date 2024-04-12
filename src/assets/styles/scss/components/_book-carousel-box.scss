@@ -10,8 +10,9 @@
   margin-bottom: 40px;
 
   .book-carousel-box {
-    flex: 0 0 calc(33.33% - 10px);
-    max-width: calc(33.33% - 10px);
+    flex: 0 0 calc(20% - 10px);
+    max-width: calc(20% - 10px);
+    height: auto;
     padding: 10px;
     border-radius: 15pt;
     background-color: $background-primary;
@@ -52,10 +53,16 @@
     }
 
     img {
-      max-width: 100%;
-      height: auto;
+      justify-content: center;
+      max-width: calc(100% - 20px);
+      width: auto;
+      height: calc(100% - 80px);
       border-radius: 15pt;
       background-image: linear-gradient(to bottom, rgba(252, 81, 71, 1) 100%, rgba(255, 238, 224, 1) 100%);
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }
