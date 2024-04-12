@@ -84,12 +84,18 @@ a[href="/books.php"] {
   justify-content: center;
 }
 .pagination a {
+  position: relative;
   padding: 8px 16px;
-  border-radius: 15pt;
   text-decoration: none;
-  background-color: #FFEEE0;
   color: #4E2323;
   margin: 0 5px;
+  border-right: 2px solid #4E2323;
+}
+.pagination a:last-child {
+  border-right: none;
+}
+.pagination a.active {
+  color: #38703E;
 }
 
 .no-result {

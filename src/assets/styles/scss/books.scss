@@ -97,15 +97,21 @@ a[href="/books.php"] {
   justify-content: center;
 
   a {
+    position: relative;
     padding: 8px 16px;
-    border-radius: 15pt;
-
     text-decoration: none;
-    background-color: $background-primary;
     color: $text-color;
     margin: 0 5px;
-  }
-}
+    border-right: 2px solid $text-color;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &.active {
+      color: $accent-color;
+    }
+  }}
 .no-result {
   padding: 6pt;
   grid-column: 4/10;
