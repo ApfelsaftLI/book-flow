@@ -12,8 +12,6 @@ include 'includes/db.php'
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/styles/styles.css">
     <link rel="stylesheet" href="assets/styles/books.css">
@@ -221,6 +219,7 @@ include 'includes/db.php'
             <?php endfor; ?>
             <a href="?page=<?php echo min($pagesNeeded, $currentPage + 1); ?>&<?php echo $queryParameters; ?>" class="pagination-btn <?php if ($currentPage == $pagesNeeded) echo 'disabled'; ?>">►</a>
         </div>
+    </div>
 
 
 

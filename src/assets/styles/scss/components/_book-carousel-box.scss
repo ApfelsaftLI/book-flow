@@ -42,7 +42,7 @@
         font-size: 12pt;
         line-height: 1;
         white-space: nowrap;
-        text-overflow: '...';
+        text-overflow: ellipsis;
         margin-top: 10pt;
       }
 
@@ -52,7 +52,7 @@
         font-size: 20pt;
         line-height: 1;
         white-space: nowrap;
-        text-overflow: '...';
+        text-overflow: ellipsis;
       }
     }
 
