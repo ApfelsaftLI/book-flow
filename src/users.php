@@ -16,6 +16,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="stylesheet" href="assets/styles/users.css">
     <link rel="shortcut icon" href="assets/images/BookFlow_Icon.svg" type="image/svg">
     <title>Nutzer | BookFlow</title>
+    <script>window.location.href = "/"</script>
 </head>
 <body class="grid-container">
 <?php include_once "templates/header.php" ?>
