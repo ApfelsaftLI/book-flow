@@ -21,7 +21,7 @@ include 'includes/db.php'
     <title>Bücher | BookFlow</title>
     <script>
         //some js so there is no submitbutton needed
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const filterSelect = document.querySelector('.filter')
             const sortSelect = document.querySelector('.sort')
 
@@ -29,11 +29,11 @@ include 'includes/db.php'
                 document.querySelector('form').submit()
             }
 
-            filterSelect.addEventListener('change', function() {
+            filterSelect.addEventListener('change', function () {
                 submitForm()
             })
 
-            sortSelect.addEventListener('change', function() {
+            sortSelect.addEventListener('change', function () {
                 submitForm()
             })
         })
@@ -64,47 +64,47 @@ include 'includes/db.php'
                         <select class="filter" onchange="updateHiddenValue('filter')"
                                 name="filter">
                             <option
-                                value="default" <?= isset($_GET['filter']) && $_GET['filter'] == 'default' ? 'selected' : ''; ?>>
+                                    value="default" <?= isset($_GET['filter']) && $_GET['filter'] == 'default' ? 'selected' : ''; ?>>
                                 Filter
                             </option>
                             <option
-                                value="id" <?= isset($_GET['filter']) && $_GET['filter'] == 'id' ? 'selected' : ''; ?>>
+                                    value="id" <?= isset($_GET['filter']) && $_GET['filter'] == 'id' ? 'selected' : ''; ?>>
                                 ID
                             </option>
                             <option
-                                value="katalog" <?= isset($_GET['filter']) && $_GET['filter'] == 'katalog' ? 'selected' : ''; ?>>
+                                    value="katalog" <?= isset($_GET['filter']) && $_GET['filter'] == 'katalog' ? 'selected' : ''; ?>>
                                 Katalog
                             </option>
                             <option
-                                value="nummer" <?= isset($_GET['filter']) && $_GET['filter'] == 'nummer' ? 'selected' : ''; ?>>
+                                    value="nummer" <?= isset($_GET['filter']) && $_GET['filter'] == 'nummer' ? 'selected' : ''; ?>>
                                 Nummer
                             </option>
                             <option
-                                value="default" <?= isset($_GET['filter']) && $_GET['filter'] == 'default' ? 'selected' : ''; ?>>
+                                    value="default" <?= isset($_GET['filter']) && $_GET['filter'] == 'default' ? 'selected' : ''; ?>>
                                 Kurztitel
                             </option>
                             <option
-                                value="kategorie" <?= isset($_GET['filter']) && $_GET['filter'] == 'kategorie' ? 'selected' : ''; ?>>
+                                    value="kategorie" <?= isset($_GET['filter']) && $_GET['filter'] == 'kategorie' ? 'selected' : ''; ?>>
                                 Kategorie
                             </option>
                             <option
-                                value="verkauft" <?= isset($_GET['filter']) && $_GET['filter'] == 'verkauft' ? 'selected' : ''; ?>>
+                                    value="verkauft" <?= isset($_GET['filter']) && $_GET['filter'] == 'verkauft' ? 'selected' : ''; ?>>
                                 Verkauft
                             </option>
                             <option
-                                value="autor" <?= isset($_GET['filter']) && $_GET['filter'] == 'autor' ? 'selected' : ''; ?>>
+                                    value="autor" <?= isset($_GET['filter']) && $_GET['filter'] == 'autor' ? 'selected' : ''; ?>>
                                 Autor
                             </option>
                             <option
-                                value="title" <?= isset($_GET['filter']) && $_GET['filter'] == 'title' ? 'selected' : ''; ?>>
+                                    value="title" <?= isset($_GET['filter']) && $_GET['filter'] == 'title' ? 'selected' : ''; ?>>
                                 Title
                             </option>
                             <option
-                                value="sprache" <?= isset($_GET['filter']) && $_GET['filter'] == 'sprache' ? 'selected' : ''; ?>>
+                                    value="sprache" <?= isset($_GET['filter']) && $_GET['filter'] == 'sprache' ? 'selected' : ''; ?>>
                                 Sprache
                             </option>
                             <option
-                                value="verfasser" <?= isset($_GET['filter']) && $_GET['filter'] == 'verfasser' ? 'selected' : ''; ?>>
+                                    value="verfasser" <?= isset($_GET['filter']) && $_GET['filter'] == 'verfasser' ? 'selected' : ''; ?>>
                                 Verfasser
                             </option>
                         </select>
@@ -112,87 +112,87 @@ include 'includes/db.php'
                     <div class="sort-container">
                         <select class="sort" onchange="updateHiddenValue('sort')" name="sort">
                             <option
-                                value="default" <?= isset($_GET['sort']) && $_GET['sort'] == 'default' ? 'selected' : ''; ?>>
+                                    value="default" <?= isset($_GET['sort']) && $_GET['sort'] == 'default' ? 'selected' : ''; ?>>
                                 Sortieren
                             </option>
                             <option
-                                value="id ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'id ASC' ? 'selected' : ''; ?>>
+                                    value="id ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'id ASC' ? 'selected' : ''; ?>>
                                 ID aufsteigend
                             </option>
                             <option
-                                value="id DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'id DESC' ? 'selected' : ''; ?>>
+                                    value="id DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'id DESC' ? 'selected' : ''; ?>>
                                 ID absteigend
                             </option>
                             <option
-                                value="katalog ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'katalog ASC' ? 'selected' : ''; ?>>
+                                    value="katalog ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'katalog ASC' ? 'selected' : ''; ?>>
                                 Katalog aufsteigend
                             </option>
                             <option
-                                value="katalog DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'katalog DESC' ? 'selected' : ''; ?>>
+                                    value="katalog DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'katalog DESC' ? 'selected' : ''; ?>>
                                 Katalog absteigend
                             </option>
                             <option
-                                value="nummer ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'nummer ASC' ? 'selected' : ''; ?>>
+                                    value="nummer ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'nummer ASC' ? 'selected' : ''; ?>>
                                 Nummer aufsteigend
                             </option>
                             <option
-                                value="nummer DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'nummer DESC' ? 'selected' : ''; ?>>
+                                    value="nummer DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'nummer DESC' ? 'selected' : ''; ?>>
                                 Nummer absteigend
                             </option>
                             <option
-                                value="kurztitle ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'kurztitle ASC' ? 'selected' : ''; ?>>
+                                    value="kurztitle ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'kurztitle ASC' ? 'selected' : ''; ?>>
                                 Kurztitel aufsteigend
                             </option>
                             <option
-                                value="kurztitle DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'kurztitle DESC' ? 'selected' : ''; ?>>
+                                    value="kurztitle DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'kurztitle DESC' ? 'selected' : ''; ?>>
                                 Kurztitel absteigend
                             </option>
                             <option
-                                value="kategorie ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'kategorie ASC' ? 'selected' : ''; ?>>
+                                    value="kategorie ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'kategorie ASC' ? 'selected' : ''; ?>>
                                 Kategorie aufsteigend
                             </option>
                             <option
-                                value="kategorie DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'kategorie DESC' ? 'selected' : ''; ?>>
+                                    value="kategorie DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'kategorie DESC' ? 'selected' : ''; ?>>
                                 Kategorie absteigend
                             </option>
                             <option
-                                value="verkauft ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verkauft ASC' ? 'selected' : ''; ?>>
+                                    value="verkauft ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verkauft ASC' ? 'selected' : ''; ?>>
                                 Verkauft aufsteigend
                             </option>
                             <option
-                                value="verkauft DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verkauft DESC' ? 'selected' : ''; ?>>
+                                    value="verkauft DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verkauft DESC' ? 'selected' : ''; ?>>
                                 Verkauft absteigend
                             </option>
                             <option
-                                value="autor ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'autor ASC' ? 'selected' : ''; ?>>
+                                    value="autor ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'autor ASC' ? 'selected' : ''; ?>>
                                 Autor aufsteigend
                             </option>
                             <option
-                                value="autor DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'autor DESC' ? 'selected' : ''; ?>>
+                                    value="autor DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'autor DESC' ? 'selected' : ''; ?>>
                                 Autor absteigend
                             </option>
                             <option
-                                value="title ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'title ASC' ? 'selected' : ''; ?>>
+                                    value="title ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'title ASC' ? 'selected' : ''; ?>>
                                 Title aufsteigend
                             </option>
                             <option
-                                value="title DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'title DESC' ? 'selected' : ''; ?>>
+                                    value="title DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'title DESC' ? 'selected' : ''; ?>>
                                 Title absteigend
                             </option>
                             <option
-                                value="sprache ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'sprache ASC' ? 'selected' : ''; ?>>
+                                    value="sprache ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'sprache ASC' ? 'selected' : ''; ?>>
                                 Sprache aufsteigend
                             </option>
                             <option
-                                value="sprache DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'sprache DESC' ? 'selected' : ''; ?>>
+                                    value="sprache DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'sprache DESC' ? 'selected' : ''; ?>>
                                 Sprache absteigend
                             </option>
                             <option
-                                value="verfasser ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verfasser ASC' ? 'selected' : ''; ?>>
+                                    value="verfasser ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verfasser ASC' ? 'selected' : ''; ?>>
                                 Verfasser aufsteigend
                             </option>
                             <option
-                                value="verfasser DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verfasser DESC' ? 'selected' : ''; ?>>
+                                    value="verfasser DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verfasser DESC' ? 'selected' : ''; ?>>
                                 Verfasser absteigend
                             </option>
                         </select>
@@ -241,17 +241,20 @@ include 'includes/db.php'
         foreach ($currentPaginatedResults as $result) {
             echo '<div class="book-info-box">' . $result . '</div>';
         }
-        if ($resultCount==0){
+        if ($resultCount == 0) {
             echo '<div class="no-result"><h3>Leider konnte kein Resultat gefunden werden, versuchen Sie es doch mit einer neuen Suche.</h3></di>';
         }
         ?>
     </div>
-        <!-- Pagination -->
-        <div class="pagination">
-            <?php for ($i = max(1, $currentPage - 2); $i <= min($pagesNeeded, $currentPage + 2); $i++): ?>
-                <a href="?page=<?php echo $i; ?>" <?php if ($i === $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
-            <?php endfor; ?>
-        </div>
+    <!-- Pagination -->
+    <div class="pagination">
+        <?php
+        $queryParameters = http_build_query(array_merge($_GET, ['page' => '']));
+        for ($i = max(1, $currentPage - 2); $i <= min($pagesNeeded, $currentPage + 2); $i++):
+            ?>
+            <a href="?page=<?php echo $i; ?>&<?php echo $queryParameters; ?>" <?php if ($i === $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
+        <?php endfor; ?>
+    </div>
 
 
 </main>
