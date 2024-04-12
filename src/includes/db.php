@@ -115,11 +115,22 @@ function getRandomBooks(int $amount)
     if (!$_SESSION["dbConnection"]) return;
     global $connection;
 
-    $sqlQuery = "SELECT kurztitle, autor FROM buecher ORDER BY RAND() LIMIT $amount";
+    $sqlQuery = "SELECT kurztitle, autor, foto, id FROM buecher ORDER BY RAND() LIMIT $amount";
 
     include_once 'functions.php';
     foreach ($connection->query($sqlQuery) as $book) {
-        $book = shortenShortTitles($book);
-        echo $book['kurztitle'] . " " . $book['autor'] . "<br/>";
+        $book = shortenShortTitlesShorter($book);
+        $book = shortenAutor($book);
+        echo "<div class='book-carousel-box'>
+                <img src='assets/images/" . $book['foto'] . "' alt='gugus'>
+                <div class='info-text'>
+                    <h2>" . $book['kurztitle'] . "</h2>
+                    <p>" . $book['autor'] . "</p>
+                    <form action='book.php' method='POST'>
+                        <input type='hidden' name='book_id' value='" . $book['id'] . "'>
+                        <button class='send-value-button'>Details</button>
+                    </form>
+                </div>
+               </div>";
     }
 }

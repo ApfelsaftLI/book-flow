@@ -1,3 +1,7 @@
+a[href="/books.php"] {
+  font-weight: bold;
+}
+
 header img {
   position: absolute;
   top: 35pt;
@@ -16,10 +20,6 @@ main {
 
 #stoebern-button {
   margin-top: 30pt;
-}
-
-.book-carousel {
-  grid-column: 1/13;
 }
 
 /*# sourceMappingURL=home.css.map */
