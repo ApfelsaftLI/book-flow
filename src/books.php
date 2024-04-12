@@ -93,7 +93,7 @@ include 'includes/db.php'
                             </option>
                             <option
                                 value="autor" <?= isset($_GET['filter']) && $_GET['filter'] == 'autor' ? 'selected' : ''; ?>>
-                                Kaufer
+                                Autor
                             </option>
                             <option
                                 value="title" <?= isset($_GET['filter']) && $_GET['filter'] == 'title' ? 'selected' : ''; ?>>
@@ -106,10 +106,6 @@ include 'includes/db.php'
                             <option
                                 value="verfasser" <?= isset($_GET['filter']) && $_GET['filter'] == 'verfasser' ? 'selected' : ''; ?>>
                                 Verfasser
-                            </option>
-                            <option
-                                value="zustand" <?= isset($_GET['filter']) && $_GET['filter'] == 'zustand' ? 'selected' : ''; ?>>
-                                Zustand
                             </option>
                         </select>
                     </div>
@@ -169,11 +165,11 @@ include 'includes/db.php'
                             </option>
                             <option
                                 value="autor ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'autor ASC' ? 'selected' : ''; ?>>
-                                Käufer aufsteigend
+                                Autor aufsteigend
                             </option>
                             <option
                                 value="autor DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'autor DESC' ? 'selected' : ''; ?>>
-                                Käufer absteigend
+                                Autor absteigend
                             </option>
                             <option
                                 value="title ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'title ASC' ? 'selected' : ''; ?>>
@@ -199,14 +195,6 @@ include 'includes/db.php'
                                 value="verfasser DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verfasser DESC' ? 'selected' : ''; ?>>
                                 Verfasser absteigend
                             </option>
-                            <option
-                                value="zustand ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'zustand ASC' ? 'selected' : ''; ?>>
-                                Zustand aufsteigend
-                            </option>
-                            <option
-                                value="zustand DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'zustand DESC' ? 'selected' : ''; ?>>
-                                Zustand absteigend
-                            </option>
                         </select>
                     </div>
                 </div>
@@ -224,53 +212,48 @@ include 'includes/db.php'
     </div>
     <div class="result-container">
         <?php
-        error_reporting(E_ERROR | E_PARSE);
         include_once "includes/functions.php";
-        /* 
-        Check if sort is set. If not it will be set to kurztitle to avoid errors and have an 
-        output. If it is set, the set value will be given to the query.
-        */
-        if ($_GET['sort'] !== 'default') {
-            $sortInput = $_GET['sort'];
-        } else {
-            $sortInput = 'kurztitle ASC';
-        }
+        error_reporting(E_ERROR | E_PARSE);
+        // Sanitize user inputs
+        $searchInput = isset($_GET['search']) ? htmlspecialchars(trim($_GET['search'])) : '';
+        $filterInput = isset($_GET['filter']) ? $_GET['filter'] : 'kurztitle';
+        $sortInput = isset($_GET['sort']) ? $_GET['sort'] : 'kurztitle ASC';
 
-        /* 
-        Check if filter is set. If not it will be set to kurztitle to avoid errors and have an 
-        output. If it is set, the set value will be given to the query.
-        */
-        if ($_GET['filter'] !== 'default') {
-            $filterInput = $_GET['filter'];
+        // Validate and sanitize sort and filter inputs
+        $sortInput = ($sortInput !== 'default') ? $sortInput : 'kurztitle ASC';
+        $filterInput = ($filterInput !== 'default') ? $filterInput : 'kurztitle';
 
-        } else {
-            $filterInput = 'kurztitle';
-        }
-        if ($filterInput == NULL) {
-            $filterInput = "kurztitle";
-        }
-        if ($sortInput == NULL) {
-            $sortInput = "kurztitle ASC";
-        }
+        // Determine if the filter is numeric
+        $numericFilters = ['id', 'nummer', 'katalog', 'kategorie', 'verfasser'];
+        $isNumeric = in_array($filterInput, $numericFilters);
 
+        // Get paginated results
+        $currentPage = max(1, intval($_GET['page'] ?? 1));
+        $resultsPerPage = 12;
+        $offset = ($currentPage - 1) * $resultsPerPage;
 
-        $nummericFilters = ['id', 'nummer', 'katalog', 'kategorie', 'verfasser'];
-        $isNummeric = false;
-        if (in_array($filterInput, $nummericFilters)) {
-            $isNummeric = true;
-        } else {
-            $isNummeric = false;
+        $results = isset($_GET['search']) ? listBooks($searchInput, $filterInput, $sortInput, $isNumeric) : listBooks("", $filterInput, $sortInput, $isNumeric);
+        $resultCount = $results['count'];
+        $pagesNeeded = ceil($resultCount / $resultsPerPage);
+        $currentPaginatedResults = array_slice($results['results'], $offset, $resultsPerPage);
+
+        // Output HTML
+        foreach ($currentPaginatedResults as $result) {
+            echo '<div class="book-info-box">' . $result . '</div>';
         }
-
-        // Check if the search input is submitted
-        if (isset($_GET['search'])) {
-            $searchInput = htmlspecialchars(trim($_GET['search']));
-            listBooks($searchInput, $filterInput, $sortInput, $isNummeric);
-        } else {
-            listBooks("", $filterInput, $sortInput, $isNummeric);
+        if ($resultCount==0){
+            echo '<div class="no-result"><h3>Leider konnte kein Resultat gefunden werden, versuchen Sie es doch mit einer neuen Suche.</h3></di>';
         }
         ?>
     </div>
+        <!-- Pagination -->
+        <div class="pagination">
+            <?php for ($i = max(1, $currentPage - 2); $i <= min($pagesNeeded, $currentPage + 2); $i++): ?>
+                <a href="?page=<?php echo $i; ?>" <?php if ($i === $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
+            <?php endfor; ?>
+        </div>
+
+
 </main>
 <?php include_once "templates/footer.php" ?>
 

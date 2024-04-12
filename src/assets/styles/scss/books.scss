@@ -75,4 +75,50 @@ a[href="/books.php"] {
 
 .result-container {
   grid-column: 1/13;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 6pt;
+  .send-value-button {
+    border-radius: 15pt;
+    font-size: 11pt;
+    font-weight: 600;
+    color: $text-color;
+    background-color: $background-primary;
+    padding: 7pt 10pt;
+    filter: $drop-shadow;
+  }
+
+}
+.pagination {
+  grid-column: 4/10;
+  margin-top: 20px;
+  margin-bottom: 50pt;
+  display: flex;
+  justify-content: center;
+
+  a {
+    padding: 8px 16px;
+    border-radius: 15pt;
+
+    text-decoration: none;
+    background-color: $background-primary;
+    color: $text-color;
+    margin: 0 5px;
+  }
+}
+.no-result {
+  padding: 6pt;
+  grid-column: 4/10;
+  margin-top: 40pt;
+  border-radius: 15pt;
+  background-color: $background-primary;
+  filter: $drop-shadow;
+  margin-bottom: 40pt;
+
+  h3 {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 20pt;
+
+  }
 }

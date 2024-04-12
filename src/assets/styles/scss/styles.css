@@ -152,7 +152,6 @@ body {
  * All Headings look the same
  */
 h1,
-h2,
 h3,
 h4,
 h5 {
@@ -283,6 +282,60 @@ table {
   background-color: #FFEEE0;
 }
 
+.book-info-box {
+  margin-top: 10px;
+  grid-column: span 3;
+  padding: 10px;
+  border-radius: 15pt;
+  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+  height: 315px;
+  background-color: #FFEEE0;
+  position: relative;
+}
+.book-info-box .info-text {
+  position: absolute;
+  z-index: 2;
+  padding: 10px;
+  bottom: 0;
+  overflow: hidden;
+}
+.book-info-box .info-text p {
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 12pt;
+  position: relative;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.book-info-box .info-text h2 {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20pt;
+  position: relative;
+  max-width: 100%;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.book-info-box img {
+  justify-content: center;
+  max-width: calc(100% - 20px);
+  width: auto;
+  height: calc(100% - 80px);
+  padding-bottom: 0;
+  border-radius: 15pt;
+  position: absolute;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgb(252, 81, 71) 100%, rgb(255, 238, 224) 100%);
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 header {
   grid-column: 1/13;
   display: flex;
@@ -319,10 +372,11 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding-block: 10pt;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 80vw;
   height: 50pt;
+  z-index: 2;
 }
 footer nav {
   display: flex;

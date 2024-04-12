@@ -1,0 +1,46 @@
+@import "abstracts/variables";
+
+a[href="/books.php"] {
+  font-weight: bold;
+}
+
+.book-box {
+  padding: 6pt;
+  grid-column: 4/10;
+  margin-top: 40pt;
+  border-radius: 15pt;
+  background-color: $background-primary;
+  filter: $drop-shadow;
+  margin-bottom: 40pt;
+
+
+  img {
+    border-radius: 15pt;
+    justify-content: center;
+    margin: auto;
+
+  }
+
+  h2 {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20pt;
+
+  }
+
+  p {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 12pt;
+    position: relative;
+
+  }
+
+  .line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $text-color;
+  }
+}
