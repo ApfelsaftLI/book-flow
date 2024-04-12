@@ -1,7 +1,9 @@
 @import "../abstracts/variables";
 
 footer {
+  grid-column: 1/13;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-block: 10pt;
