@@ -212,13 +212,16 @@ include 'includes/db.php'
     </div>
     <!-- Pagination -->
     <div class="pagination">
-        <?php
-        $queryParameters = http_build_query(array_merge($_GET, ['page' => '']));
-        for ($i = max(1, $currentPage - 2); $i <= min($pagesNeeded, $currentPage + 2); $i++):
-            ?>
-            <a href="?page=<?php echo $i; ?>&<?php echo $queryParameters; ?>" <?php if ($i === $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
-        <?php endfor; ?>
-    </div>
+        <div class="pagination">
+            <a href="?page=<?php echo max(1, $currentPage - 1); ?>&<?php echo $queryParameters; ?>" class="pagination-btn <?php if ($currentPage == 1) echo 'disabled'; ?>">◄</a>
+            <?php
+            for ($i = max(1, $currentPage - 2); $i <= min($pagesNeeded, $currentPage + 2); $i++):
+                ?>
+                <a href="?page=<?php echo $i; ?>&<?php echo $queryParameters; ?>" <?php if ($i === $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
+            <?php endfor; ?>
+            <a href="?page=<?php echo min($pagesNeeded, $currentPage + 1); ?>&<?php echo $queryParameters; ?>" class="pagination-btn <?php if ($currentPage == $pagesNeeded) echo 'disabled'; ?>">►</a>
+        </div>
+
 
 
 </main>
