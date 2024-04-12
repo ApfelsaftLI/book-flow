@@ -20,6 +20,7 @@ body {
   background-color: #FFE4CF;
   font-family: Inter, sans-serif;
   width: 80vw;
+  min-height: 100dvh;
   margin-inline: auto;
 }
 
@@ -382,11 +383,11 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding-block: 10pt;
-  position: fixed;
   bottom: 0;
   width: 80vw;
   height: 50pt;
   z-index: 2;
+  position: fixed;
 }
 
 footer nav {
