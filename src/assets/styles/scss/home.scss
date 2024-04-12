@@ -1,3 +1,8 @@
+@import "abstracts/variables";
+a[href="/books.php"] {
+  font-weight: bold;
+}
+
 header {
   img {
     position: absolute;
@@ -18,9 +23,4 @@ main {
 
 #stoebern-button {
   margin-top: 30pt;
-}
-
-
-.book-carousel {
-  grid-column: 1/13;
 }

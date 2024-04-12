@@ -1,0 +1,52 @@
+.book-carousel {
+  grid-column: 1/13;
+
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 15pt;
+  display: flex;
+  overflow-x: auto;
+  gap: 6pt;
+  margin-bottom: 40px;
+
+  .book-carousel-box {
+    flex: 0 0 calc(33.33% - 10px);
+    max-width: calc(33.33% - 10px);
+    padding: 10px;
+    border-radius: 15pt;
+    background-color: $background-primary;
+    position: relative;
+
+    .info-text {
+      padding: 10px;
+      overflow: hidden;
+
+      p {
+        text-decoration: none;
+        font-weight: normal;
+        font-size: 12pt;
+        line-height: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      h2 {
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 20pt;
+        line-height: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15pt;
+      background-image: linear-gradient(to bottom, rgba(252, 81, 71, 1) 100%, rgba(255, 238, 224, 1) 100%);
+    }
+  }
+}
