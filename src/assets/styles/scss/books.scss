@@ -7,6 +7,7 @@ a[href="/books.php"] {
 .search-container {
   grid-column: 4/10;
   margin-top: 40pt;
+
   .search-bar {
     border-radius: 15pt;
     width: 100%;
@@ -74,10 +75,12 @@ a[href="/books.php"] {
 }
 
 .result-container {
+  margin-top: 80pt;
   grid-column: 1/13;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 6pt;
+
   .send-value-button {
     border-radius: 15pt;
     font-size: 11pt;
@@ -89,6 +92,7 @@ a[href="/books.php"] {
   }
 
 }
+
 .pagination {
   grid-column: 4/10;
   margin-top: 20px;
@@ -101,8 +105,9 @@ a[href="/books.php"] {
     padding: 8px 16px;
     text-decoration: none;
     color: $text-color;
-    margin: 0 5px;
     border-right: 2px solid $text-color;
+    font-size: 13pt;
+    font-weight: bold;
 
     &:last-child {
       border-right: none;
@@ -111,20 +116,5 @@ a[href="/books.php"] {
     &.active {
       color: $accent-color;
     }
-  }}
-.no-result {
-  padding: 6pt;
-  grid-column: 4/10;
-  margin-top: 40pt;
-  border-radius: 15pt;
-  background-color: $background-primary;
-  filter: $drop-shadow;
-  margin-bottom: 40pt;
-
-  h3 {
-    text-decoration: none;
-    font-weight: normal;
-    font-size: 20pt;
-
   }
 }

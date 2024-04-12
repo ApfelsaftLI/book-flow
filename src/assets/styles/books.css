@@ -6,7 +6,6 @@ a[href="/books.php"] {
   grid-column: 4/10;
   margin-top: 40pt;
 }
-
 .search-container .search-bar {
   border-radius: 15pt;
   width: 100%;
@@ -18,7 +17,6 @@ a[href="/books.php"] {
   font-weight: 600;
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
 }
-
 .search-container .search-icon {
   position: absolute;
   right: 16pt;
@@ -29,7 +27,6 @@ a[href="/books.php"] {
   background-image: url("../images/Search_Icon.svg");
   background-size: cover;
 }
-
 .search-container .search-bar-container {
   position: relative;
   margin-bottom: 20px;
@@ -37,13 +34,11 @@ a[href="/books.php"] {
   justify-content: center;
   width: 100%;
 }
-
 .search-container .dropdown {
   padding-top: 10px;
   display: flex;
   gap: 20pt;
 }
-
 .search-container .dropdown .filter-container .filter {
   border-radius: 15pt;
   width: fit-content;
@@ -54,7 +49,6 @@ a[href="/books.php"] {
   padding: 7pt 10pt;
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
 }
-
 .search-container .dropdown .sort-container .sort {
   border-radius: 15pt;
   width: fit-content;
@@ -67,12 +61,12 @@ a[href="/books.php"] {
 }
 
 .result-container {
+  margin-top: 80pt;
   grid-column: 1/13;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 6pt;
 }
-
 .result-container .send-value-button {
   border-radius: 15pt;
   font-size: 11pt;
@@ -90,40 +84,20 @@ a[href="/books.php"] {
   display: flex;
   justify-content: center;
 }
-
 .pagination a {
   position: relative;
   padding: 8px 16px;
   text-decoration: none;
   color: #4E2323;
-  margin: 0 5px;
   border-right: 2px solid #4E2323;
+  font-size: 13pt;
+  font-weight: bold;
 }
-
 .pagination a:last-child {
   border-right: none;
 }
-
 .pagination a.active {
   color: #38703E;
 }
-
-.no-result {
-  padding: 6pt;
-  grid-column: 4/10;
-  margin-top: 40pt;
-  border-radius: 15pt;
-  background-color: #FFEEE0;
-  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
-  margin-bottom: 40pt;
-}
-
-.no-result h3 {
-  text-decoration: none;
-  font-weight: normal;
-  font-size: 20pt;
-}
-
-
 
 /*# sourceMappingURL=books.css.map */

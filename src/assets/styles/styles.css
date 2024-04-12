@@ -132,8 +132,6 @@ Quelle: https://github.com/danilowoz/wipe.css
  * 3. Default scroll behavior (not smooth)
  */
 html {
-  -ms-text-size-adjust: 100%; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 1 */
   box-sizing: border-box; /* 2 */
   scroll-behavior: auto; /* 3 */
 }
@@ -145,8 +143,6 @@ html {
  */
 body {
   font-size: 16px; /* 1 */
-  -moz-osx-font-smoothing: grayscale; /* 2 */
-  -webkit-font-smoothing: antialiased; /* 2 */
 }
 
 /**
@@ -187,13 +183,11 @@ button,
 input,
 optgroup,
 textarea {
-  -webkit-appearance: none;
   appearance: none;
   overflow: visible;
   border: 0;
   outline: 0;
   font: inherit;
-  -webkit-font-smoothing: inherit;
   letter-spacing: inherit;
   color: inherit;
   background: none;
@@ -213,17 +207,6 @@ option {
 a:active,
 button:active {
   color: inherit;
-}
-
-/**
- * Prevent chrome autofill style
- */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
-  -webkit-transition-delay: 9999s;
 }
 
 /**
@@ -289,16 +272,16 @@ table {
   padding: 10px;
   border-radius: 15pt;
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
-  height: 315px;
   background-color: #FFEEE0;
   position: relative;
+  height: 630px;
 }
 .book-info-box .info-text {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   padding: 10px;
   bottom: 0;
-  overflow: hidden;
+  color: #4E2323;
 }
 .book-info-box .info-text p {
   text-decoration: none;
@@ -309,6 +292,7 @@ table {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-bottom: 10pt;
 }
 .book-info-box .info-text h2 {
   text-decoration: none;
@@ -317,9 +301,9 @@ table {
   position: relative;
   max-width: 100%;
   line-height: 1;
-  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-bottom: 10pt;
 }
 .book-info-box img {
   justify-content: center;
@@ -330,11 +314,23 @@ table {
   border-radius: 15pt;
   position: absolute;
   z-index: 1;
-  background-image: linear-gradient(to bottom, rgb(252, 81, 71) 100%, rgb(255, 238, 224) 100%);
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
+}
+
+.book-info-box:after {
+  content: "";
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  display: inline-block;
+  width: 100%;
+  height: 15%;
+  background: linear-gradient(rgba(0, 0, 0, 0), #FFEEE0);
+  z-index: 2;
+  border-radius: 15pt;
 }
 
 .book-carousel {
@@ -364,26 +360,29 @@ table {
   background-color: #FFEEE0;
   padding: 7pt 10pt;
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+  position: absolute;
+  right: 20pt;
+  bottom: 10pt;
 }
 .book-carousel .book-carousel-box .info-text {
   padding: 10px;
   overflow: hidden;
+  color: #4E2323;
 }
 .book-carousel .book-carousel-box .info-text p {
   text-decoration: none;
   font-weight: normal;
   font-size: 12pt;
   line-height: 1;
-  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-top: 10pt;
 }
 .book-carousel .book-carousel-box .info-text h2 {
   text-decoration: none;
   font-weight: bold;
   font-size: 20pt;
   line-height: 1;
-  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
