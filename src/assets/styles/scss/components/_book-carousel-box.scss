@@ -17,6 +17,15 @@
     background-color: $background-primary;
     position: relative;
 
+    .send-value-button {
+      border-radius: 15pt;
+      font-size: 11pt;
+      font-weight: 600;
+      color: $text-color;
+      background-color: $background-primary;
+      padding: 7pt 10pt;
+      filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+    }
     .info-text {
       padding: 10px;
       overflow: hidden;
