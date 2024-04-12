@@ -88,24 +88,12 @@ include 'includes/db.php'
                                 Kategorie
                             </option>
                             <option
-                                    value="verkauft" <?= isset($_GET['filter']) && $_GET['filter'] == 'verkauft' ? 'selected' : ''; ?>>
-                                Verkauft
-                            </option>
-                            <option
                                     value="autor" <?= isset($_GET['filter']) && $_GET['filter'] == 'autor' ? 'selected' : ''; ?>>
                                 Autor
                             </option>
                             <option
                                     value="title" <?= isset($_GET['filter']) && $_GET['filter'] == 'title' ? 'selected' : ''; ?>>
                                 Title
-                            </option>
-                            <option
-                                    value="sprache" <?= isset($_GET['filter']) && $_GET['filter'] == 'sprache' ? 'selected' : ''; ?>>
-                                Sprache
-                            </option>
-                            <option
-                                    value="verfasser" <?= isset($_GET['filter']) && $_GET['filter'] == 'verfasser' ? 'selected' : ''; ?>>
-                                Verfasser
                             </option>
                         </select>
                     </div>
@@ -156,14 +144,6 @@ include 'includes/db.php'
                                 Kategorie absteigend
                             </option>
                             <option
-                                    value="verkauft ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verkauft ASC' ? 'selected' : ''; ?>>
-                                Verkauft aufsteigend
-                            </option>
-                            <option
-                                    value="verkauft DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verkauft DESC' ? 'selected' : ''; ?>>
-                                Verkauft absteigend
-                            </option>
-                            <option
                                     value="autor ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'autor ASC' ? 'selected' : ''; ?>>
                                 Autor aufsteigend
                             </option>
@@ -178,22 +158,6 @@ include 'includes/db.php'
                             <option
                                     value="title DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'title DESC' ? 'selected' : ''; ?>>
                                 Title absteigend
-                            </option>
-                            <option
-                                    value="sprache ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'sprache ASC' ? 'selected' : ''; ?>>
-                                Sprache aufsteigend
-                            </option>
-                            <option
-                                    value="sprache DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'sprache DESC' ? 'selected' : ''; ?>>
-                                Sprache absteigend
-                            </option>
-                            <option
-                                    value="verfasser ASC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verfasser ASC' ? 'selected' : ''; ?>>
-                                Verfasser aufsteigend
-                            </option>
-                            <option
-                                    value="verfasser DESC" <?= isset($_GET['sort']) && $_GET['sort'] == 'verfasser DESC' ? 'selected' : ''; ?>>
-                                Verfasser absteigend
                             </option>
                         </select>
                     </div>
