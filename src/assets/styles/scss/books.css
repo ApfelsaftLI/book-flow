@@ -61,6 +61,7 @@ a[href="/books.php"] {
 }
 
 .result-container {
+  margin-top: 80pt;
   grid-column: 1/13;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -88,29 +89,15 @@ a[href="/books.php"] {
   padding: 8px 16px;
   text-decoration: none;
   color: #4E2323;
-  margin: 0 5px;
   border-right: 2px solid #4E2323;
+  font-size: 13pt;
+  font-weight: bold;
 }
 .pagination a:last-child {
   border-right: none;
 }
 .pagination a.active {
   color: #38703E;
-}
-
-.no-result {
-  padding: 6pt;
-  grid-column: 4/10;
-  margin-top: 40pt;
-  border-radius: 15pt;
-  background-color: #FFEEE0;
-  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
-  margin-bottom: 40pt;
-}
-.no-result h3 {
-  text-decoration: none;
-  font-weight: normal;
-  font-size: 20pt;
 }
 
 /*# sourceMappingURL=books.css.map */
