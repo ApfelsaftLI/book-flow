@@ -1,5 +1,46 @@
+.big-button {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20pt;
+  color: #FFEEE0;
+  background-color: #38703E;
+  border-radius: 50vh;
+  padding: 5pt 10pt;
+  display: inline-block;
+}
+
 a[href="/login.php"] {
   font-weight: bold;
-} 
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container form input {
+  border-radius: 15pt;
+  border: #4E2323 solid 1px;
+  text-indent: 10px;
+  padding: 6pt;
+  font-size: 14pt;
+  color: #4E2323;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  grid-column: 1/13;
+}
+
+footer p {
+  color: #4E2323;
+  font-weight: bold;
+}
+
+
 
 /*# sourceMappingURL=login.css.map */

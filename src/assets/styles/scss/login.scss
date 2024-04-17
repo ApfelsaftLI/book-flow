@@ -1,3 +1,37 @@
+@import "abstracts/variables";
+@import "components/big-button";
+
 a[href="/login.php"] {
   font-weight: bold;
+}
+
+.login-container {
+  form {
+
+    display: flex;
+    flex-direction: column;
+
+    input {
+      border-radius: 15pt;
+      border: $text-color solid 1px;
+      text-indent: 10px;
+      padding: 6pt;
+      font-size: 14pt;
+      color: $text-color;
+    }
+  }
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  grid-column: 1/13;
+
+  p {
+    color: $text-color;
+    font-weight: bold;
+  }
 }

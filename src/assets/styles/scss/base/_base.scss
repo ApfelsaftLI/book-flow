@@ -73,6 +73,7 @@ main {
   animation: whoosh 1.25s;
   left: 1rem;
   overflow-wrap: break-word;
+  z-index: 9999;
 
   b {
     font-weight: 600;
