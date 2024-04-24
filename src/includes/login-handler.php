@@ -1,4 +1,8 @@
 <?php
+if (!empty($_POST['logout'])) {
+    unset($_SESSION['user']);
+    return;
+}
 if (!checkAttemptedLogin()) return;
 if (!checkEmail()) return;
 if (!checkPassword(cleanString($_POST['email']))) return;
