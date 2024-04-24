@@ -1,8 +1,6 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-    $_SESSION = [];
-}
+session_start();
+
 include 'includes/db.php'
 
 ?>

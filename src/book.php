@@ -1,9 +1,5 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-    $_SESSION = [];
-    $_SESSION["user"] = ["admin" => "true", "name" => "Bernardini", "vorname" => "Vincent"];
-}
+session_start()
 ?>
 <!doctype html>
 <html lang="de">
