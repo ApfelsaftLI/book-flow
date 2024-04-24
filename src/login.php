@@ -2,7 +2,6 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
     $_SESSION = [];
-    $_SESSION["user"] = ["admin" => "true", "name" => "Bernardini", "vorname" => "Vincent"];
 }
 ?>
 <!doctype html>
@@ -14,12 +13,19 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="stylesheet" href="assets/styles/login.css">
     <link rel="shortcut icon" href="assets/images/BookFlow_Icon.svg" type="image/svg">
     <title>Login | BookFlow</title>
-    <script>window.location.href = '/'</script>
 </head>
 <body class="grid-container">
-<?php include_once "templates/header.php" ?>
 <main class="grid-container">
+    <div class="login-container large-container">
+        <form action="/" method="post">
+            <input type="email" name="email" id="login-email" placeholder="Email" required>
+            <input type="password" name="password" id="login-password" placeholder="Passwort" required>
+            <button type="submit" class="big-button">Anmelden</button>
+        </form>
+    </div>
 </main>
-<?php include_once "templates/footer.php" ?>
+<footer>
+    <p class="text-small-semi">&copy; BookFlow <?php echo date("Y") ?></p>
+</footer>
 </body>
 </html>

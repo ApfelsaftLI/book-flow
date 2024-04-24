@@ -1,10 +1,10 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-    $_SESSION = [];
-    $_SESSION["user"] = ["admin" => "true", "name" => "Bernardini", "vorname" => "Vincent"];
-}
-include 'includes/db.php'
+//if (session_status() == PHP_SESSION_NONE) {
+//    session_start();
+//    $_SESSION = [];
+//}
+include 'includes/db.php';
+include 'includes/login-handler.php'
 ?>
 <!doctype html>
 <html lang="en">

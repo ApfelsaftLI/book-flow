@@ -90,11 +90,14 @@ main {
   animation: whoosh 1.25s;
   left: 1rem;
   overflow-wrap: break-word;
+  z-index: 9999;
 }
+
 .error b {
   font-weight: 600;
   font-size: 14pt;
 }
+
 .error p {
   font-weight: normal;
   font-size: 12pt;
@@ -276,6 +279,7 @@ table {
   position: relative;
   height: 630px;
 }
+
 .book-info-box .info-text {
   position: absolute;
   z-index: 3;
@@ -283,6 +287,7 @@ table {
   bottom: 0;
   color: #4E2323;
 }
+
 .book-info-box .info-text p {
   text-decoration: none;
   font-weight: normal;
@@ -294,6 +299,7 @@ table {
   text-overflow: ellipsis;
   margin-bottom: 10pt;
 }
+
 .book-info-box .info-text h2 {
   text-decoration: none;
   font-weight: bold;
@@ -305,6 +311,7 @@ table {
   text-overflow: ellipsis;
   margin-bottom: 10pt;
 }
+
 .book-info-box img {
   justify-content: center;
   max-width: calc(100% - 20px);
@@ -343,6 +350,7 @@ table {
   gap: 6pt;
   margin-bottom: 40px;
 }
+
 .book-carousel .book-carousel-box {
   flex: 0 0 calc(20% - 10px);
   max-width: calc(20% - 10px);
@@ -352,6 +360,7 @@ table {
   background-color: #FFEEE0;
   position: relative;
 }
+
 .book-carousel .book-carousel-box .send-value-button {
   border-radius: 15pt;
   font-size: 11pt;
@@ -364,11 +373,13 @@ table {
   right: 20pt;
   bottom: 10pt;
 }
+
 .book-carousel .book-carousel-box .info-text {
   padding: 10px;
   overflow: hidden;
   color: #4E2323;
 }
+
 .book-carousel .book-carousel-box .info-text p {
   text-decoration: none;
   font-weight: normal;
@@ -378,6 +389,7 @@ table {
   text-overflow: ellipsis;
   margin-top: 10pt;
 }
+
 .book-carousel .book-carousel-box .info-text h2 {
   text-decoration: none;
   font-weight: bold;
@@ -386,6 +398,7 @@ table {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 .book-carousel .book-carousel-box img {
   justify-content: center;
   max-width: calc(100% - 20px);
@@ -407,14 +420,17 @@ header {
   padding-block: 10pt;
   height: 80pt;
 }
+
 header img {
   width: 200pt;
 }
+
 header nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
+
 header nav ul {
   list-style-type: none;
   padding: 0;
@@ -422,6 +438,7 @@ header nav ul {
   gap: 15px;
   align-items: center;
 }
+
 header nav .profile-picture {
   display: inline-block;
   width: 40pt;
@@ -443,11 +460,13 @@ footer {
   height: 50pt;
   z-index: 2;
 }
+
 footer nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
+
 footer nav ul {
   list-style-type: none;
   padding: 0;
@@ -455,5 +474,7 @@ footer nav ul {
   gap: 15px;
   align-items: center;
 }
+
+
 
 /*# sourceMappingURL=styles.css.map */
