@@ -16,8 +16,7 @@ try {
 }
 
 
-function listBooks(string $searchQuery, string $filterInput, string $sortInput, bool $isNumeric)
-{
+function listBooks(string $searchQuery, string $filterInput, string $sortInput, bool $isNumeric) {
     $results = [];
     $resultCount = 0; // Initialize result count
     if (!$_SESSION["dbConnection"])
@@ -59,8 +58,7 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput, 
 }
 
 
-function listBook(int $bookID)
-{
+function listBook(int $bookID) {
     $result = [];
     $resultCount = 0;
     if (!$_SESSION["dbConnection"])
@@ -104,8 +102,7 @@ function listBook(int $bookID)
     ];
 }
 
-function listFullUserNames()
-{
+function listFullUserNames() {
     if (!$_SESSION["dbConnection"])
         return;
     require_once 'db.php';
@@ -116,8 +113,7 @@ function listFullUserNames()
     }
 }
 
-function getRandomBooks(int $amount)
-{
+function getRandomBooks(int $amount) {
     if (!$_SESSION["dbConnection"]) return;
     global $connection;
 
@@ -139,4 +135,33 @@ function getRandomBooks(int $amount)
                 </div>
                </div>";
     }
+}
+
+function getPasswordHash(string $email): string {
+    if (!$_SESSION["dbConnection"]) return false;
+    global $connection;
+
+    $sqlQuery = "SELECT passwort FROM benutzer WHERE email = :email LIMIT 1";
+    $statement = $connection->prepare($sqlQuery);
+    $statement->bindParam('email', $email, PDO::PARAM_STR);
+    if (!$statement->execute()) return false;
+    return $statement->fetchColumn();
+}
+
+function getUser(string $email) {
+    if (!$_SESSION["dbConnection"]) return false;
+    global $connection;
+
+    $sqlQuery = "SELECT admin, name, vorname FROM benutzer WHERE email = :email LIMIT 1";
+    $statement = $connection->prepare($sqlQuery);
+    $statement->bindParam('email', $email, PDO::PARAM_STR);
+    if (!$statement->execute()) return false;
+    $result = $statement->fetch();
+
+    return ["admin" => translateAdmin($result), "name" => $result['name'], "vorname" => $result['vorname']];
+}
+
+function translateAdmin(array $user) {
+    if (empty($user['admin'])) return "false";
+    return "true";
 }

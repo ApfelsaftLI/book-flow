@@ -1,8 +1,8 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-    $_SESSION = [];
-}
+//if (session_status() == PHP_SESSION_NONE) {
+//    session_start();
+//    $_SESSION = [];
+//}
 include 'includes/db.php';
 include 'includes/login-handler.php'
 ?>
