@@ -37,7 +37,10 @@ function checkPassword($email): bool {
                 $_SESSION['user'] = getUser($email);
 
                 return true;
+        
             }
+            fail("Es ist ein Fehler beim Login vorgefallen");
+            return false;
         }
     } else {
         fail("Das Passwort ist ungültig!");
