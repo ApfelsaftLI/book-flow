@@ -1,0 +1,52 @@
+$form-padding: 20px;
+.editForm {
+  grid-column: 1/13;
+  background-color: $background-primary;
+  border-radius: 15px;
+  padding: $form-padding;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+
+  label {
+    color: $text-color;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: $background-secondary;
+    color: $text-color;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: $background-secondary;
+    color: $text-color;
+    resize: vertical;
+    word-wrap: break-word;
+  }
+
+  input[type="submit"] {
+    background-color: $background-secondary;
+    color: $text-color;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+  }
+
+  input[type="submit"]:hover {
+    background-color: darken($background-secondary, 10%);
+  }
+}
+

@@ -20,8 +20,6 @@ session_start()
     include_once "includes/db.php";
     $isLoggedIn = array_key_exists("user", $_SESSION);
     $isAdmin = $isLoggedIn && $_SESSION["user"]["admin"] == "true";
-    if ($isLoggedIn) {
-    }
     $book_id = $_POST["book_id"];
     $result = listBook($book_id);
     $id = $result['id'];
@@ -35,6 +33,7 @@ session_start()
     $zustand = $result['zustand'];
     $resultKateorien = getKategorie($kategorie);
     $kategorieClean = $resultKateorien['kategorie'];
+    echo var_dump($book_id);
     switch ($zustand) {
         case 'G':
             $zustand = 'gut';
@@ -49,6 +48,14 @@ session_start()
 
     ?>
     <div class="book-box">
+        <?php
+        $book_id = intval($book_id);
+        if ($isLoggedIn) {
+            echo '<div class="edit-button">
+            <a href="edit_book.php?book_id=' .$id . '" class="send-value-button">Edit Book</a>
+        </div>';
+        }
+        ?>
         <?php if(isset($foto)): ?>
             <img src="assets/images/<?php echo $foto; ?>" alt="Book Cover">
         <?php endif; ?>
@@ -61,6 +68,7 @@ session_start()
         <div class="line"></div>
         <h2>Beschreibung</h2>
         <div class="line"></div>
+        <br>
         <?php if(isset($title)): ?>
             <p><?php echo $title; ?></p>
         <?php endif; ?><br>
@@ -79,7 +87,6 @@ session_start()
         <?php if(isset($zustand)): ?>
             <p>Das Buch ist in einem <?php echo $zustand; ?> Zustand.</p>
         <?php endif; ?>
-
     </div>
 </main>
 <?php include_once "templates/footer.php" ?>

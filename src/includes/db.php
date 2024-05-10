@@ -58,7 +58,8 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput, 
 }
 
 
-function listBook(int $bookID) {
+function listBook($bookID) {
+    $bookID = intval($bookID);
     $result = [];
     $resultCount = 0;
     if (!$_SESSION["dbConnection"])
@@ -164,7 +165,8 @@ function translateAdmin(array $user) {
     return "true";
 }
 
-function getKategorie(int $kategorie){
+function getKategorie($kategorie){
+    $kategorie = intval($kategorie);
     $resultKateorien = [];
     $resultCount = 0;
     if (!$_SESSION["dbConnection"])
@@ -176,4 +178,31 @@ function getKategorie(int $kategorie){
     $statement->execute();
     $resultKateorien = $statement->fetch(PDO::FETCH_ASSOC);
     return ["kategorie" => $resultKateorien['kategorie']];
+}
+
+function updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand) {
+    global $connection;
+    try {
+        $sqlQuery = "UPDATE buecher SET 
+                     title = :title, 
+                     autor = :autor,
+                     kurztitle = :kurztitle,
+                     nummer = :nummer,
+                     zustand = :zustand
+                     WHERE id = :book_id";
+        $statement = $connection->prepare($sqlQuery);
+
+        $statement->bindParam(':title', $title, PDO::PARAM_STR);
+        $statement->bindParam(':autor', $autor, PDO::PARAM_STR);
+        $statement->bindParam(':kurztitle', $kurztitle, PDO::PARAM_STR);
+        $statement->bindParam(':nummer', $nummer, PDO::PARAM_STR);
+        $statement->bindParam(':zustand', $zustand, PDO::PARAM_STR);
+        $statement->bindParam(':book_id', $book_id, PDO::PARAM_INT);
+
+        $success = $statement->execute();
+
+        return $success;
+    } catch (PDOException $e) {
+        return false;
+    }
 }
