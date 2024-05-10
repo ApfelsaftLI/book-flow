@@ -18,6 +18,10 @@ session_start()
     error_reporting(E_ERROR | E_PARSE);
     include_once "includes/functions.php";
     include_once "includes/db.php";
+    $isLoggedIn = array_key_exists("user", $_SESSION);
+    $isAdmin = $isLoggedIn && $_SESSION["user"]["admin"] == "true";
+    if ($isLoggedIn) {
+    }
     $book_id = $_POST["book_id"];
     $result = listBook($book_id);
     $id = $result['id'];
@@ -27,54 +31,10 @@ session_start()
     $verkauft = $result['verkauft'];
     $autor = $result['autor'];
     $title = $result['title'];
-    $sprache = $result['sprache'];
     $foto = $result['foto'];
     $zustand = $result['zustand'];
-
-    switch ($kategorie) {
-        case 1:
-            $kategorie = 'Alte Drucke, Bibeln, Klassische Autoren in den Originalsprachen';
-            break;
-        case 2:
-            $kategorie = 'Geographie und Reisen';
-            break;
-        case 3:
-            $kategorie = 'Geschichtswissenschaften';
-            break;
-        case 4:
-            $kategorie = 'Naturwissenschaften';
-            break;
-        case 5:
-            $kategorie = 'Kinderbücher';
-            break;
-        case 6:
-            $kategorie = 'Moderne Literatur und Kunst';
-            break;
-        case 7:
-            $kategorie = 'Moderne Kunst und Künstlergraphik';
-            break;
-        case 8:
-            $kategorie = 'Kunstwissenschaften';
-            break;
-        case 9:
-            $kategorie = 'Architektur';
-            break;
-        case 10:
-            $kategorie = 'Technik';
-            break;
-        case 11:
-            $kategorie = 'Naturwissenschaften - Medizin';
-            break;
-        case 12:
-            $kategorie = 'Ozeanien';
-            break;
-        case 13:
-            $kategorie = 'Afrika';
-            break;
-        default:
-            $kategorie = 'Invalid category';
-            break;
-    }
+    $resultKateorien = getKategorie($kategorie);
+    $kategorieClean = $resultKateorien['kategorie'];
     switch ($zustand) {
         case 'G':
             $zustand = 'gut';
@@ -114,10 +74,7 @@ session_start()
             <p>Referenz-ID: <?php echo $id; ?></p>
         <?php endif; ?>
         <?php if(isset($nummer)): ?>
-            <p>Kategorie: <?php echo $kategorie; ?></p>
-        <?php endif; ?>
-        <?php if(isset($sprache)): ?>
-            <p>Sprache: <?php echo $sprache; ?></p>
+            <p>Kategorie: <?php echo $kategorieClean; ?></p>
         <?php endif; ?>
         <?php if(isset($zustand)): ?>
             <p>Das Buch ist in einem <?php echo $zustand; ?> Zustand.</p>

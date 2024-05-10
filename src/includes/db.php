@@ -80,7 +80,6 @@ function listBook(int $bookID) {
     $kaufer = $result['kaufer'];
     $autor = $result['autor'];
     $title = $result['title'];
-    $sprache = $result['sprache'];
     $foto = $result['foto'];
     $verfasser = $result['verfasser'];
     $zustand = $result['zustand'];
@@ -95,7 +94,6 @@ function listBook(int $bookID) {
         'kaufer' => $kaufer,
         'autor' => $autor,
         'title' => $title,
-        'sprache' => $sprache,
         'foto' => $foto,
         'verfasser' => $verfasser,
         'zustand' => $zustand,
@@ -164,4 +162,18 @@ function getUser(string $email) {
 function translateAdmin(array $user) {
     if (empty($user['admin'])) return "false";
     return "true";
+}
+
+function getKategorie(int $kategorie){
+    $resultKateorien = [];
+    $resultCount = 0;
+    if (!$_SESSION["dbConnection"])
+        echo "Connection Failed";
+    require_once 'db.php';
+    global $connection;
+    $sqlQuery = "SELECT kategorie FROM kategorien where id = ". "$kategorie";
+    $statement = $connection->prepare($sqlQuery);
+    $statement->execute();
+    $resultKateorien = $statement->fetch(PDO::FETCH_ASSOC);
+    return ["kategorie" => $resultKateorien['kategorie']];
 }
