@@ -34,13 +34,13 @@ $resultKateorien = getKategorie($kategorie);
 $kategorieClean = $resultKateorien['kategorie'];
 switch ($zustand) {
     case 'G':
-        $zustand = 'gut';
+        $zustandSelect = 'Gut';
         break;
     case 'M':
-        $zustand = 'mittel';
+        $zustandSelect = 'Mittel';
         break;
     case 'S':
-        $zustand = 'schlecht';
+        $zustandSelect = 'Schlecht';
         break;
 }
 ?>
@@ -64,8 +64,12 @@ switch ($zustand) {
     <input type="text" id="kategorie" name="kategorie" value="<?php echo $kategorieClean; ?>"><br>
 
     <label for="zustand">Zustand:</label>
-    <input type="text" id="zustand" name="zustand" value="<?php echo $zustand; ?>"><br>
-
+    <select name="zustand" id="zustand">
+        <option value="<?php echo $zustand; ?>"><?php echo $zustandSelect; ?></option>
+        <option value="G">Gut</option>
+        <option value="M">Mittel</option>
+        <option value="S">Schlecht</option>
+    </select>
     <input type="submit" value="Update">
 </form>
 

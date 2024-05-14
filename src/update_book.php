@@ -9,20 +9,6 @@ include_once "includes/functions.php";
     $kurztitle = $_POST["kurztitle"];
     $nummer = $_POST["nummer"];
     $zustand = $_POST["zustand"];
-    switch ($zustand) {
-        case 'gut':
-            $zustand = 'G';
-            break;
-        case 'mittel':
-            $zustand = 'M';
-            break;
-        case 'schlecht':
-            $zustand = 'S';
-            break;
-        default:
-            $zustand = 'N';
-            break;
-    }
 $result = updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand);
 if ($result) {
     ?>

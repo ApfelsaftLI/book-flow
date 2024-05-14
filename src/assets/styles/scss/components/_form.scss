@@ -23,6 +23,15 @@ $form-padding: 20px;
     color: $text-color;
   }
 
+  select{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: $background-secondary;
+    color: $text-color;
+  }
+
   textarea {
     width: 100%;
     padding: 10px;
