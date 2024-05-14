@@ -2,7 +2,7 @@
 session_start();
 
 include 'includes/db.php';
-include 'includes/login-handler.php'
+include 'includes/login-handler.php';
 ?>
 <!doctype html>
 <html lang="en">

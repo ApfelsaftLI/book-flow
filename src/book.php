@@ -1,5 +1,6 @@
 <?php
-session_start()
+session_start();
+
 ?>
 <!doctype html>
 <html lang="de">
@@ -18,8 +19,10 @@ session_start()
     error_reporting(E_ERROR | E_PARSE);
     include_once "includes/functions.php";
     include_once "includes/db.php";
+
     $isLoggedIn = array_key_exists("user", $_SESSION);
     $isAdmin = $isLoggedIn && $_SESSION["user"]["admin"] == "true";
+
     $book_id = $_POST["book_id"];
     $result = listBook($book_id);
     $id = $result['id'];
@@ -33,7 +36,7 @@ session_start()
     $zustand = $result['zustand'];
     $resultKateorien = getKategorie($kategorie);
     $kategorieClean = $resultKateorien['kategorie'];
-    echo var_dump($book_id);
+
     switch ($zustand) {
         case 'G':
             $zustand = 'gut';
