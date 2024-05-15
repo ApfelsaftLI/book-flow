@@ -58,7 +58,8 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput, 
 }
 
 
-function listBook(int $bookID) {
+function listBook($bookID) {
+    $bookID = intval($bookID);
     $result = [];
     $resultCount = 0;
     if (!$_SESSION["dbConnection"])
@@ -80,7 +81,6 @@ function listBook(int $bookID) {
     $kaufer = $result['kaufer'];
     $autor = $result['autor'];
     $title = $result['title'];
-    $sprache = $result['sprache'];
     $foto = $result['foto'];
     $verfasser = $result['verfasser'];
     $zustand = $result['zustand'];
@@ -95,7 +95,6 @@ function listBook(int $bookID) {
         'kaufer' => $kaufer,
         'autor' => $autor,
         'title' => $title,
-        'sprache' => $sprache,
         'foto' => $foto,
         'verfasser' => $verfasser,
         'zustand' => $zustand,
@@ -164,4 +163,46 @@ function getUser(string $email) {
 function translateAdmin(array $user) {
     if (empty($user['admin'])) return "false";
     return "true";
+}
+
+function getKategorie($kategorie){
+    $kategorie = intval($kategorie);
+    $resultKateorien = [];
+    $resultCount = 0;
+    if (!$_SESSION["dbConnection"])
+        echo "Connection Failed";
+    require_once 'db.php';
+    global $connection;
+    $sqlQuery = "SELECT kategorie FROM kategorien where id = ". "$kategorie";
+    $statement = $connection->prepare($sqlQuery);
+    $statement->execute();
+    $resultKateorien = $statement->fetch(PDO::FETCH_ASSOC);
+    return ["kategorie" => $resultKateorien['kategorie']];
+}
+
+function updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand) {
+    global $connection;
+    try {
+        $sqlQuery = "UPDATE buecher SET 
+                     title = :title, 
+                     autor = :autor,
+                     kurztitle = :kurztitle,
+                     nummer = :nummer,
+                     zustand = :zustand
+                     WHERE id = :book_id";
+        $statement = $connection->prepare($sqlQuery);
+
+        $statement->bindParam(':title', $title, PDO::PARAM_STR);
+        $statement->bindParam(':autor', $autor, PDO::PARAM_STR);
+        $statement->bindParam(':kurztitle', $kurztitle, PDO::PARAM_STR);
+        $statement->bindParam(':nummer', $nummer, PDO::PARAM_STR);
+        $statement->bindParam(':zustand', $zustand, PDO::PARAM_STR);
+        $statement->bindParam(':book_id', $book_id, PDO::PARAM_INT);
+
+        $success = $statement->execute();
+
+        return $success;
+    } catch (PDOException $e) {
+        return false;
+    }
 }
