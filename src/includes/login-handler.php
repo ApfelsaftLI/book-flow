@@ -11,6 +11,10 @@ if (!checkPassword(cleanString($_POST['email']))) return;
 function checkEmail(): bool {
     if (isset($_POST['email'])) {
         $email = trim($_POST['email']);
+        if (strlen($email) > 50) {
+            fail("Die Emailadresse ist zu lange.");
+            return false;
+        }
         if ($email == "" || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             fail("Die Emailadresse ist ungültig!");
             return false;
@@ -26,8 +30,12 @@ function checkEmail(): bool {
 function checkPassword($email): bool {
     if (isset($_POST['password'])) {
         $password = cleanString($_POST['password']);
+        if (strlen($password) > 50) {
+            fail("Das Passwort ist zu lange.");
+            return false;
+        }
         if ($password == "") {
-            fail("Das Passwort ist ungültig!");
+            fail("Das Passwort ist leer!");
             return false;
         } else {
             include_once "db.php";
