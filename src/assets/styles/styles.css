@@ -368,6 +368,53 @@ table {
       margin-left: auto;
       margin-right: auto; }
 
+.editForm {
+  grid-column: 1/13;
+  background-color: #FFEEE0;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap; }
+  .editForm label {
+    color: #4E2323;
+    margin-bottom: 5px; }
+  .editForm input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: #FFE4CF;
+    color: #4E2323; }
+  .editForm select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: #FFE4CF;
+    color: #4E2323; }
+  .editForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: #FFE4CF;
+    color: #4E2323;
+    resize: vertical;
+    word-wrap: break-word; }
+  .editForm input[type="submit"] {
+    background-color: #FFE4CF;
+    color: #4E2323;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; }
+  .editForm input[type="submit"]:hover {
+    background-color: #ffc79c; }
+
 header {
   grid-column: 1/13;
   display: flex;

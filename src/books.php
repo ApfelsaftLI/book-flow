@@ -19,7 +19,7 @@ include 'includes/db.php';
             const sortSelect = document.querySelector('.sort')
 
             function submitForm() {
-                document.querySelector('form').submit()
+                document.getElementById('search-form').submit()
             }
 
             filterSelect.addEventListener('change', function () {
@@ -38,7 +38,7 @@ include 'includes/db.php';
 <?php include_once "templates/header.php" ?>
 <main class="grid-container">
     <div class="search-container">
-        <form method="GET" action="<?= $_SERVER['PHP_SELF']; ?>">
+        <form id="search-form" method="GET" action="<?= $_SERVER['PHP_SELF']; ?>">
             <div class="search-container">
                 <div class="search-bar-container">
                     <?php if (isset($_GET['search'])) {
