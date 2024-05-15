@@ -180,7 +180,7 @@ function getKategorie($kategorie){
     return ["kategorie" => $resultKateorien['kategorie']];
 }
 
-function updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand) {
+function updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie) {
     global $connection;
     try {
         $sqlQuery = "UPDATE buecher SET 
@@ -188,7 +188,8 @@ function updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand) {
                      autor = :autor,
                      kurztitle = :kurztitle,
                      nummer = :nummer,
-                     zustand = :zustand
+                     zustand = :zustand,
+                    kategorie = :selectedKategorie
                      WHERE id = :book_id";
         $statement = $connection->prepare($sqlQuery);
 
@@ -198,6 +199,7 @@ function updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand) {
         $statement->bindParam(':nummer', $nummer, PDO::PARAM_STR);
         $statement->bindParam(':zustand', $zustand, PDO::PARAM_STR);
         $statement->bindParam(':book_id', $book_id, PDO::PARAM_INT);
+        $statement->bindParam(':selectedKategorie', $selectedKategorie, PDO::PARAM_INT);
 
         $success = $statement->execute();
 
