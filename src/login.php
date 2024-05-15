@@ -16,8 +16,8 @@ session_start();
 <main class="grid-container">
     <div class="login-container large-container">
         <form action="/" method="post">
-            <input type="email" name="email" id="login-email" placeholder="Email" required>
-            <input type="password" name="password" id="login-password" placeholder="Passwort" required>
+            <input type="email" name="email" id="login-email" placeholder="Email" maxlength="50" required>
+            <input type="password" name="password" id="login-password" placeholder="Passwort" maxlength="50" required>
             <button type="submit" class="big-button">Anmelden</button>
         </form>
     </div>
