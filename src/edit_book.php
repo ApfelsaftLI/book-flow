@@ -61,7 +61,16 @@ switch ($zustand) {
     <input type="text" id="nummer" name="nummer" value="<?php echo $nummer; ?>"><br>
 
     <label for="kategorie">Kategorie:</label>
-    <input type="text" id="kategorie" name="kategorie" value="<?php echo $kategorieClean; ?>"><br>
+    <select name="kategorie" id="kategorie">
+        <option value="<?php echo $kategorie; ?>"><?php echo $kategorieClean; ?></option>
+        <?php
+        for ($i = 1; $i <= 14; $i++) {
+            $resultKateorien = getKategorie($i);
+            $kategorieClean = $resultKateorien['kategorie'];
+            echo '<option value="'.$i.'">'.$kategorieClean.'</option>';
+        }
+        ?>
+    </select>
 
     <label for="zustand">Zustand:</label>
     <select name="zustand" id="zustand">
@@ -72,7 +81,6 @@ switch ($zustand) {
     </select>
     <input type="submit" value="Update">
 </form>
-
 </main>
 <?php include_once "templates/footer.php" ?>
 </body>

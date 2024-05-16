@@ -3,13 +3,14 @@ session_start();
 include_once "includes/db.php";
 include_once "includes/functions.php";
 
-    $book_id = $_POST["book_id"];
-    $title = $_POST["title"];
-    $autor = $_POST["autor"];
-    $kurztitle = $_POST["kurztitle"];
-    $nummer = $_POST["nummer"];
-    $zustand = $_POST["zustand"];
-$result = updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand);
+    $book_id = htmlspecialchars($_POST["book_id"]);
+    $title = htmlspecialchars($_POST["title"]);
+    $autor = htmlspecialchars($_POST["autor"]);
+    $kurztitle = htmlspecialchars($_POST["kurztitle"]);
+    $nummer = htmlspecialchars($_POST["nummer"]);
+    $zustand = htmlspecialchars($_POST["zustand"]);
+    $selectedKategorie = htmlspecialchars($_POST['kategorie']);
+$result = updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie);
 if ($result) {
     ?>
     <!DOCTYPE html>
