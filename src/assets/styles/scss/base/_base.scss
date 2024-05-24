@@ -35,11 +35,13 @@ main {
   color: $text-color;
 }
 
-.text-small-semi>* {
+.text-small-semi {
   font-weight: 600;
   font-size: 14pt;
   text-decoration: none;
   color: $text-color;
+
+  & * {@extend .text-small-semi}
 }
 
 .text-large-bold {
