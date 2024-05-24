@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 ?>
 <!doctype html>
 <html lang="de">
@@ -28,11 +29,11 @@ session_start();
                     <div class="filter-container">
                         <select class="filter" onchange="this.form.submit()"
                                 name="filter">
-                            <option value="users" <?= $_GET['filter'] == 'users' ? 'selected' : '' ?>>
+                            <option value="users" <?= $_GET['filter'] ?? "" == 'users' ? 'selected' : '' ?>>
                                 Nutzer
                             </option>
 
-                            <option value="customers" <?= $_GET['filter'] == 'customers' ? 'selected' : '' ?>>
+                            <option value="customers" <?= $_GET['filter'] ?? "" == 'customers' ? 'selected' : '' ?>>
                                 Kunden
                             </option>
                         </select>
@@ -40,14 +41,6 @@ session_start();
                 </div>
             </div>
         </form>
-
-        <script>
-            //some js to not reset the filter or sort inputs
-            function updateHiddenValue(type) {
-                const selectedValue = document.querySelector(`.${type}`).value
-                document.getElementById(`${type}-hidden`).value = selectedValue
-            }
-        </script>
 
     </div>
 </main>
