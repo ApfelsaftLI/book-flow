@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Erstellungszeit: 07. Feb 2024 um 11:34
--- Server-Version: 10.4.6-MariaDB
--- PHP-Version: 8.0.11
+-- Host: book-flow-mysql:3306
+-- Erstellungszeit: 24. Mai 2024 um 06:45
+-- Server-Version: 8.3.0
+-- PHP-Version: 8.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `book`
+-- Datenbank: `book_DB`
 --
 
 -- --------------------------------------------------------
@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `benutzer` (
-  `ID` int(10) UNSIGNED NOT NULL,
+  `ID` int UNSIGNED NOT NULL,
   `benutzername` varchar(45) NOT NULL,
   `name` varchar(100) NOT NULL,
   `vorname` varchar(100) NOT NULL,
   `passwort` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `admin` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Daten für Tabelle `benutzer`
@@ -48,7 +48,8 @@ INSERT INTO `benutzer` (`ID`, `benutzername`, `name`, `vorname`, `passwort`, `em
 (4, 'user3', 'Isabel', 'Karger', '$2y$10$eOyUIJ1N8ULVpcxn0dnDyOXG/lxGQzNFenqBIfXNS9igbIdgDpO5y', 'isabel.karger@test.test', NULL),
 (5, 'user4', 'Monika', 'Buess', '$2y$10$HiCVON1cL/HH2hg5paw60e0p18SU9.UtzwuB5zKmlkS7h7wCGTNmS', 'monika.buess@test.test', NULL),
 (6, 'user5', 'Jan', 'Martin', '$2y$10$2Fbb6e1MA3bgrNFow7LwgOmAK7qnkI6LEndyZOmYSoOLs/miFI7iS', 'jan.martin@test.test', NULL),
-(7, 'bd', 'd', 'd', '$2y$10$TPn9qUmn9k/Gzkp1rTOtneMUE2fFoXAnczRTt7P5J7VkYNDwjtmwa', 'd@e.ch', NULL);
+(7, 'bd', 'd', 'd', '$2y$10$TPn9qUmn9k/Gzkp1rTOtneMUE2fFoXAnczRTt7P5J7VkYNDwjtmwa', 'd@e.ch', NULL),
+(9, 'test', 'Landolt', 'Tim', '$2y$10$/3k98Zc0nzBcCEM4X.sh1.E8jz/U6i0nmZrU.oBvAYkALpCasFHDa', 'timlandolt@gmx.ch', NULL);
 
 -- --------------------------------------------------------
 
@@ -57,20 +58,20 @@ INSERT INTO `benutzer` (`ID`, `benutzername`, `name`, `vorname`, `passwort`, `em
 --
 
 CREATE TABLE `buecher` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `katalog` int(11) NOT NULL,
-  `nummer` int(11) NOT NULL,
+  `id` int UNSIGNED NOT NULL,
+  `katalog` int NOT NULL,
+  `nummer` int NOT NULL,
   `kurztitle` text NOT NULL,
-  `kategorie` int(11) NOT NULL,
+  `kategorie` int NOT NULL,
   `verkauft` tinyint(1) NOT NULL,
-  `kaufer` int(11) NOT NULL,
+  `kaufer` int NOT NULL,
   `autor` text NOT NULL,
   `title` text NOT NULL,
   `sprache` varchar(250) NOT NULL,
   `foto` varchar(250) NOT NULL,
-  `verfasser` int(11) NOT NULL,
+  `verfasser` int NOT NULL,
   `zustand` char(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 --
 -- Daten für Tabelle `buecher`
@@ -3366,7 +3367,7 @@ INSERT INTO `buecher` (`id`, `katalog`, `nummer`, `kurztitle`, `kategorie`, `ver
 --
 
 CREATE TABLE `kategorien` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `kategorie` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -3396,14 +3397,14 @@ INSERT INTO `kategorien` (`id`, `kategorie`) VALUES
 --
 
 CREATE TABLE `kunden` (
-  `kid` int(11) NOT NULL,
+  `kid` int NOT NULL,
   `geburtstag` date NOT NULL,
   `vorname` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `geschlecht` enum('M','F') NOT NULL,
   `kunde_seit` date NOT NULL,
   `email` varchar(150) NOT NULL,
-  `kontaktpermail` tinyint(4) NOT NULL
+  `kontaktpermail` tinyint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -4280,19 +4281,19 @@ ALTER TABLE `kunden`
 -- AUTO_INCREMENT für Tabelle `benutzer`
 --
 ALTER TABLE `benutzer`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT für Tabelle `buecher`
 --
 ALTER TABLE `buecher`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6099;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6099;
 
 --
 -- AUTO_INCREMENT für Tabelle `kategorien`
 --
 ALTER TABLE `kategorien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
