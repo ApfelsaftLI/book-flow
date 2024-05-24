@@ -7,25 +7,38 @@
   border-radius: 50vh;
   padding: 5pt 10pt;
   display: inline-block;
-}
+  text-align: center;
+  min-height: 3rem;
+  justify-content: center; }
+
+.outline-button {
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 20pt;
+  color: #4E2323;
+  background-color: #FFEEE0;
+  border-radius: 50vw;
+  padding: 5pt 10pt;
+  display: inline-block;
+  outline: #4E2323 solid 1px;
+  text-align: center;
+  justify-content: center;
+  min-height: 3rem; }
 
 a[href="/login.php"] {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 .login-container form {
   display: flex;
-  flex-direction: column;
-}
-
-.login-container form input {
-  border-radius: 15pt;
-  border: #4E2323 solid 1px;
-  text-indent: 10px;
-  padding: 6pt;
-  font-size: 14pt;
-  color: #4E2323;
-}
+  flex-direction: column; }
+  .login-container form input {
+    border-radius: 50vh;
+    border: #4E2323 solid 1px;
+    text-indent: 10px;
+    padding: 6pt;
+    font-size: 14pt;
+    color: #4E2323;
+    min-height: 3rem; }
 
 footer {
   position: fixed;
@@ -33,14 +46,9 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
-  grid-column: 1/13;
-}
-
-footer p {
-  color: #4E2323;
-  font-weight: bold;
-}
-
-
+  grid-column: 1/13; }
+  footer p {
+    color: #4E2323;
+    font-weight: bold; }
 
 /*# sourceMappingURL=login.css.map */

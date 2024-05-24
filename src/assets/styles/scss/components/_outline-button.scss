@@ -1,0 +1,14 @@
+.outline-button {
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 20pt;
+  color: $text-color;
+  background-color: $background-primary;
+  border-radius: 50vw;
+  padding: 5pt 10pt;
+  display: inline-block;
+  outline: $text-color solid 1px;
+  text-align: center;
+  justify-content: center;
+  min-height: 3rem;
+}

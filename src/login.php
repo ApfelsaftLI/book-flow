@@ -19,6 +19,7 @@ session_start();
             <input type="email" name="email" id="login-email" placeholder="Email" maxlength="50" required>
             <input type="password" name="password" id="login-password" placeholder="Passwort" maxlength="50" required>
             <button type="submit" class="big-button">Anmelden</button>
+            <a href="/" class="outline-button">Abbrechen</a>
         </form>
     </div>
 </main>
