@@ -13,13 +13,22 @@ session_start();
     <title>Login | BookFlow</title>
 </head>
 <body class="grid-container">
+<header>
+    <a href="/">
+        <img src="../assets/images/BookFlow_Logo.svg" alt="BookFlow Logo">
+    </a>
+</header>
 <main class="grid-container">
     <div class="login-container large-container">
+        <h1 class="text-large-bold">Login</h1>
         <form action="/" method="post">
             <input type="email" name="email" id="login-email" placeholder="Email" maxlength="50" required>
             <input type="password" name="password" id="login-password" placeholder="Passwort" maxlength="50" required>
-            <button type="submit" class="big-button">Anmelden</button>
-            <a href="/" class="outline-button">Abbrechen</a>
+            <div id="login-button-wrapper">
+                <a href="/" class="outline-button">Abbrechen</a>
+                <button type="submit" class="big-button">Anmelden</button>
+            </div>
+            <p class="text-small-semi-bold">Passwort vergessen / ändern</p>
         </form>
     </div>
 </main>
