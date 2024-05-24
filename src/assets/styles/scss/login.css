@@ -7,32 +7,81 @@
   border-radius: 50vh;
   padding: 5pt 10pt;
   display: inline-block;
+  text-align: center;
+  min-height: 3rem;
+  justify-content: center;
+}
+
+.outline-button {
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 20pt;
+  color: #4E2323;
+  background-color: #FFEEE0;
+  border-radius: 50vw;
+  padding: 5pt 10pt;
+  display: inline-block;
+  outline: #4E2323 solid 1px;
+  text-align: center;
+  justify-content: center;
+  min-height: 3rem;
 }
 
 a[href="/login.php"] {
   font-weight: bold;
 }
 
+header {
+  display: flex;
+  grid-column: 1/13;
+  margin-top: 70pt;
+  margin-bottom: 35pt;
+  justify-content: center;
+}
+header img {
+  width: 240pt;
+}
+
+.login-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 6pt;
+  padding-inline: 0;
+}
+.login-container h1 {
+  grid-column: 2/3;
+}
+.login-container p {
+  text-align: center;
+  margin-top: 35pt;
+}
 .login-container form {
+  grid-column: 4/8;
   display: flex;
   flex-direction: column;
+  gap: 15pt;
 }
 .login-container form input {
-  border-radius: 15pt;
+  border-radius: 50vh;
   border: #4E2323 solid 1px;
   text-indent: 10px;
   padding: 6pt;
   font-size: 14pt;
   color: #4E2323;
+  min-height: 3rem;
+}
+.login-container form #login-button-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 15pt;
 }
 
 footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
   grid-column: 1/13;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 70pt;
 }
 footer p {
   color: #4E2323;
