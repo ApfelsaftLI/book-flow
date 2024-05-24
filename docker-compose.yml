@@ -22,3 +22,15 @@ services:
     volumes:
       - ./mysql_data:/var/lib/mysql
       - ./book_DB.sql:/docker-entrypoint-initdb.d/book_DB.sql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: book-flow-phpmyadmin
+    ports:
+      - "8082:80"
+    environment:
+      PMA_HOST: book-flow-mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - mysql
