@@ -20,3 +20,13 @@ function shortenAutor(array $dbResults) {
     $dbResults['autor'] = substr($dbResults['autor'], 0, 20);;
     return $dbResults;
 }
+
+function checkFileExtension($ext)
+{
+    if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png') {
+        $pass = 1;
+    } else {
+        $pass = 0;
+    }
+    return $pass;
+}

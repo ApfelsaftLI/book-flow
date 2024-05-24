@@ -1,5 +1,10 @@
 <?php
-session_start()
+session_start();
+
+$isLoggedIn = array_key_exists("user", $_SESSION);
+$isAdmin = $isLoggedIn && $_SESSION["user"]["admin"] == "true";
+
+if (!$isAdmin) {header("Location: index.php"); }
 ?>
 <!doctype html>
 <html lang="de">
@@ -17,6 +22,7 @@ session_start()
 <?php
 include_once "includes/functions.php";
 include_once "includes/db.php";
+
 $id = $_GET["book_id"];
 $id = htmlspecialchars($id);
 $id = intval($id);

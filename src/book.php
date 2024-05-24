@@ -53,14 +53,14 @@ session_start();
     <div class="book-box">
         <?php
         $book_id = intval($book_id);
-        if ($isLoggedIn) {
+        if ($isAdmin) {
             echo '<div class="edit-button">
             <a href="edit_book.php?book_id=' .$id . '" class="send-value-button">Edit Book</a>
         </div>';
         }
         ?>
         <?php if(isset($foto)): ?>
-            <img src="assets/images/<?php echo $foto; ?>" alt="Book Cover">
+            <img src="assets/images/books/<?php echo $foto; ?>" alt="Book Cover">
         <?php endif; ?>
         <?php if(isset($kurztitle)): ?>
             <h2><?php echo $kurztitle; ?></h2>

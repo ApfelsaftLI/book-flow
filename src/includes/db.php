@@ -42,7 +42,7 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput, 
         $row = shortenAutor($row);
         $resultString = "
 <div>
-    <img src='assets/images/" . $row['foto'] . "' alt='Book cover of " . $row['kurztitle'] . "'>
+    <img src='assets/images/books/" . $row['foto'] . "' alt='Book cover of " . $row['kurztitle'] . "'>
     <div class='info-text'>
         <h2>" . $row['kurztitle'] . "</h2>
         <p>" . $row['autor'] . "</p>
@@ -123,7 +123,7 @@ function getRandomBooks(int $amount) {
         $book = shortenShortTitlesShorter($book);
         $book = shortenAutor($book);
         echo "<div class='book-carousel-box'>
-                <img src='assets/images/" . $book['foto'] . "' alt='gugus'>
+                <img src='assets/images/books/" . $book['foto'] . "' alt='gugus'>
                 <div class='info-text'>
                     <h2>" . $book['kurztitle'] . "</h2>
                     <p>" . $book['autor'] . "</p>
