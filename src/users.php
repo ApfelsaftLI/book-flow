@@ -1,5 +1,9 @@
 <?php
 session_start();
+include_once "includes/db.php";
+
+$filter = $_GET['filter'] ?? "users";
+$users = $filter == "users" ? getUserArray($_GET['search']) : getCustomerArray($_GET['search']);
 
 
 ?>
@@ -29,19 +33,23 @@ session_start();
                     <div class="filter-container">
                         <select class="filter" onchange="this.form.submit()"
                                 name="filter">
-                            <option value="users" <?= $_GET['filter'] ?? "" == 'users' ? 'selected' : '' ?>>
+                            <option value="users" <?= $filter == 'users' ? 'selected' : '' ?>>
                                 Nutzer
                             </option>
 
-                            <option value="customers" <?= $_GET['filter'] ?? "" == 'customers' ? 'selected' : '' ?>>
+                            <option value="customers" <?= $filter == 'customers' ? 'selected' : '' ?>>
                                 Kunden
                             </option>
                         </select>
                     </div>
+                    <a href="/new_user.php" class="highlighted-button">Kunde hinzufügen</a>
+
                 </div>
             </div>
         </form>
-
+    </div>
+    <div class="result-container" style="grid-column: 2/13">
+        <?= print_r($users) ?>
     </div>
 </main>
 <?php include_once "templates/footer.php" ?>

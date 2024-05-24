@@ -1,5 +1,11 @@
 @import "components/search-bar";
+@import "components/highlighted-button";
 
 a[href="/users.php"] {
   font-weight: bold;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: space-between;
 }

@@ -52,7 +52,7 @@ main {
   color: #4E2323;
 }
 
-.text-small-semi {
+.text-small-semi, .text-small-semi * {
   font-weight: 600;
   font-size: 14pt;
   text-decoration: none;
@@ -548,6 +548,19 @@ table {
   text-align: center;
   justify-content: center;
   min-height: 3rem;
+}
+
+.highlighted-button {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 11pt;
+  color: #FFEEE0;
+  background-color: #38703E;
+  border-radius: 15pt;
+  padding: 7pt 10pt;
+  display: inline-block;
+  text-align: center;
+  justify-content: center;
 }
 
 header {
