@@ -1,0 +1,12 @@
+.highlighted-button {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 11pt;
+  color: $background-primary;
+  background-color: $accent-color;
+  border-radius: 15pt;
+  padding: 7pt 10pt;
+  display: inline-block;
+  text-align: center;
+  justify-content: center;
+}
