@@ -1,5 +1,6 @@
 @import "abstracts/variables";
 @import "components/big-button";
+@import "components/outline-button";
 
 a[href="/login.php"] {
   font-weight: bold;
@@ -12,12 +13,13 @@ a[href="/login.php"] {
     flex-direction: column;
 
     input {
-      border-radius: 15pt;
+      border-radius: 50vh;
       border: $text-color solid 1px;
       text-indent: 10px;
       padding: 6pt;
       font-size: 14pt;
       color: $text-color;
+      min-height: 3rem;
     }
   }
 }
