@@ -56,8 +56,26 @@
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
 }
 
+.highlighted-button {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 11pt;
+  color: #FFEEE0;
+  background-color: #38703E;
+  border-radius: 15pt;
+  padding: 7pt 10pt;
+  display: inline-block;
+  text-align: center;
+  justify-content: center;
+}
+
 a[href="/users.php"] {
   font-weight: bold;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=users.css.map */

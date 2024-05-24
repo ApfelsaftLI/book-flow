@@ -15,6 +15,44 @@ try {
     $_SESSION["dbConnection"] = false;
 }
 
+function getUserArray(string $searchQuery): array {
+    if (!$_SESSION["dbConnection"]) return [];
+    global $connection;
+
+    $sqlQuery = "SELECT ID, benutzername, email, name, vorname, admin 
+                FROM benutzer
+                WHERE ID LIKE '%$searchQuery%'
+                OR benutzername LIKE '%$searchQuery%'
+                OR email LIKE '%$searchQuery%'
+                OR name LIKE '%$searchQuery%'
+                OR vorname LIKE '%$searchQuery%'";
+
+
+    $statement = $connection->prepare($sqlQuery);
+    $statement->execute();
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $results;
+}
+
+function getCustomerArray(string $searchQuery): array {
+    if (!$_SESSION["dbConnection"]) return [];
+    global $connection;
+
+    $sqlQuery = "SELECT *
+                FROM kunden
+                WHERE kid LIKE '%$searchQuery%'
+                OR email LIKE '%$searchQuery%'
+                OR name LIKE '%$searchQuery%'
+                OR vorname LIKE '%$searchQuery%'";
+
+
+    $statement = $connection->prepare($sqlQuery);
+    $statement->execute();
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $results;
+}
 
 function listBooks(string $searchQuery, string $filterInput, string $sortInput, bool $isNumeric) {
     $results = [];
@@ -57,7 +95,6 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput, 
     return ['results' => $formattedResults, 'count' => $resultCount];
 }
 
-
 function listBook($bookID) {
     $bookID = intval($bookID);
     $result = [];
@@ -99,17 +136,6 @@ function listBook($bookID) {
         'verfasser' => $verfasser,
         'zustand' => $zustand,
     ];
-}
-
-function listFullUserNames() {
-    if (!$_SESSION["dbConnection"])
-        return;
-    require_once 'db.php';
-    global $connection;
-    $sql = "SELECT vorname, name from benutzer";
-    foreach ($connection->query($sql) as $row) {
-        echo $row['vorname'] . " " . $row['name'] . "<br/>";
-    }
 }
 
 function getRandomBooks(int $amount) {
@@ -165,7 +191,7 @@ function translateAdmin(array $user) {
     return "true";
 }
 
-function getKategorie($kategorie){
+function getKategorie($kategorie) {
     $kategorie = intval($kategorie);
     $resultKateorien = [];
     $resultCount = 0;
@@ -173,7 +199,7 @@ function getKategorie($kategorie){
         echo "Connection Failed";
     require_once 'db.php';
     global $connection;
-    $sqlQuery = "SELECT kategorie FROM kategorien where id = ". "$kategorie";
+    $sqlQuery = "SELECT kategorie FROM kategorien where id = " . "$kategorie";
     $statement = $connection->prepare($sqlQuery);
     $statement->execute();
     $resultKateorien = $statement->fetch(PDO::FETCH_ASSOC);
