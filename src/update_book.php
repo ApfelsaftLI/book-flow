@@ -12,6 +12,22 @@ include_once "includes/functions.php";
     $selectedKategorie = htmlspecialchars($_POST['kategorie']);
 $result = updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie);
 if ($result) {
+    $ext = substr(strrchr($_FILES['file']['name'], "."), 1);
+    $fileAccepted = checkFileExtension($ext);
+    $fileSize = $_FILES['file']['size'];
+
+    if($fileAccepted==1 && $fileSize > '82428800'){
+        if (is_uploaded_file($_FILES['my_upload']['tmp_name'])){
+            if(empty($_FILES['my_upload']['name'])){
+            exit;
+            }
+            $uploadFileName = $_FILES['my_upload']['name'];
+            $fileName = strtok($uploadFileName, ".");
+            $fileNameComplet = $fileName . $ext;
+            $dest=__DIR__.'assets/images/books'.$fileNameComplet;
+            move_uploaded_file($_FILES['my_upload']['tmp_name'], $dest);
+    }}
+
     ?>
     <!DOCTYPE html>
     <html>
