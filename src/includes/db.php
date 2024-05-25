@@ -15,7 +15,7 @@ try {
     $_SESSION["dbConnection"] = false;
 }
 
-function getUserArray(string $searchQuery): array {
+function getUserArray(string $searchQuery, int $page): array {
     if (!$_SESSION["dbConnection"]) return [];
     global $connection;
 
@@ -35,7 +35,7 @@ function getUserArray(string $searchQuery): array {
     return $results;
 }
 
-function getCustomerArray(string $searchQuery): array {
+function getCustomerArray(string $searchQuery, int $page): array {
     if (!$_SESSION["dbConnection"]) return [];
     global $connection;
 
@@ -52,6 +52,45 @@ function getCustomerArray(string $searchQuery): array {
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
     return $results;
+}
+
+function getUserPages(string $searchQuery): int {
+    if (!$_SESSION["dbConnection"]) return [];
+    global $connection;
+
+    $sqlQuery = "SELECT COUNT(ID) AS pages
+                FROM benutzer
+                WHERE ID LIKE '%$searchQuery%'
+                OR benutzername LIKE '%$searchQuery%'
+                OR email LIKE '%$searchQuery%'
+                OR name LIKE '%$searchQuery%'
+                OR vorname LIKE '%$searchQuery%'";
+
+
+    $statement = $connection->prepare($sqlQuery);
+    $statement->execute();
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return ceil($results[0]['pages'] / 8);
+}
+
+function getCustomerPages(string $searchQuery): int {
+    if (!$_SESSION["dbConnection"]) return [];
+    global $connection;
+
+    $sqlQuery = "SELECT COUNT(kid) AS pages
+                FROM kunden
+                WHERE kid LIKE '%$searchQuery%'
+                OR email LIKE '%$searchQuery%'
+                OR name LIKE '%$searchQuery%'
+                OR vorname LIKE '%$searchQuery%'";
+
+
+    $statement = $connection->prepare($sqlQuery);
+    $statement->execute();
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return ceil($results[0]['pages'] / 8);
 }
 
 function listBooks(string $searchQuery, string $filterInput, string $sortInput, bool $isNumeric) {
