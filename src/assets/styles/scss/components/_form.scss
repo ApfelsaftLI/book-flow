@@ -57,5 +57,20 @@ $form-padding: 20px;
   input[type="submit"]:hover {
     background-color: darken($background-secondary, 10%);
   }
+
+  input[type="file"] {
+    display: none;
+  }
+  .image {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: $background-secondary;
+    color: $text-color;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+  }
 }
 
