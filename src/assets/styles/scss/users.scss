@@ -9,3 +9,66 @@ a[href="/users.php"] {
   display: flex;
   justify-content: space-between;
 }
+
+.result-container {
+  grid-column: 3/11;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6pt;
+  margin-top: 60pt;
+
+  .userbox {
+    grid-column: 2/8;
+    display: flex;
+    gap: 15pt;
+    filter: $drop-shadow;
+    border-radius: 15pt;
+    align-items: center;
+    padding: 20pt;
+    background-color: $background-primary;
+    margin-bottom: 5pt;
+
+    .profile-picture {
+      display: inline-block;
+      width: 40pt;
+      height: 40pt;
+      border-radius: 50%;
+      background-image: linear-gradient($background-primary, #737373);
+    }
+
+    .user-informations {
+
+    }
+
+    .user-admin-status {
+      margin-left: auto;
+    }
+  }
+
+}
+
+.pagination {
+  grid-column: 4/10;
+  margin-top: 20px;
+  margin-bottom: 50pt;
+  display: flex;
+  justify-content: center;
+
+  a {
+    position: relative;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: $text-color;
+    border-right: 2px solid $text-color;
+    font-size: 13pt;
+    font-weight: bold;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &.active {
+      color: $accent-color;
+    }
+  }
+}

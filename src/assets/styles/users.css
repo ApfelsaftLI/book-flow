@@ -84,6 +84,64 @@ a[href="/users.php"] {
   justify-content: space-between;
 }
 
+.result-container {
+  grid-column: 3/11;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6pt;
+  margin-top: 60pt;
+}
+
+.result-container .userbox {
+  grid-column: 2/8;
+  display: flex;
+  gap: 15pt;
+  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+  border-radius: 15pt;
+  align-items: center;
+  padding: 20pt;
+  background-color: #FFEEE0;
+  margin-bottom: 5pt;
+}
+
+.result-container .userbox .profile-picture {
+  display: inline-block;
+  width: 40pt;
+  height: 40pt;
+  border-radius: 50%;
+  background-image: linear-gradient(#FFEEE0, #737373);
+}
+
+.result-container .userbox .user-admin-status {
+  margin-left: auto;
+}
+
+.pagination {
+  grid-column: 4/10;
+  margin-top: 20px;
+  margin-bottom: 50pt;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination a {
+  position: relative;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #4E2323;
+  border-right: 2px solid #4E2323;
+  font-size: 13pt;
+  font-weight: bold;
+}
+
+.pagination a:last-child {
+  border-right: none;
+}
+
+.pagination a.active {
+  color: #38703E;
+}
+
 
 
 /*# sourceMappingURL=users.css.map */
