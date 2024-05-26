@@ -120,7 +120,7 @@ a[href="/users.php"] {
   color: #4E2323;
   background-color: #FFEEE0;
   padding: 7pt 10pt;
-  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+  border: 1px solid #4E2323;
 }
 
 .pagination {

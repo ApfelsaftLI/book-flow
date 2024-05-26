@@ -56,8 +56,7 @@ a[href="/users.php"] {
         color: $text-color;
         background-color: $background-primary;
         padding: 7pt 10pt;
-        filter: $drop-shadow;
-
+        border: 1px solid $text-color;
       }
     }
   }
