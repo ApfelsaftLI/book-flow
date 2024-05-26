@@ -62,9 +62,8 @@
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
 }
 
-.search-container .dropdown .neuButton {
-  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
-  text-align: right;
+.search-container .dropdown a:last-child {
+  margin-left: auto;
 }
 
 .highlighted-button {
@@ -82,11 +81,6 @@
 
 a[href="/users.php"] {
   font-weight: bold;
-}
-
-.dropdown {
-  display: flex;
-  justify-content: space-between;
 }
 
 .result-container {

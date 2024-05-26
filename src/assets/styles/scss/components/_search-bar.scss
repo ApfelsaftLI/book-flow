@@ -68,9 +68,8 @@
       }
     }
 
-    .neuButton {
-      filter: $drop-shadow;
-      text-align: right;
+    a:last-child {
+      margin-left: auto;
     }
   }
 }
