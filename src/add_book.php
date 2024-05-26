@@ -12,39 +12,6 @@ if (!$isAdmin) {
 include_once "includes/functions.php";
 include_once "includes/db.php";
 
-$id = intval($_GET["book_id"]);
-$result = listBook($id);
-
-if (!$result) {
-    die("Book not found.");
-}
-
-$id = $result['id'];
-$nummer = $result['nummer'];
-$kurztitle = $result['kurztitle'];
-$kategorie = $result['kategorie'];
-$verkauft = $result['verkauft'];
-$autor = $result['autor'];
-$title = $result['title'];
-$foto = $result['foto'];
-$zustand = $result['zustand'];
-$resultKateorien = getKategorie($kategorie);
-$kategorieClean = $resultKateorien['kategorie'];
-
-switch ($zustand) {
-    case 'G':
-        $zustandSelect = 'Gut';
-        break;
-    case 'M':
-        $zustandSelect = 'Mittel';
-        break;
-    case 'S':
-        $zustandSelect = 'Schlecht';
-        break;
-    default:
-        $zustandSelect = 'Unbekannt';
-        break;
-}
 ?>
 
 <!doctype html>
@@ -60,20 +27,19 @@ switch ($zustand) {
 <body class="grid-container">
 <?php include_once "templates/header.php"; ?>
 <main class="grid-container">
-    <form action="update_book.php" method="post" class="editForm" enctype="multipart/form-data">
-        <input type="hidden" name="book_id" value="<?php echo $id; ?>">
+    <form action="insert_book.php" method="post" class="editForm" enctype="multipart/form-data">
 
         <label for="title">Title:</label>
-        <textarea id="title" name="title"><?php echo htmlspecialchars($title); ?></textarea><br>
+        <textarea id="title" name="title"></textarea><br>
 
         <label for="kurztitle">Kurztitle:</label>
-        <textarea id="kurztitle" name="kurztitle"><?php echo htmlspecialchars($kurztitle); ?></textarea><br>
+        <textarea id="kurztitle" name="kurztitle"></textarea><br>
 
         <label for="autor">Autor:</label>
-        <textarea id="autor" name="autor"><?php echo htmlspecialchars($autor); ?></textarea><br>
+        <textarea id="autor" name="autor"></textarea><br>
 
         <label for="nummer">Nummer:</label>
-        <input type="text" id="nummer" name="nummer" value="<?php echo htmlspecialchars($nummer); ?>"><br>
+        <input type="text" id="nummer" name="nummer" value=""><br>
 
         <label for="lol">Bild:</label><br>
         <label for="image" class="image">Klicken Sie hier um ein Bild hochzuladen</label>
@@ -81,7 +47,7 @@ switch ($zustand) {
 
         <label for="kategorie">Kategorie:</label>
         <select name="kategorie" id="kategorie">
-            <option value="<?php echo $kategorie; ?>"><?php echo htmlspecialchars($kategorieClean); ?></option>
+            <option value=""></option>
             <?php
             for ($i = 1; $i <= 14; $i++) {
                 $resultKateorien = getKategorie($i);
@@ -93,7 +59,7 @@ switch ($zustand) {
 
         <label for="zustand">Zustand:</label>
         <select name="zustand" id="zustand">
-            <option value="<?php echo htmlspecialchars($zustand); ?>"><?php echo htmlspecialchars($zustandSelect); ?></option>
+            <option value=""></option>
             <option value="G">Gut</option>
             <option value="M">Mittel</option>
             <option value="S">Schlecht</option>

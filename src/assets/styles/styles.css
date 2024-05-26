@@ -364,6 +364,11 @@ table {
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
 }
 
+.search-container .dropdown .neuButton {
+  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+  text-align: right;
+}
+
 .book-info-box {
   margin-top: 10px;
   grid-column: span 3;

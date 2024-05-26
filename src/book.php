@@ -55,39 +55,43 @@ session_start();
         $book_id = intval($book_id);
         if ($isAdmin) {
             echo '<div class="edit-button">
-            <a href="edit_book.php?book_id=' .$id . '" class="send-value-button">Edit Book</a>
+            <a href="edit_book.php?book_id=' . $id . '" class="send-value-button">Buch bearbeiten</a>
+        </div>';
+            echo '<div class="delet-button">
+            <a href="delet_book.php?book_id=' . $id . '" class="send-value-button2">Buch löschen</a>
         </div>';
         }
         ?>
-        <?php if(isset($foto)): ?>
+        <?php if (isset($foto)): ?>
             <img src="assets/images/books/<?php echo $foto; ?>" alt="Book Cover">
         <?php endif; ?>
-        <?php if(isset($kurztitle)): ?>
+        <?php if (isset($kurztitle)): ?>
             <h2><?php echo $kurztitle; ?></h2>
         <?php endif; ?>
-        <?php if(isset($autor)): ?>
+        <?php if (isset($autor)): ?>
             <p><?php echo $autor; ?></p>
         <?php endif; ?><br>
         <div class="line"></div>
         <h2>Beschreibung</h2>
         <div class="line"></div>
         <br>
-        <?php if(isset($title)): ?>
+        <?php if (isset($title)): ?>
             <p><?php echo $title; ?></p>
         <?php endif; ?><br>
         <div class="line"></div>
         <h2>Weitere Informationen</h2>
-        <div class="line"></div><br>
-        <?php if(isset($nummer)): ?>
+        <div class="line"></div>
+        <br>
+        <?php if (isset($nummer)): ?>
             <p>Referenznummer: <?php echo $nummer; ?></p>
         <?php endif; ?>
-        <?php if(isset($id)): ?>
+        <?php if (isset($id)): ?>
             <p>Referenz-ID: <?php echo $id; ?></p>
         <?php endif; ?>
-        <?php if(isset($nummer)): ?>
+        <?php if (isset($nummer)): ?>
             <p>Kategorie: <?php echo $kategorieClean; ?></p>
         <?php endif; ?>
-        <?php if(isset($zustand)): ?>
+        <?php if (isset($zustand)): ?>
             <p>Das Buch ist in einem <?php echo $zustand; ?> Zustand.</p>
         <?php endif; ?>
     </div>
