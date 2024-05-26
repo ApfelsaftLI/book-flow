@@ -69,6 +69,7 @@ header img {
   font-size: 14pt;
   color: #4E2323;
   min-height: 3rem;
+  background-color: #FFEEE0;
 }
 .login-container form #login-button-wrapper {
   display: flex;

@@ -122,6 +122,46 @@ a[href="/users.php"] {
   padding: 7pt 10pt;
   border: 1px solid #4E2323;
 }
+.result-container .customerbox {
+  grid-column: 1/9;
+  display: flex;
+  gap: 15pt;
+  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+  border-radius: 15pt;
+  align-items: center;
+  padding: 20pt;
+  background-color: #FFEEE0;
+  margin-bottom: 5pt;
+}
+.result-container .customerbox .profile-picture {
+  display: inline-block;
+  width: 40pt;
+  height: 40pt;
+  border-radius: 50%;
+  background-image: linear-gradient(#FFEEE0, #737373);
+}
+.result-container .customerbox .customer-informations {
+  display: flex;
+  flex-direction: column;
+  gap: 5pt;
+}
+.result-container .customerbox .customer-informations > div {
+  display: flex;
+  flex-direction: row;
+  gap: 10pt;
+  align-items: center;
+}
+.result-container .customerbox .customer-informations > div img {
+  height: 15pt;
+}
+.result-container .customerbox .customer-edit-button {
+  aspect-ratio: 1/1;
+  width: 20pt;
+  background-image: url("../images/edit.svg");
+  background-size: contain;
+  display: block;
+  margin-left: auto;
+}
 
 .pagination {
   grid-column: 4/10;

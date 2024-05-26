@@ -30,3 +30,8 @@ function checkFileExtension($ext) {
     }
     return $pass;
 }
+
+function reformateDate(string $date): string {
+    $dateArray = explode("-", $date);
+    return implode(".", array_reverse($dateArray));
+}
