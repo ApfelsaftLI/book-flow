@@ -154,6 +154,9 @@ include 'includes/db.php';
                             </option>
                         </select>
                     </div>
+                    <div class="neuButton">
+                        <a href="/add_book.php" class="highlighted-button">Neu</a>
+                    </div>
                 </div>
             </div>
         </form>

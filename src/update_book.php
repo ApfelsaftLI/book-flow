@@ -3,6 +3,7 @@ session_start();
 include_once "includes/db.php";
 include_once "includes/functions.php";
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $book_id = htmlspecialchars($_POST["book_id"]);
     $title = htmlspecialchars($_POST["title"]);
     $autor = htmlspecialchars($_POST["autor"]);
@@ -10,41 +11,50 @@ include_once "includes/functions.php";
     $nummer = htmlspecialchars($_POST["nummer"]);
     $zustand = htmlspecialchars($_POST["zustand"]);
     $selectedKategorie = htmlspecialchars($_POST['kategorie']);
-$result = updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie);
-if ($result) {
-    $ext = substr(strrchr($_FILES['file']['name'], "."), 1);
-    $fileAccepted = checkFileExtension($ext);
-    $fileSize = $_FILES['file']['size'];
 
-    if($fileAccepted==1 && $fileSize > '82428800'){
-        if (is_uploaded_file($_FILES['my_upload']['tmp_name'])){
-            if(empty($_FILES['my_upload']['name'])){
-            exit;
-            }
-            $uploadFileName = $_FILES['my_upload']['name'];
+    if (!filter_var($book_id, FILTER_VALIDATE_INT)) {
+        die("Invalid book ID");
+    }
+
+    $currentImage = getImage($book_id);
+    $currentImage = $currentImage["foto"];
+
+    if (isset($_FILES["file"]) && $_FILES['file']['error'] == UPLOAD_ERR_OK) {
+        $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+        $fileAccepted = checkFileExtension($ext);
+        $fileSize = $_FILES['file']['size'];
+
+        if ($fileAccepted && $fileSize <= 8388608) {
+            $uploadFileName = $_FILES['file']['name'];
             $fileName = strtok($uploadFileName, ".");
-            $fileNameComplet = $fileName . $ext;
-            $dest=__DIR__.'assets/images/books'.$fileNameComplet;
-            move_uploaded_file($_FILES['my_upload']['tmp_name'], $dest);
-    }}
+            $fileNameShortend = substr($fileName, 0, 20);
+            $fileNameFinalised = str_replace(' ', '_', $fileNameShortend);
+            $fileNameComplet = $fileNameFinalised . '.' . $ext;
+            $dest = __DIR__ . '/assets/images/books/' . $fileNameComplet;
 
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $dest)) {
+                $result = updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie, $fileNameComplet);
+            } else {
+                die("Failed to move uploaded file.");
+            }
+        } else {
+            die("File not accepted or too large.");
+        }
+    } else {
+        $result = updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie, $currentImage);
+    }}
     ?>
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Redirecting...</title>
-    </head>
-    <body>
-    <form id="redirectForm" action="book.php" method="post">
-        <input type="hidden" name="book_id" value="<?php echo $book_id; ?>">
-    </form>
-    <script type="text/javascript">
-        document.getElementById('redirectForm').submit();
-    </script>
-    </body>
-    </html>
-    <?php
-} else {
-    echo "Failed to update book details.";
-}
-?>
+        <!DOCTYPE html>
+        <html lang="de">
+        <head>
+            <title>Redirecting...</title>
+        </head>
+        <body>
+        <form id="redirectForm" action="book.php" method="post">
+            <input type="hidden" name="book_id" value="<?php echo htmlspecialchars($book_id); ?>">
+        </form>
+        <script type="text/javascript">
+            document.getElementById('redirectForm').submit();
+        </script>
+        </body>
+        </html>

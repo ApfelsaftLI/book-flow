@@ -332,6 +332,11 @@ table {
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
 }
 
+.search-container .dropdown .neuButton {
+  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+  text-align: right;
+}
+
 .book-info-box {
   margin-top: 10px;
   grid-column: span 3;
@@ -533,6 +538,22 @@ table {
 
 .editForm input[type=submit]:hover {
   background-color: #ffc79c;
+}
+
+.editForm input[type=file] {
+  display: none;
+}
+
+.editForm .image {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  background-color: #FFE4CF;
+  color: #4E2323;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .outline-button {

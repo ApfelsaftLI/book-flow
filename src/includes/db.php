@@ -245,7 +245,20 @@ function getKategorie($kategorie) {
     return ["kategorie" => $resultKateorien['kategorie']];
 }
 
-function updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie) {
+function getImage($book_id)
+{
+    if (!$_SESSION["dbConnection"])
+        echo "Connection Failed";
+    require_once 'db.php';
+    global $connection;
+    $sqlQuery = "SELECT foto FROM buecher where id = " . "$book_id";
+    $statement = $connection->prepare($sqlQuery);
+    $statement->execute();
+    $resultKateorien = $statement->fetch(PDO::FETCH_ASSOC);
+    return ["foto" => $resultKateorien['foto']];
+}
+
+function updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie, $fileNameComplet) {
     global $connection;
     try {
         $sqlQuery = "UPDATE buecher SET 
@@ -254,7 +267,8 @@ function updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $se
                      kurztitle = :kurztitle,
                      nummer = :nummer,
                      zustand = :zustand,
-                    kategorie = :selectedKategorie
+                    kategorie = :selectedKategorie,
+                    foto  = :fileNameComplet
                      WHERE id = :book_id";
         $statement = $connection->prepare($sqlQuery);
 
@@ -265,6 +279,46 @@ function updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $se
         $statement->bindParam(':zustand', $zustand, PDO::PARAM_STR);
         $statement->bindParam(':book_id', $book_id, PDO::PARAM_INT);
         $statement->bindParam(':selectedKategorie', $selectedKategorie, PDO::PARAM_INT);
+        $statement->bindParam(':fileNameComplet', $fileNameComplet, PDO::PARAM_STR);
+
+        $success = $statement->execute();
+
+        return $success;
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
+function addBook($title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie, $fileNameComplet) {
+    global $connection;
+    //WHY NOT WORK????
+    try {
+        $sqlQuery = "INSERT INTO buecher (title, autor, kurztitle, nummer, zustand, kategorie, foto) 
+                     VALUES (:title, :autor, :kurztitle, :nummer, :zustand, :selectedKategorie, :fileNameComplet)";
+        $statement = $connection->prepare($sqlQuery);
+
+        $statement->bindParam(':title', $title);
+        $statement->bindParam(':autor', $autor);
+        $statement->bindParam(':kurztitle', $kurztitle);
+        $statement->bindParam(':nummer', $nummer);
+        $statement->bindParam(':zustand', $zustand);
+        $statement->bindParam(':selectedKategorie', $selectedKategorie);
+        $statement->bindParam(':fileNameComplet', $fileNameComplet);
+
+        $success = $statement->execute();
+
+        return $success;
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
+function deleteBook($book_id) {
+    global $connection;
+    try {
+        $sqlQuery = "DELETE FROM buecher WHERE id = :book_id";
+        $statement = $connection->prepare($sqlQuery);
+        $statement->bindParam(':book_id', $book_id, PDO::PARAM_INT);
 
         $success = $statement->execute();
 
