@@ -37,11 +37,27 @@ a[href="/users.php"] {
     }
 
     .user-informations {
-
+      > div {
+        display: flex;
+        flex-direction: row;
+        gap: 10pt;
+        align-items: baseline;
+      }
     }
 
     .user-admin-status {
       margin-left: auto;
+
+      & select {
+        border-radius: 15pt;
+        width: fit-content;
+        font-size: 11pt;
+        font-weight: 600;
+        color: $text-color;
+        background-color: $background-primary;
+        padding: 7pt 10pt;
+        border: 1px solid $text-color;
+      }
     }
   }
 

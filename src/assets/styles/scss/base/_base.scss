@@ -41,7 +41,23 @@ main {
   text-decoration: none;
   color: $text-color;
 
-  & * {@extend .text-small-semi}
+  & * {
+    @extend .text-small-semi
+  }
+}
+
+.text-medium-normal {
+  font-weight: normal;
+  font-size: 20pt;
+  color: $text-color;
+  margin-block: 2pt;
+}
+
+.text-medium-semi {
+  font-weight: 600;
+  font-size: 20pt;
+  color: $text-color;
+  margin-block: 2pt;
 }
 
 .text-large-bold {
@@ -51,12 +67,6 @@ main {
   margin-block: 2pt;
 }
 
-.text-medium-normal {
-  font-weight: normal;
-  font-size: 20pt;
-  color: $text-color;
-  margin-block: 2pt;
-}
 
 .large-container {
   grid-column: 2/12;
@@ -89,6 +99,28 @@ main {
   }
 }
 
+.success {
+  background-color: $accent-color;
+  position: fixed;
+  padding: 1rem;
+  max-width: 100vw;
+  bottom: 1rem;
+  animation: whoosh 1.25s;
+  left: 1rem;
+  overflow-wrap: break-word;
+  z-index: 9999;
+
+  b {
+    font-weight: 600;
+    font-size: 14pt;
+  }
+
+  p {
+    font-weight: normal;
+    font-size: 12pt;
+
+  }
+}
 
 @keyframes whoosh {
   from {

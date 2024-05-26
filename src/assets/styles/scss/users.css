@@ -103,8 +103,24 @@ a[href="/users.php"] {
   border-radius: 50%;
   background-image: linear-gradient(#FFEEE0, #737373);
 }
+.result-container .userbox .user-informations > div {
+  display: flex;
+  flex-direction: row;
+  gap: 10pt;
+  align-items: baseline;
+}
 .result-container .userbox .user-admin-status {
   margin-left: auto;
+}
+.result-container .userbox .user-admin-status select {
+  border-radius: 15pt;
+  width: fit-content;
+  font-size: 11pt;
+  font-weight: 600;
+  color: #4E2323;
+  background-color: #FFEEE0;
+  padding: 7pt 10pt;
+  border: 1px solid #4E2323;
 }
 
 .pagination {

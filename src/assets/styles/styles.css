@@ -59,16 +59,23 @@ main {
   color: #4E2323;
 }
 
-.text-large-bold {
-  font-weight: bold;
-  font-size: 28pt;
+.text-medium-normal {
+  font-weight: normal;
+  font-size: 20pt;
   color: #4E2323;
   margin-block: 2pt;
 }
 
-.text-medium-normal {
-  font-weight: normal;
+.text-medium-semi {
+  font-weight: 600;
   font-size: 20pt;
+  color: #4E2323;
+  margin-block: 2pt;
+}
+
+.text-large-bold {
+  font-weight: bold;
+  font-size: 28pt;
   color: #4E2323;
   margin-block: 2pt;
 }
@@ -99,6 +106,28 @@ main {
 }
 
 .error p {
+  font-weight: normal;
+  font-size: 12pt;
+}
+
+.success {
+  background-color: #38703E;
+  position: fixed;
+  padding: 1rem;
+  max-width: 100vw;
+  bottom: 1rem;
+  animation: whoosh 1.25s;
+  left: 1rem;
+  overflow-wrap: break-word;
+  z-index: 9999;
+}
+
+.success b {
+  font-weight: 600;
+  font-size: 14pt;
+}
+
+.success p {
   font-weight: normal;
   font-size: 12pt;
 }
@@ -533,6 +562,22 @@ table {
 
 .editForm input[type=submit]:hover {
   background-color: #ffc79c;
+}
+
+.editForm input[type=file] {
+  display: none;
+}
+
+.editForm .image {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  background-color: #FFE4CF;
+  color: #4E2323;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .outline-button {

@@ -2,6 +2,15 @@
 session_start();
 include_once "includes/db.php";
 
+if (isset($_POST['admin-status-id']) && isset($_POST['admin-status'])) {
+    $successfulUpdate = updateAdminStatus($_POST['admin-status-id'], $_POST['admin-status']);
+
+    if ($successfulUpdate) {
+        echo "<div class='success'><b>Der admin Status vom user #{$_POST['admin-status-id']} konte erfolgreich gesetzt werden.</b></div>";
+    } else {
+        echo "<div class='error'><b>Der admin Status vom Nutzer #{$_POST['admin-status-id']} konte leider nicht gesetzt werden.</b></div>";
+    }
+}
 
 $search = $_GET['search'] ?? '';
 $search = trim($search);
@@ -14,6 +23,7 @@ $users = $filter == "users" ? getUserArray($search, 1) : getCustomerArray($searc
 $queryParameters = "?search=" . $search . "&filter=" . $filter;
 $pagesNeeded = $filter == "users" ? getUserPages($search) : getCustomerPages($search);
 
+$fullQuery = $queryParameters . "&page=" . $currentPage;
 
 if (count($users) == 0) {
     echo '<div class="error"><h3>Leider konnte kein Resultat gefunden werden, versuchen Sie es doch mit einer neuen Suche.</h3></div>';
@@ -54,7 +64,9 @@ if (count($users) == 0) {
                             </option>
                         </select>
                     </div>
-                    <a href="/new_user.php" class="highlighted-button">Kunde hinzufügen</a>
+                    <?php if ($filter == 'customers'): ?>
+                        <a href="/new_user.php" class="highlighted-button">Kunde hinzufügen</a>
+                    <?php endif; ?>
 
                 </div>
             </div>
@@ -66,8 +78,24 @@ if (count($users) == 0) {
                 <div class="userbox">
                     <div class='profile-picture'
                          style='background-image: url("<?= getProfilePicture($user) ?>")'></div>
-                    <div class="user-informations">Tim Landolt</div>
-                    <div class="user-admin-status">No</div>
+                    <div class="user-informations">
+                        <div><p class="user-username text-medium-semi"><?= $user['benutzername'] ?></p>
+                            <p class="user-fullname text-medium-normal"><?= "(" . $user['vorname'] . " " . $user['name'] . ")" ?>
+                            </p></div>
+                        <div><p class="user-id text-small-normal">#<?= $user['ID'] ?></p>
+                            <a class="user-email text-small-semi"
+                               href="mailto:<?= $user['email'] ?>"><?= $user['email'] ?></a></div>
+                    </div>
+                    <div class="user-admin-status">
+                        <form action="<?= './users.php' . $fullQuery ?>" method="post">
+                            <input type="hidden" name="admin-status-id" value="<?= $user['ID'] ?>">
+                            <select name="admin-status"
+                                    id="user-admin-status-<?= $user['ID'] ?>"
+                                    onchange="this.form.submit()">
+                                <option value="1" <?= $user['admin'] == 1 ? "selected" : "" ?>>Admin</option>
+                                <option value="0" <?= $user['admin'] != 1 ? "selected" : "" ?>>Nutzer</option>
+                            </select></form>
+                    </div>
                 </div>
 
             <?php endforeach; ?>

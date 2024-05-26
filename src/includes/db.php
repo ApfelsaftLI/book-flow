@@ -15,21 +15,44 @@ try {
     $_SESSION["dbConnection"] = false;
 }
 
+function updateAdminStatus($id, $status): bool {
+    if (!$_SESSION["dbConnection"]) return false;
+    global $connection;
+
+    $sqlQuery = "UPDATE benutzer
+        SET admin = :status WHERE ID = :id";
+
+
+    $statement = $connection->prepare($sqlQuery);
+
+    $statement->bindParam('status', $status, PDO::PARAM_INT);
+    $statement->bindParam('id', $id, PDO::PARAM_INT);
+    return $statement->execute();
+}
+
 function getUserArray(string $searchQuery, int $page): array {
     if (!$_SESSION["dbConnection"]) return [];
     global $connection;
 
+    $displacement = $page * 8 - 8;
+    $searchQuery = "%$searchQuery%";
+
     $sqlQuery = "SELECT ID, benutzername, email, name, vorname, admin 
                 FROM benutzer
-                WHERE ID LIKE '%$searchQuery%'
-                OR benutzername LIKE '%$searchQuery%'
-                OR email LIKE '%$searchQuery%'
-                OR name LIKE '%$searchQuery%'
-                OR vorname LIKE '%$searchQuery%'";
+                WHERE ID LIKE :search
+                OR benutzername LIKE :search
+                OR email LIKE :search
+                OR name LIKE :search
+                OR vorname LIKE :search
+                LIMIT 8 OFFSET :displacement";
 
 
     $statement = $connection->prepare($sqlQuery);
+
+    $statement->bindParam('search', $searchQuery, PDO::PARAM_STR);
+    $statement->bindParam('displacement', $displacement, PDO::PARAM_INT);
     $statement->execute();
+
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
     return $results;
