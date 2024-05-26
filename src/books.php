@@ -212,7 +212,7 @@ include 'includes/db.php';
         <?php
         for ($i = max(1, $currentPage - 2); $i <= min($pagesNeeded, $currentPage + 2); $i++):
             ?>
-            <a href="?page=<?php echo $i; ?>&<?php echo $queryParameters; ?>" <?php if ($i === $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
+            <a href="?page=<?php echo $i; ?>&<?php echo $queryParameters; ?>" <?php if ($i == $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
         <?php endfor; ?>
         <a href="?page=<?php echo min($pagesNeeded, $currentPage + 1); ?>&<?php echo $queryParameters; ?>"
            class="pagination-btn <?php if ($currentPage == $pagesNeeded) echo 'disabled'; ?>">►</a>

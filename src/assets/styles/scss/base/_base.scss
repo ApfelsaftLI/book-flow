@@ -74,6 +74,9 @@ main {
   padding: 40pt 80pt;
   border-radius: 15pt;
   filter: $drop-shadow;
+  background-image: url("../images/gradient.svg");
+  background-repeat: no-repeat;
+  background-position: bottom right;
 }
 
 .error {

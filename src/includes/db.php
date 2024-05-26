@@ -62,16 +62,24 @@ function getCustomerArray(string $searchQuery, int $page): array {
     if (!$_SESSION["dbConnection"]) return [];
     global $connection;
 
+    $displacement = $page * 8 - 8;
+    $searchQuery = "%$searchQuery%";
+
     $sqlQuery = "SELECT *
                 FROM kunden
-                WHERE kid LIKE '%$searchQuery%'
-                OR email LIKE '%$searchQuery%'
-                OR name LIKE '%$searchQuery%'
-                OR vorname LIKE '%$searchQuery%'";
+                WHERE kid LIKE :search
+                OR email LIKE :search
+                OR name LIKE :search
+                OR vorname LIKE :search
+                LIMIT 8 OFFSET :displacement";
 
 
     $statement = $connection->prepare($sqlQuery);
+
+    $statement->bindParam('search', $searchQuery, PDO::PARAM_STR);
+    $statement->bindParam('displacement', $displacement, PDO::PARAM_INT);
     $statement->execute();
+
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
     return $results;

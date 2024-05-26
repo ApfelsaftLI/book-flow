@@ -1,6 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['user']) || !$_SESSION['user']['admin']) header("Location: ../");
 include_once "includes/db.php";
+include_once "includes/functions.php";
 
 if (isset($_POST['admin-status-id']) && isset($_POST['admin-status'])) {
     $successfulUpdate = updateAdminStatus($_POST['admin-status-id'], $_POST['admin-status']);
@@ -18,7 +20,7 @@ $search = trim($search);
 $filter = $_GET['filter'] ?? "users";
 
 $currentPage = $_GET['page'] ?? 1;
-$users = $filter == "users" ? getUserArray($search, 1) : getCustomerArray($search, 1);
+$users = $filter == "users" ? getUserArray($search, $currentPage) : getCustomerArray($search, $currentPage);
 
 $queryParameters = "?search=" . $search . "&filter=" . $filter;
 $pagesNeeded = $filter == "users" ? getUserPages($search) : getCustomerPages($search);
@@ -73,6 +75,7 @@ if (count($users) == 0) {
         </form>
     </div>
     <div class="result-container">
+        <!-- Nutzer -->
         <?php if ($filter == "users"): ?>
             <?php foreach ($users as $user): ?>
                 <div class="userbox">
@@ -84,7 +87,7 @@ if (count($users) == 0) {
                             </p></div>
                         <div><p class="user-id text-small-normal">#<?= $user['ID'] ?></p>
                             <a class="user-email text-small-semi"
-                               href="mailto:<?= $user['email'] ?>"><?= $user['email'] ?></a></div>
+                               href="mailto:<?= strtolower($user['email']) ?>"><?= strtolower($user['email']) ?></a></div>
                     </div>
                     <div class="user-admin-status">
                         <form action="<?= './users.php' . $fullQuery ?>" method="post">
@@ -99,7 +102,31 @@ if (count($users) == 0) {
                 </div>
 
             <?php endforeach; ?>
+            <!-- Kunden -->
         <?php else: ?>
+            <?php foreach ($users as $customer): ?>
+                <div class="customerbox">
+                    <div class='profile-picture'
+                         style='background-image: url("<?= getProfilePicture($customer) ?>")'></div>
+                    <div class="customer-informations">
+                        <div>
+                            <p class="customer-fullname text-medium-normal"><?= $customer['vorname'] . " " . $customer['name'] ?></p>
+                            <img src="./assets/images/<?= $customer['geschlecht'] == "M" ? "male.svg" : "female.svg" ?>"
+                                 draggable="false">
+                            <p class="customer-birthdate text-small-normal"><?= reformateDate($customer['geburtstag']) ?></p>
+                        </div>
+                        <div>
+                            <p class="customer-id text-small-normal">#<?= $customer['kid'] ?></p>
+                            <p class="customer-join-date text-small-normal"><?= reformateDate($customer['kunde_seit']) ?></p>
+                            <img src="./assets/images/<?= $customer['kontaktpermail'] == "1" ? "email_yes.svg" : "email_no.svg" ?>" draggable="false">
+                            <a class="user-email text-small-semi"
+                               href="mailto:<?= strtolower($customer['email']) ?>"><?= strtolower($customer['email']) ?></a>
+                        </div>
+                    </div>
+                    <a class="customer-edit-button" href="./edit_customer.php?id=<?= $customer['kid'] ?>"></a>
+                </div>
+
+            <?php endforeach; ?>
 
         <?php endif; ?>
     </div>
@@ -110,7 +137,7 @@ if (count($users) == 0) {
         <?php
         for ($i = max(1, $currentPage - 2); $i <= min($pagesNeeded, $currentPage + 2); $i++):
             ?>
-            <a href="<?= $queryParameters . "&page=" . $i ?>" <?= $i === $currentPage ? 'class="active"' : ''; ?>><?= $i; ?></a>
+            <a href="<?= $queryParameters . "&page=" . $i ?>" <?= $i == $currentPage ? 'class="active"' : ''; ?>><?= $i; ?></a>
         <?php endfor; ?>
         <a href="<?= $queryParameters . "&page=" . min($pagesNeeded, $currentPage + 1) ?>"
            class="pagination-btn <?= $currentPage == $pagesNeeded ? 'disabled' : '' ?>">►</a>

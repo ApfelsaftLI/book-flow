@@ -61,6 +61,49 @@ a[href="/users.php"] {
     }
   }
 
+  .customerbox {
+    grid-column: 1/9;
+    display: flex;
+    gap: 15pt;
+    filter: $drop-shadow;
+    border-radius: 15pt;
+    align-items: center;
+    padding: 20pt;
+    background-color: $background-primary;
+    margin-bottom: 5pt;
+
+    .profile-picture {
+      display: inline-block;
+      width: 40pt;
+      height: 40pt;
+      border-radius: 50%;
+      background-image: linear-gradient($background-primary, #737373);
+    }
+
+    .customer-informations {
+      display: flex;
+      flex-direction: column;
+      gap: 5pt;
+      > div {
+        display: flex;
+        flex-direction: row;
+        gap: 10pt;
+        align-items: center;
+
+        img {
+          height: 15pt;
+        }
+      }
+    }
+    .customer-edit-button {
+      aspect-ratio: 1/1;
+      width: 20pt;
+      background-image: url("../images/edit.svg");
+      background-size: contain;
+      display: block;
+      margin-left: auto;
+    }
+  }
 }
 
 .pagination {
