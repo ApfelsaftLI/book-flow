@@ -2,7 +2,13 @@
 session_start();
 include_once "includes/db.php";
 include_once "includes/functions.php";
+$isLoggedIn = array_key_exists("user", $_SESSION);
+$isAdmin = $isLoggedIn && $_SESSION["user"]["admin"] == "true";
 
+if (!$isAdmin) {
+    header("Location: index.php");
+    exit;
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = htmlspecialchars($_POST["title"]);
     $autor = htmlspecialchars($_POST["autor"]);
@@ -10,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nummer = htmlspecialchars($_POST["nummer"]);
     $zustand = htmlspecialchars($_POST["zustand"]);
     $selectedKategorie = htmlspecialchars($_POST['kategorie']);
-    $fileNameComplete = NULL;
+    $fileNameComplete = "book.jpg";
 
     if (isset($_FILES["file"]) && $_FILES['file']['error'] == UPLOAD_ERR_OK) {
         $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);

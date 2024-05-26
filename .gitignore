@@ -101,6 +101,12 @@ fabric.properties
 *.sass.map
 *.scss.map
 
+### Images ###
+.assets/images/books/
+!.assets/images/books/book.jpg
+
+
+
 # End of https://www.toptal.com/developers/gitignore/api/phpstorm+all
 
 
