@@ -1,6 +1,9 @@
 <?php
 session_start();
 if (!isset($_SESSION['user']) || !$_SESSION['user']['admin']) header("Location: ../");
+
+include_once "./includes/new-user-handler.php";
+
 include_once "includes/db.php";
 include_once "includes/functions.php";
 
@@ -67,7 +70,7 @@ if (count($users) == 0) {
                         </select>
                     </div>
                     <?php if ($filter == 'customers'): ?>
-                        <a href="/new_user.php" class="highlighted-button">Kunde hinzufügen</a>
+                        <a href="./new_user.php" class="highlighted-button">Kunde hinzufügen</a>
                     <?php endif; ?>
 
                 </div>
