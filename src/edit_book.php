@@ -66,6 +66,10 @@ switch ($zustand) {
     <label for="nummer">Nummer:</label>
     <input type="text" id="nummer" name="nummer" value="<?php echo $nummer; ?>"><br>
 
+    <label for="lol" >Bild:</label><br>
+    <label for="image" class="image">Klicken Sie hier um ein Bild hochzuladen</label>
+    <input type="file" id="image" name="image"><br>
+
     <label for="kategorie">Kategorie:</label>
     <select name="kategorie" id="kategorie">
         <option value="<?php echo $kategorie; ?>"><?php echo $kategorieClean; ?></option>
