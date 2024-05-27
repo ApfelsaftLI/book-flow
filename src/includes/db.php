@@ -15,6 +15,25 @@ try {
     $_SESSION["dbConnection"] = false;
 }
 
+function addCustomer(array $customer): bool {
+    if (!$_SESSION["dbConnection"]) return false;
+    global $connection;
+
+    $sqlQuery = "INSERT INTO kunden
+                VALUES(null, :geburtstag, :vorname, :name, :geschlecht, :kunde_seit, :email, :kontaktpermail)";
+
+    $statement = $connection->prepare($sqlQuery);
+
+    $statement->bindParam('geburtstag', $customer['birthdate']);
+    $statement->bindParam('vorname', $customer['first-name']);
+    $statement->bindParam('name', $customer['name']);
+    $statement->bindParam('geschlecht', $customer['gender']);
+    $statement->bindParam('kunde_seit', $customer['customer-since']);
+    $statement->bindParam('email', $customer['email']);
+    $statement->bindParam('kontaktpermail', $customer['mailcontact'], PDO::PARAM_INT);
+    return $statement->execute();
+}
+
 function updateAdminStatus($id, $status): bool {
     if (!$_SESSION["dbConnection"]) return false;
     global $connection;
@@ -276,8 +295,7 @@ function getKategorie($kategorie) {
     return ["kategorie" => $resultKateorien['kategorie']];
 }
 
-function getImage($book_id)
-{
+function getImage($book_id) {
     if (!$_SESSION["dbConnection"])
         echo "Connection Failed";
     require_once 'db.php';

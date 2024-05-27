@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: book-flow-mysql:3306
--- Erstellungszeit: 27. Mai 2024 um 19:24
+-- Erstellungszeit: 27. Mai 2024 um 19:41
 -- Server-Version: 8.3.0
 -- PHP-Version: 8.2.8
 
@@ -4293,6 +4293,12 @@ ALTER TABLE `buecher`
 --
 ALTER TABLE `kategorien`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT für Tabelle `kunden`
+--
+ALTER TABLE `kunden`
+  MODIFY `kid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10812;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

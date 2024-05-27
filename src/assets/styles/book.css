@@ -60,7 +60,8 @@ a[href="/books.php"] {
   padding: 7pt 10pt;
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
   position: absolute;
-  left: 10px;
+  margin-top: 50px;
+  right: 10px;
 }
 
 

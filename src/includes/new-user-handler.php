@@ -1,23 +1,28 @@
 <?php
-echo print_r($_POST);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $newUser = [];
+
     if (!validateName($_POST)) return;
-    $name = explode(" ", trim($_POST['name']))[-1];
-    $firstName = explode(" ", trim($_POST['name']))[0];
+    $nameArray = explode(" ", trim($_POST['name']));
+    $newUser['name'] = end($nameArray);
+    $newUser['first-name'] = $nameArray[0];
 
     if (!validateEmail($_POST)) return;
-    $email = trim($_POST['email']);
+    $newUser['email'] = trim($_POST['email']);
 
     $mailcontact = $_POST['mailcontact'] ?? 0;
     $mailcontact = in_array($mailcontact, [0, 1]) ? $mailcontact : 0;
+    $newUser['mailcontact'] = $mailcontact;
 
-    $birthdate = $_POST['birthdate'] ?? null;
-    if (!validateEmail())
+    $newUser['birthdate'] = $_POST['birthdate'] ?? 'null';
 
+    $newUser['gender'] = $_POST['gender'] ?? 'null';
 
+    $newUser['customer-since'] = date("Y-m-d");
 
-    $gender = $_POST['gender'] ?? null;
+    include_once "db.php";
+    if (!addCustomer($newUser)) fail("<br>Der Nutzer konnte nicht in die Datenbank übertragen werden.");
 
 }
 
@@ -31,6 +36,11 @@ function validateName(array $userArray): bool {
 
     if (count(explode(" ", $name)) < 2) {
         fail('"' . $name . '" ist kein ganzer Name.');
+        return false;
+    }
+
+    if (strlen($name) > 50) {
+        fail('Der angegebene Name ist zu kurz.');
         return false;
     }
 
