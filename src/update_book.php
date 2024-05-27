@@ -2,7 +2,13 @@
 session_start();
 include_once "includes/db.php";
 include_once "includes/functions.php";
+$isLoggedIn = array_key_exists("user", $_SESSION);
+$isAdmin = $isLoggedIn && $_SESSION["user"]["admin"] == "true";
 
+if (!$isAdmin) {
+    header("Location: index.php");
+    exit;
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $book_id = htmlspecialchars($_POST["book_id"]);
     $title = htmlspecialchars($_POST["title"]);

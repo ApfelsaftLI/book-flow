@@ -154,7 +154,14 @@ include 'includes/db.php';
                             </option>
                         </select>
                     </div>
-                    <a href="/add_book.php" class="highlighted-button">Neu</a>
+                    <?php
+                    $isLoggedIn = array_key_exists("user", $_SESSION);
+                    $isAdmin = $isLoggedIn && $_SESSION["user"]["admin"] == "true";
+
+                    if ($isAdmin) {
+                        echo '<a href="/add_book.php" class="highlighted-button">Neu</a>';
+                    }
+                    ?>
                 </div>
             </div>
         </form>

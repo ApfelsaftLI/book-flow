@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(E_ERROR | E_PARSE);
 
 $isLoggedIn = array_key_exists("user", $_SESSION);
 $isAdmin = $isLoggedIn && $_SESSION["user"]["admin"] == "true";
@@ -64,24 +65,24 @@ switch ($zustand) {
         <input type="hidden" name="book_id" value="<?php echo $id; ?>">
 
         <label for="title">Title:</label>
-        <textarea id="title" name="title"><?php echo htmlspecialchars($title); ?></textarea><br>
+        <textarea id="title" name="title" required><?php echo htmlspecialchars($title); ?></textarea><br>
 
         <label for="kurztitle">Kurztitle:</label>
-        <textarea id="kurztitle" name="kurztitle"><?php echo htmlspecialchars($kurztitle); ?></textarea><br>
+        <textarea id="kurztitle" name="kurztitle" required><?php echo htmlspecialchars($kurztitle); ?></textarea><br>
 
         <label for="autor">Autor:</label>
-        <textarea id="autor" name="autor"><?php echo htmlspecialchars($autor); ?></textarea><br>
+        <textarea id="autor" name="autor" required><?php echo htmlspecialchars($autor); ?></textarea><br>
 
         <label for="nummer">Nummer:</label>
-        <input type="text" id="nummer" name="nummer" value="<?php echo htmlspecialchars($nummer); ?>"><br>
+        <input type="text" id="nummer" name="nummer" value="<?php echo htmlspecialchars($nummer); ?>" required><br>
 
         <label for="lol">Bild:</label><br>
         <label for="image" class="image">Klicken Sie hier um ein Bild hochzuladen</label>
         <input type="file" id="image" name="file"><br>
 
         <label for="kategorie">Kategorie:</label>
-        <select name="kategorie" id="kategorie">
-            <option value="<?php echo $kategorie; ?>"><?php echo htmlspecialchars($kategorieClean); ?></option>
+        <select name="kategorie" id="kategorie" required>
+            <option value="<?php echo $kategorie; ?>"><?php echo $kategorieClean; ?></option>
             <?php
             for ($i = 1; $i <= 14; $i++) {
                 $resultKateorien = getKategorie($i);
@@ -92,7 +93,7 @@ switch ($zustand) {
         </select>
 
         <label for="zustand">Zustand:</label>
-        <select name="zustand" id="zustand">
+        <select name="zustand" id="zustand" required>
             <option value="<?php echo htmlspecialchars($zustand); ?>"><?php echo htmlspecialchars($zustandSelect); ?></option>
             <option value="G">Gut</option>
             <option value="M">Mittel</option>
@@ -100,6 +101,25 @@ switch ($zustand) {
         </select>
         <input type="submit" value="Update">
     </form>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            let isValid = true;
+            const requiredFields = document.querySelectorAll('textarea[required], input[required], select[required]');
+            requiredFields.forEach(function(field) {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = 'red';
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+
+            if (!isValid) {
+                event.preventDefault();
+                alert('Please fill out all required fields.');
+            }
+        });
+    </script>
 </main>
 <?php include_once "templates/footer.php"; ?>
 </body>
