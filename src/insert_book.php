@@ -33,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (move_uploaded_file($_FILES['file']['tmp_name'], $dest)) {
                 $success = addBook($title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie, $fileNameComplete);
-                echo var_dump($success);
                 if ($success) {
                     echo "Book added successfully!";
                 } else {

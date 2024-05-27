@@ -29,23 +29,23 @@ include_once "includes/db.php";
 <main class="grid-container">
     <form action="insert_book.php" method="post" class="editForm" enctype="multipart/form-data">
 
-        <label for="title">Title:</label>
-        <textarea id="title" name="title"></textarea><br>
+        <label for="title">Title*:</label>
+        <textarea id="title" name="title" required="required"></textarea><br>
 
-        <label for="kurztitle">Kurztitle:</label>
+        <label for="kurztitle">Kurztitle*:</label>
         <textarea id="kurztitle" name="kurztitle"></textarea><br>
 
-        <label for="autor">Autor:</label>
+        <label for="autor">Autor*:</label>
         <textarea id="autor" name="autor"></textarea><br>
 
-        <label for="nummer">Nummer:</label>
+        <label for="nummer">Nummer*:</label>
         <input type="text" id="nummer" name="nummer" value=""><br>
 
-        <label for="lol">Bild:</label><br>
+        <label for="lol">Bild*:</label><br>
         <label for="image" class="image">Klicken Sie hier um ein Bild hochzuladen</label>
         <input type="file" id="image" name="file"><br>
 
-        <label for="kategorie">Kategorie:</label>
+        <label for="kategorie">Kategorie*:</label>
         <select name="kategorie" id="kategorie">
             <option value=""></option>
             <?php
@@ -57,7 +57,7 @@ include_once "includes/db.php";
             ?>
         </select>
 
-        <label for="zustand">Zustand:</label>
+        <label for="zustand">Zustand*:</label>
         <select name="zustand" id="zustand">
             <option value=""></option>
             <option value="G">Gut</option>

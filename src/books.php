@@ -160,8 +160,7 @@ include 'includes/db.php';
 
                     if ($isAdmin) {
                         echo '<a href="/add_book.php" class="highlighted-button">Neu</a>';
-                        exit;
-                        }
+                    }
                     ?>
                 </div>
             </div>

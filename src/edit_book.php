@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(E_ERROR | E_PARSE);
 
 $isLoggedIn = array_key_exists("user", $_SESSION);
 $isAdmin = $isLoggedIn && $_SESSION["user"]["admin"] == "true";
@@ -81,7 +82,7 @@ switch ($zustand) {
 
         <label for="kategorie">Kategorie:</label>
         <select name="kategorie" id="kategorie">
-            <option value="<?php echo $kategorie; ?>"><?php echo htmlspecialchars($kategorieClean); ?></option>
+            <option value="<?php echo $kategorie; ?>"><?php echo $kategorieClean; ?></option>
             <?php
             for ($i = 1; $i <= 14; $i++) {
                 $resultKateorien = getKategorie($i);
