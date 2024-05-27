@@ -343,13 +343,19 @@ function addBook(string $title, string $autor, string $kurztitle, int $nummer, s
 
         $success = $statement->execute();
 
-        return $success;
+        $idQuery = "SELECT MAX(id) as max_id FROM buecher";
+        $idStatement = $connection->prepare($idQuery);
+        $idStatement->execute();
+        $result = $idStatement->fetch(PDO::FETCH_ASSOC);
+
+
+        return $result['max_id'];
     } catch (PDOException $e) {
-        // Output error message for debugging
         echo "Error: " . $e->getMessage();
         return false;
     }
 }
+
 
 function deleteBook($book_id) {
     global $connection;
