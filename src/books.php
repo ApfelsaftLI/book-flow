@@ -180,7 +180,6 @@ include 'includes/db.php';
         include_once "includes/functions.php";
         error_reporting(E_ERROR | E_PARSE);
 
-        // Sanitize user inputs
         $searchInput = isset($_GET['search']) ? htmlspecialchars(trim($_GET['search'])) : '';
         $filterInput = isset($_GET['filter']) ? $_GET['filter'] : 'kurztitle';
         $sortInput = isset($_GET['sort']) ? $_GET['sort'] : 'kurztitle ASC';
@@ -193,7 +192,7 @@ include 'includes/db.php';
         $numericFilters = ['id', 'nummer', 'katalog', 'kategorie', 'verfasser'];
         $isNumeric = in_array($filterInput, $numericFilters);
 
-        // Get paginated results
+        // Get pagianted results
         $currentPage = max(1, intval($_GET['page'] ?? 1));
         $resultsPerPage = 12;
         $offset = ($currentPage - 1) * $resultsPerPage;
@@ -203,7 +202,6 @@ include 'includes/db.php';
         $pagesNeeded = ceil($resultCount / $resultsPerPage);
         $currentPaginatedResults = array_slice($results['results'], $offset, $resultsPerPage);
 
-        // Output HTML
         foreach ($currentPaginatedResults as $result) {
             echo '<div class="book-info-box">' . $result . '</div>';
         }

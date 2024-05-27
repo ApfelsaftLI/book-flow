@@ -38,7 +38,7 @@ include_once "includes/db.php";
         <textarea id="autor" name="autor" required maxlength="40"></textarea><br>
 
         <label for="nummer">Nummer*:</label>
-        <input type="number" id="nummer" name="nummer" required maxlength="5"><br>
+        <input type="number" id="nummer" name="nummer" required maxlength="5" min="0"><br>
 
         <label for="lol">Bild:</label><br>
         <label for="image" class="image">Klicken Sie hier um ein Bild hochzuladen</label>
@@ -63,6 +63,7 @@ include_once "includes/db.php";
             <option value="M">Mittel</option>
             <option value="S">Schlecht</option>
         </select>
+        <p>* Required</p> <br>
         <input type="submit" value="Update">
     </form>
     <script>

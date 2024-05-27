@@ -11,26 +11,22 @@ a[href="/books.php"] {
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
   margin-bottom: 40pt;
 }
-
 .book-box img {
   border-radius: 15pt;
   justify-content: center;
   margin: auto;
 }
-
 .book-box h2 {
   text-decoration: none;
   font-weight: bold;
   font-size: 20pt;
 }
-
 .book-box p {
   text-decoration: none;
   font-weight: normal;
   font-size: 12pt;
   position: relative;
 }
-
 .book-box .line {
   position: absolute;
   left: 0;
@@ -38,7 +34,6 @@ a[href="/books.php"] {
   height: 2px;
   background-color: #4E2323;
 }
-
 .book-box .send-value-button {
   border-radius: 15pt;
   font-size: 11pt;
@@ -50,7 +45,6 @@ a[href="/books.php"] {
   position: absolute;
   right: 10px;
 }
-
 .book-box .send-value-button2 {
   border-radius: 15pt;
   font-size: 11pt;
@@ -60,9 +54,8 @@ a[href="/books.php"] {
   padding: 7pt 10pt;
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
   position: absolute;
-  left: 10px;
+  margin-top: 50px;
+  right: 10px;
 }
-
-
 
 /*# sourceMappingURL=book.css.map */
