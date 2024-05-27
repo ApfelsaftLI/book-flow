@@ -29,18 +29,18 @@ include_once "includes/db.php";
 <main class="grid-container">
     <form action="insert_book.php" method="post" class="editForm" enctype="multipart/form-data">
         <label for="title">Title*:</label>
-        <textarea id="title" name="title" required></textarea><br>
+        <textarea id="title" name="title" required maxlength="200"></textarea><br>
 
         <label for="kurztitle">Kurztitle*:</label>
-        <textarea id="kurztitle" name="kurztitle" required></textarea><br>
+        <textarea id="kurztitle" name="kurztitle" required maxlength="20"></textarea><br>
 
         <label for="autor">Autor*:</label>
-        <textarea id="autor" name="autor" required></textarea><br>
+        <textarea id="autor" name="autor" required maxlength="40"></textarea><br>
 
         <label for="nummer">Nummer*:</label>
-        <input type="text" id="nummer" name="nummer" required><br>
+        <input type="number" id="nummer" name="nummer" required maxlength="5"><br>
 
-        <label for="lol">Bild*:</label><br>
+        <label for="lol">Bild:</label><br>
         <label for="image" class="image">Klicken Sie hier um ein Bild hochzuladen</label>
         <input type="file" id="image" name="file"><br>
 

@@ -27,12 +27,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $verfassung = 0;
     $verkauft = 0;
 
-    if (empty($title)) $errors[] = "Title is required.";
-    if (empty($autor)) $errors[] = "Autor is required.";
-    if (empty($kurztitle)) $errors[] = "Kurztitle is required.";
-    if (empty($nummer)) $errors[] = "Nummer is required.";
-    if (empty($zustand)) $errors[] = "Zustand is required.";
-    if (empty($selectedKategorie)) $errors[] = "Kategorie is required.";
+    $maxTitleLength = 200;
+    $maxAutorLength = 40;
+    $maxKurztitleLength = 20;
+    $maxNummerLength = 5;
+
+    if (empty($title)) {
+        $errors[] = "Title is required.";
+    } elseif (strlen($title) > $maxTitleLength) {
+        $errors[] = "Title cannot exceed $maxTitleLength characters.";
+    }
+
+    if (empty($autor)) {
+        $errors[] = "Autor is required.";
+    } elseif (strlen($autor) > $maxAutorLength) {
+        $errors[] = "Autor cannot exceed $maxAutorLength characters.";
+    }
+
+    if (empty($kurztitle)) {
+        $errors[] = "Kurztitle is required.";
+    } elseif (strlen($kurztitle) > $maxKurztitleLength) {
+        $errors[] = "Kurztitle cannot exceed $maxKurztitleLength characters.";
+    }
+
+    if (empty($nummer)) {
+        $errors[] = "Nummer is required.";
+    } elseif (strlen($nummer) > $maxNummerLength) {
+        $errors[] = "Nummer cannot exceed $maxNummerLength characters.";
+    }
+
 
     $fileNameComplete = "book.jpg"; // Default image
     if (isset($_FILES["file"]) && $_FILES['file']['error'] == UPLOAD_ERR_OK) {
@@ -60,21 +83,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($errors)) {
-        $success = addBook($title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie, $fileNameComplete, $katalog, $kaufer, $sprachen, $verfassung, $verkauft);
-        var_dump($success);
-        if ($success) {
-            echo "1";
+        $book_id = addBook($title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie, $fileNameComplete, $katalog, $kaufer, $sprachen, $verfassung, $verkauft);
+        $bookID = $book_id['max_id'];
+        if ($book_id) {
             $_SESSION['success'] = "Book added successfully!";
+            echo '<form id="redirectForm" method="post" action="book.php">
+                    <input type="hidden" name="book_id" value="' . $book_id . '">
+                  </form>
+                  <script type="text/javascript">
+                      document.getElementById("redirectForm").submit();
+                  </script>';
             exit;
         } else {
-            echo "3";
             $errors[] = "Error adding book to database.";
         }
     }
 
     if (!empty($errors)) {
-        echo "4";
-        var_dump($errors);
         $_SESSION['errors'] = $errors;
         exit;
     }
