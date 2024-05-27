@@ -58,7 +58,7 @@ session_start();
             <a href="edit_book.php?book_id=' . $id . '" class="send-value-button">Buch bearbeiten</a>
         </div>';
             echo '<div class="delet-button">
-            <a href="delete_book.php?book_id=' . $id . ' . " onclick = "return confirm(\'Möchten sie diesen User wirklich löschen?\')"class="send-value-button2">Buch löschen</a>
+            <a href="delete_book.php?book_id=' . $id . ' . " onclick = "return confirm(\'Möchten sie diesen User wirklich löschen?\')" class="send-value-button2">Buch löschen</a>
         </div>';
         }
         ?>

@@ -320,26 +320,33 @@ function updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $se
     }
 }
 
-function addBook($title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie, $fileNameComplet) {
+function addBook(string $title, string $autor, string $kurztitle, int $nummer, string $zustand, int $selectedKategorie, string $fileNameComplet, int $katalog, int $kaufer, string $sprachen, int $verfassung, int $verkauft) {
     global $connection;
-    //WHY NOT WORK????
+
     try {
-        $sqlQuery = "INSERT INTO buecher (title, autor, kurztitle, nummer, zustand, kategorie, foto) 
-                     VALUES (:title, :autor, :kurztitle, :nummer, :zustand, :selectedKategorie, :fileNameComplet)";
+        $sqlQuery = "INSERT INTO buecher (title, autor, kurztitle, nummer, zustand, kategorie, foto, katalog, kaufer, sprache, verfasser, verkauft) 
+                     VALUES (:title, :autor, :kurztitle, :nummer, :zustand, :selectedKategorie, :fileNameComplet, :katalog, :kaufer, :sprachen, :verfassung, :verkauft)";
         $statement = $connection->prepare($sqlQuery);
 
         $statement->bindParam(':title', $title);
         $statement->bindParam(':autor', $autor);
         $statement->bindParam(':kurztitle', $kurztitle);
-        $statement->bindParam(':nummer', $nummer);
+        $statement->bindParam(':nummer', $nummer, PDO::PARAM_INT);
         $statement->bindParam(':zustand', $zustand);
-        $statement->bindParam(':selectedKategorie', $selectedKategorie);
+        $statement->bindParam(':selectedKategorie', $selectedKategorie, PDO::PARAM_INT);
         $statement->bindParam(':fileNameComplet', $fileNameComplet);
+        $statement->bindParam(':katalog', $katalog, PDO::PARAM_INT);
+        $statement->bindParam(':kaufer', $kaufer, PDO::PARAM_INT);
+        $statement->bindParam(':sprachen', $sprachen);
+        $statement->bindParam(':verfassung', $verfassung, PDO::PARAM_INT);
+        $statement->bindParam(':verkauft', $verkauft, PDO::PARAM_INT);
 
         $success = $statement->execute();
 
         return $success;
     } catch (PDOException $e) {
+        // Output error message for debugging
+        echo "Error: " . $e->getMessage();
         return false;
     }
 }

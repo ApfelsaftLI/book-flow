@@ -9,5 +9,5 @@ if (!$isAdmin) {
     header("Location: index.php");
     exit;
 }
-$sucess = deleteBook($_GET['book_id']);
+deleteBook($_GET['book_id']);
 header("Location: books.php");

@@ -28,25 +28,24 @@ include_once "includes/db.php";
 <?php include_once "templates/header.php"; ?>
 <main class="grid-container">
     <form action="insert_book.php" method="post" class="editForm" enctype="multipart/form-data">
-
         <label for="title">Title*:</label>
-        <textarea id="title" name="title" required="required"></textarea><br>
+        <textarea id="title" name="title" required></textarea><br>
 
         <label for="kurztitle">Kurztitle*:</label>
-        <textarea id="kurztitle" name="kurztitle"></textarea><br>
+        <textarea id="kurztitle" name="kurztitle" required></textarea><br>
 
         <label for="autor">Autor*:</label>
-        <textarea id="autor" name="autor"></textarea><br>
+        <textarea id="autor" name="autor" required></textarea><br>
 
         <label for="nummer">Nummer*:</label>
-        <input type="text" id="nummer" name="nummer" value=""><br>
+        <input type="text" id="nummer" name="nummer" required><br>
 
         <label for="lol">Bild*:</label><br>
         <label for="image" class="image">Klicken Sie hier um ein Bild hochzuladen</label>
         <input type="file" id="image" name="file"><br>
 
         <label for="kategorie">Kategorie*:</label>
-        <select name="kategorie" id="kategorie">
+        <select name="kategorie" id="kategorie" required>
             <option value=""></option>
             <?php
             for ($i = 1; $i <= 14; $i++) {
@@ -58,7 +57,7 @@ include_once "includes/db.php";
         </select>
 
         <label for="zustand">Zustand*:</label>
-        <select name="zustand" id="zustand">
+        <select name="zustand" id="zustand" required>
             <option value=""></option>
             <option value="G">Gut</option>
             <option value="M">Mittel</option>
@@ -66,6 +65,26 @@ include_once "includes/db.php";
         </select>
         <input type="submit" value="Update">
     </form>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            let isValid = true;
+            const requiredFields = document.querySelectorAll('textarea[required], input[required], select[required]');
+            requiredFields.forEach(function(field) {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = 'red';
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+
+            if (!isValid) {
+                event.preventDefault();
+                alert('Please fill out all required fields.');
+            }
+        });
+    </script>
+
 </main>
 <?php include_once "templates/footer.php"; ?>
 </body>
