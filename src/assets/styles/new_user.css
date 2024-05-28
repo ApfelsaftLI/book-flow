@@ -169,4 +169,8 @@ a[href="/users.php"] {
   gap: 15pt;
 }
 
+.delete-form {
+  grid-column: 4/6;
+}
+
 /*# sourceMappingURL=new_user.css.map */

@@ -1,9 +1,10 @@
 <?php
 include_once "functions.php";
+include_once "db.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['delete']) && isset($_POST['id'])) {
-        deleteCustomer($_POST['id']);
+    if (isset($_POST['delete']) && isset($_POST['d-id'])) {
+        deleteCustomer($_POST['d-id']);
     } else {
 
         $newUser = [];
@@ -31,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $newUser['customer-since'] = date("Y-m-d");
 
-        include_once "db.php";
 
         if (isset($_POST['id'])) {
             $newUser['id'] = $_POST['id'];
