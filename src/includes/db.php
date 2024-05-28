@@ -175,6 +175,10 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput, 
         <p>" . $row['autor'] . "</p>
         <form action='book.php' method='POST'>
             <input type='hidden' name='book_id' value='" . $row['id'] . "'>
+            <input type='hidden' name='searchQuery' value='" . $searchQuery . "'>
+            <input type='hidden' name='filterInput' value='" . $filterInput . "'>
+            <input type='hidden' name='sortInput' value='" . $sortInput . "'>
+            <input type='hidden' name='isNumeric' value='" . $isNumeric . "'>
             <button class='send-value-button'>Details</button>
         </form>
     </div>

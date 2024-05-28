@@ -50,15 +50,22 @@ session_start();
     }
 
     ?>
+    <div class="return">
+        <?php
+
+        echo '<a href="books.php?search='.$_POST['$searchQuery'].'&filter='.$_POST['filterInput'].'&sort'. $_POST['sortInput'].'&filter='.$_POST['filterInput'].'&sort'. $_POST['sortInput'].'">lol</a>';
+        echo "http://localhost:8080/books.php?search=&filter=id&sort=default&filter=id&sort=default";
+?>
+    </div>
     <div class="book-box">
         <?php
         $book_id = intval($book_id);
         if ($isAdmin) {
-            echo '<div class="edit-button">
-            <a href="edit_book.php?book_id=' . $id . '" class="send-value-button">Buch bearbeiten</a>
-        </div>';
-            echo '<div class="delet-button">
-            <a href="delete_book.php?book_id=' . $id . ' . " onclick = "return confirm(\'Möchten sie diesen User wirklich löschen?\')" class="send-value-button2">Buch löschen</a>
+            echo '<div class="buttonsBook">
+            <a href="edit_book.php?book_id=' . $id . '" class="big-button">Buch bearbeiten</a>
+        ';
+            echo '
+            <a href="delete_book.php?book_id=' . $id . ' . " onclick = "return confirm(\'Möchten sie diesen User wirklich löschen?\')" class="outline-button">Buch löschen</a>
         </div>';
         }
         ?>
