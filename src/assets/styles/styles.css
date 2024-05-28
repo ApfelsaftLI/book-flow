@@ -58,7 +58,6 @@ main {
   text-decoration: none;
   color: #4E2323;
 }
-
 .text-medium-normal {
   font-weight: normal;
   font-size: 20pt;
@@ -102,12 +101,10 @@ main {
   overflow-wrap: break-word;
   z-index: 9999;
 }
-
 .error b {
   font-weight: 600;
   font-size: 14pt;
 }
-
 .error p {
   font-weight: normal;
   font-size: 12pt;
@@ -124,12 +121,10 @@ main {
   overflow-wrap: break-word;
   z-index: 9999;
 }
-
 .success b {
   font-weight: 600;
   font-size: 14pt;
 }
-
 .success p {
   font-weight: normal;
   font-size: 12pt;
@@ -304,7 +299,6 @@ table {
   grid-column: 4/10;
   margin-top: 40pt;
 }
-
 .search-container .search-bar {
   border-radius: 15pt;
   width: 100%;
@@ -316,7 +310,6 @@ table {
   font-weight: 600;
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
 }
-
 .search-container .search-icon {
   position: absolute;
   right: 16pt;
@@ -327,7 +320,6 @@ table {
   background-image: url("../images/Search_Icon.svg");
   background-size: cover;
 }
-
 .search-container .search-bar-container {
   position: relative;
   margin-bottom: 20px;
@@ -335,13 +327,11 @@ table {
   justify-content: center;
   width: 100%;
 }
-
 .search-container .dropdown {
   padding-top: 10px;
   display: flex;
   gap: 20pt;
 }
-
 .search-container .dropdown .filter-container .filter {
   border-radius: 15pt;
   width: fit-content;
@@ -352,7 +342,6 @@ table {
   padding: 7pt 10pt;
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
 }
-
 .search-container .dropdown .sort-container .sort {
   border-radius: 15pt;
   width: fit-content;
@@ -363,7 +352,6 @@ table {
   padding: 7pt 10pt;
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
 }
-
 .search-container .dropdown a:last-child {
   margin-left: auto;
 }
@@ -378,7 +366,6 @@ table {
   position: relative;
   height: 630px;
 }
-
 .book-info-box .info-text {
   position: absolute;
   z-index: 3;
@@ -386,7 +373,6 @@ table {
   bottom: 0;
   color: #4E2323;
 }
-
 .book-info-box .info-text p {
   text-decoration: none;
   font-weight: normal;
@@ -398,7 +384,6 @@ table {
   text-overflow: ellipsis;
   margin-bottom: 10pt;
 }
-
 .book-info-box .info-text h2 {
   text-decoration: none;
   font-weight: bold;
@@ -410,7 +395,6 @@ table {
   text-overflow: ellipsis;
   margin-bottom: 10pt;
 }
-
 .book-info-box img {
   justify-content: center;
   max-width: calc(100% - 20px);
@@ -449,7 +433,6 @@ table {
   gap: 6pt;
   margin-bottom: 40px;
 }
-
 .book-carousel .book-carousel-box {
   flex: 0 0 calc(20% - 10px);
   max-width: calc(20% - 10px);
@@ -459,7 +442,6 @@ table {
   background-color: #FFEEE0;
   position: relative;
 }
-
 .book-carousel .book-carousel-box .send-value-button {
   border-radius: 15pt;
   font-size: 11pt;
@@ -472,13 +454,11 @@ table {
   right: 20pt;
   bottom: 10pt;
 }
-
 .book-carousel .book-carousel-box .info-text {
   padding: 10px;
   overflow: hidden;
   color: #4E2323;
 }
-
 .book-carousel .book-carousel-box .info-text p {
   text-decoration: none;
   font-weight: normal;
@@ -488,7 +468,6 @@ table {
   text-overflow: ellipsis;
   margin-top: 10pt;
 }
-
 .book-carousel .book-carousel-box .info-text h2 {
   text-decoration: none;
   font-weight: bold;
@@ -497,7 +476,6 @@ table {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
 .book-carousel .book-carousel-box img {
   justify-content: center;
   max-width: calc(100% - 20px);
@@ -521,12 +499,10 @@ table {
   align-items: center;
   flex-wrap: wrap;
 }
-
 .editForm label {
   color: #4E2323;
   margin-bottom: 5px;
 }
-
 .editForm input[type=text] {
   width: 100%;
   padding: 10px;
@@ -535,7 +511,6 @@ table {
   background-color: #FFE4CF;
   color: #4E2323;
 }
-
 .editForm select {
   width: 100%;
   padding: 10px;
@@ -544,7 +519,6 @@ table {
   background-color: #FFE4CF;
   color: #4E2323;
 }
-
 .editForm textarea {
   width: 100%;
   padding: 10px;
@@ -555,7 +529,6 @@ table {
   resize: vertical;
   word-wrap: break-word;
 }
-
 .editForm input[type=number] {
   width: 100%;
   padding: 10px;
@@ -566,7 +539,6 @@ table {
   resize: vertical;
   word-wrap: break-word;
 }
-
 .editForm input[type=number] {
   width: 100%;
   padding: 10px;
@@ -575,9 +547,7 @@ table {
   background-color: #FFE4CF;
   color: #4E2323;
   resize: vertical;
-  word-wrap: break-word;
-}
-
+  word-wrap: break-word;}
 .editForm input[type=submit] {
   background-color: #FFE4CF;
   color: #4E2323;
@@ -588,15 +558,12 @@ table {
   transition: background-color 0.3s ease;
   align-self: flex-start;
 }
-
 .editForm input[type=submit]:hover {
   background-color: #ffc79c;
 }
-
 .editForm input[type=file] {
   display: none;
 }
-
 .editForm .image {
   width: 100%;
   padding: 10px;
@@ -645,17 +612,14 @@ header {
   padding-block: 10pt;
   height: 80pt;
 }
-
 header img {
   width: 200pt;
 }
-
 header nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-
 header nav ul {
   list-style-type: none;
   padding: 0;
@@ -663,7 +627,6 @@ header nav ul {
   gap: 15px;
   align-items: center;
 }
-
 header nav .profile-picture {
   display: inline-block;
   width: 40pt;
@@ -685,13 +648,11 @@ footer {
   height: 50pt;
   z-index: 2;
 }
-
 footer nav {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-
 footer nav ul {
   list-style-type: none;
   padding: 0;
@@ -699,7 +660,5 @@ footer nav ul {
   gap: 15px;
   align-items: center;
 }
-
-
 
 /*# sourceMappingURL=styles.css.map */

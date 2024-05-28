@@ -2,6 +2,12 @@ a[href="/books.php"] {
   font-weight: bold;
 }
 
+.outline-button {
+  margin-top: 40pt;
+  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+  grid-column: 2/3;
+}
+
 .book-box {
   padding: 15pt 35pt;
   grid-column: 4/10;
