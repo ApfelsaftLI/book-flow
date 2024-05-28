@@ -64,7 +64,10 @@ include_once "includes/db.php";
             <option value="S">Schlecht</option>
         </select>
         <p>* Required</p> <br>
-        <input type="submit" value="Update">
+        <div class="button-container">
+            <button onclick="history.go(-1);" class="outline-button">Abbrechen </button>
+            <button type="submit" class="big-button">Kunde erfassen</button>
+        </div>
     </form>
 </main>
 <?php include_once "templates/footer.php"; ?>

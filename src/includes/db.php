@@ -398,4 +398,31 @@ function deleteBook($book_id) {
     }
 }
 
+function getPasswordHashUsername(string $benutzername) {
+    global $connection;
+    try {
+        $sqlQuery = "SELECT passwort FROM benutzer WHERE benutzername = :benutzername LIMIT 1";
+        $statement = $connection->prepare($sqlQuery);
+        $statement->bindParam('benutzername', $benutzername, PDO::PARAM_STR);
 
+        if (!$statement->execute()) return false;
+        return $statement->fetchColumn();
+
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+function updatePassword(string $benutzername, string $password): bool {
+    global $connection;
+
+
+    if (!$_SESSION["dbConnection"]) {
+        return false;
+    }
+
+    $sqlQuery = "UPDATE benutzer SET passwort = :password WHERE benutzername = :benutzername";
+    $statement = $connection->prepare($sqlQuery);
+    $statement->bindParam('benutzername', $benutzername, PDO::PARAM_STR);
+    $statement->bindParam('password', $password, PDO::PARAM_STR);
+    return $statement->execute();
+}

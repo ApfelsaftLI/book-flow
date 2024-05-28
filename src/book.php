@@ -52,7 +52,7 @@ session_start();
     ?>
     <div class="return">
         <?php
-        echo '<a href="books.php?search='.$_POST['$searchQuery'].'&filter='.$_POST['filterInput'].'&sort'. $_POST['sortInput'].'&filter='.$_POST['filterInput'].'&sort'. $_POST['sortInput'].'" class="outline-button">Zurück</a>';
+        echo '<button onclick="history.go(-1);" class="outline-button">Zurück </button>';
 ?>
     </div>
     <div class="book-box">
