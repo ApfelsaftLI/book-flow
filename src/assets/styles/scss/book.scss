@@ -5,7 +5,7 @@ a[href="/books.php"] {
 }
 
 .book-box {
-  padding: 6pt;
+  padding: 15pt 35pt;
   grid-column: 4/10;
   margin-top: 40pt;
   border-radius: 15pt;
@@ -43,28 +43,14 @@ a[href="/books.php"] {
     height: 2px;
     background-color: $text-color;
   }
-
-  .send-value-button {
-    border-radius: 15pt;
-    font-size: 11pt;
-    font-weight: 600;
-    color: $background-primary;
-    background-color: $accent-color;
-    padding: 7pt 10pt;
-    filter: $drop-shadow;
+  .buttonsBook {
     position: absolute;
-    right: 10px;
-  }
-  .send-value-button2{
-    border-radius: 15pt;
-    font-size: 11pt;
-    font-weight: 600;
-    color: $background-primary;
-    background-color: $accent-color;
-    padding: 7pt 10pt;
-    filter: $drop-shadow;
-    position: absolute;
-    margin-top: 50px;
-    right: 10px;
+    right: 15pt;
+    top: 35pt;
+    margin-bottom: 5pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    gap: 5pt;
   }
 }
