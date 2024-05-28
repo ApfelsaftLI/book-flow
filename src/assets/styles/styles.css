@@ -531,15 +531,6 @@ table {
 .editForm input[type=number],
 .editForm input[type=password],
 .editForm textarea,
-.editForm input[type=text] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 15px;
-  background-color: #FFE4CF;
-  color: #4E2323;
-}
-
 .editForm select {
   width: 100%;
   padding: 10px;
@@ -550,34 +541,6 @@ table {
 }
 
 .editForm textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 15px;
-  background-color: #FFE4CF;
-  color: #4E2323;
-  resize: vertical;
-  word-wrap: break-word;
-}
-
-.editForm input[type=number] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 15px;
-  background-color: #FFE4CF;
-  color: #4E2323;
-  resize: vertical;
-  word-wrap: break-word;
-}
-
-.editForm input[type=password] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 15px;
-  background-color: #FFE4CF;
-  color: #4E2323;
   resize: vertical;
   word-wrap: break-word;
 }
@@ -617,11 +580,6 @@ table {
   grid-column: 4/10;
   padding: 40px 80px;
   gap: 15px;
-  border-radius: 15pt;
-  background-color: #FFEEE0;
-  grid-column: 4/10;
-  padding: 40pt 80pt;
-  gap: 15pt;
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
   background-image: url("../images/gradient.svg");
   background-repeat: no-repeat;
@@ -637,43 +595,6 @@ table {
   color: #4E2323;
   font-size: 15px;
   margin-left: 5px;
-.new-user-form input[type=password] {
-  vertical-align: baseline;
-  color: #4E2323;
-  font-size: 15pt;
-  margin-left: 5pt;
-  border-bottom: #4E2323 solid;
-}
-
-.new-user-form textarea {
-  vertical-align: baseline;
-  color: #4E2323;
-  font-size: 15pt;
-  margin-left: 5pt;
-  border-bottom: #4E2323 solid;
-}
-
-.new-user-form select {
-  vertical-align: baseline;
-  color: #4E2323;
-  font-size: 15pt;
-  margin-left: 5pt;
-  border-bottom: #4E2323 solid;
-}
-
-.new-user-form .image {
-  vertical-align: baseline;
-  color: #4E2323;
-  font-size: 15pt;
-  margin-left: 5pt;
-  border-bottom: #4E2323 solid;
-}
-
-.new-user-form input[type=number] {
-  vertical-align: baseline;
-  color: #4E2323;
-  font-size: 15pt;
-  margin-left: 5pt;
   border-bottom: #4E2323 solid;
 }
 
@@ -686,14 +607,6 @@ table {
   display: flex;
   flex-direction: row;
   gap: 15px;
-  margin-top: 10pt;
-}
-
-.new-user-form .button-container {
-  margin-top: 25pt;
-  display: flex;
-  flex-direction: row;
-  gap: 15pt;
 }
 
 .outline-button {
