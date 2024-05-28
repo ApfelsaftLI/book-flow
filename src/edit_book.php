@@ -61,7 +61,7 @@ switch ($zustand) {
 <body class="grid-container">
 <?php include_once "templates/header.php"; ?>
 <main class="grid-container">
-    <form action="update_book.php" method="post" class="editForm" enctype="multipart/form-data">
+    <form action="update_book.php" method="post" class="editForm large-container new-user-form" enctype="multipart/form-data">
         <input type="hidden" name="book_id" value="<?php echo $id; ?>">
 
         <label for="title">Title*:</label>
