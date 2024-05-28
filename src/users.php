@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['user']) || !$_SESSION['user']['admin']) header("Location: ../");
 
-include_once "./includes/new-user-handler.php";
+include_once "./includes/user-handler.php";
 
 include_once "includes/db.php";
 include_once "includes/functions.php";

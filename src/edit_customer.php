@@ -69,6 +69,11 @@ if ($user['geschlecht'] != "M" && $user['geschlecht'] != "F") $user['geschlecht'
             <button type="submit" class="big-button">Kunde bearbeiten</button>
         </div>
     </form>
+    <form action="users.php?filter=customers" method="post" class="delete-form">
+        <input type="hidden" name="d-id" value="<?= $id ?>">
+        <input type="hidden" name="delete" value="true">
+        <button type="submit" class="outline-button">Kunde löschen</button>
+    </form>
 </main>
 <?php include_once "templates/footer.php"; ?>
 </body>
