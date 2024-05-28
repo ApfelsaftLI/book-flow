@@ -19,8 +19,8 @@ $isAdmin = $isLoggedIn && $_SESSION["user"]["admin"] == "true";
                 if ($isAdmin) {
                     echo "<li class='text-small-semi' ><a href = '/users.php' > Nutzer</a ></li>" . PHP_EOL;
                 }
+                echo "<li class='text-small-semi' ><a href = '/change_password.php' > Passwort ändern</a ></li>" . PHP_EOL;
                 echo "<li class='text-small-semi'><form action='/' method='post'><button type='submit' name='logout' value='true'>Logout</button></form></li>" . PHP_EOL;
-
             }
             ?>
         </ul>

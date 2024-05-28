@@ -274,13 +274,13 @@ function getUser(string $email) {
     if (!$_SESSION["dbConnection"]) return false;
     global $connection;
 
-    $sqlQuery = "SELECT admin, name, vorname FROM benutzer WHERE email = :email LIMIT 1";
+    $sqlQuery = "SELECT admin, name, vorname, benutzername FROM benutzer WHERE email = :email LIMIT 1";
     $statement = $connection->prepare($sqlQuery);
     $statement->bindParam('email', $email, PDO::PARAM_STR);
     if (!$statement->execute()) return false;
     $result = $statement->fetch();
 
-    return ["admin" => translateAdmin($result), "name" => $result['name'], "vorname" => $result['vorname']];
+    return ["admin" => translateAdmin($result), "name" => $result['name'], "vorname" => $result['vorname'], "benutzername" => $result['benutzername']];
 }
 
 function translateAdmin(array $user) {
