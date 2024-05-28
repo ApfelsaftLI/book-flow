@@ -19,12 +19,16 @@ function addCustomer(array $customer): bool {
     if (!$_SESSION["dbConnection"]) return false;
     global $connection;
 
-    $sqlQuery = "INSERT INTO kunden
-                VALUES(null, :geburtstag, :vorname, :name, :geschlecht, :kunde_seit, :email, :kontaktpermail)";
+    $sqlQuery = "INSERT INTO kunden VALUES(null, :geburtstag, :vorname, :name, :geschlecht, :kunde_seit, :email, :kontaktpermail)";
 
     $statement = $connection->prepare($sqlQuery);
 
-    $statement->bindParam('geburtstag', $customer['birthdate']);
+    $birthdate = null;
+    if (count(explode("-", $customer['birthdate'])) == 3) {
+        $birthdate = $customer['birthdate'];
+    }
+
+    $statement->bindParam('geburtstag', $birthdate);
     $statement->bindParam('vorname', $customer['first-name']);
     $statement->bindParam('name', $customer['name']);
     $statement->bindParam('geschlecht', $customer['gender']);

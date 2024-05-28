@@ -5,8 +5,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!validateName($_POST)) return;
     $nameArray = explode(" ", trim($_POST['name']));
-    $newUser['name'] = end($nameArray);
-    $newUser['first-name'] = $nameArray[0];
+    $newUser['name'] = ucfirst(end($nameArray));
+    $newUser['first-name'] = ucfirst($nameArray[0]);
 
     if (!validateEmail($_POST)) return;
     $newUser['email'] = trim($_POST['email']);
