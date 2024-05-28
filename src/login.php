@@ -28,7 +28,6 @@ session_start();
                 <a href="/" class="outline-button">Abbrechen</a>
                 <button type="submit" class="big-button">Anmelden</button>
             </div>
-            <p class="text-small-semi-bold">Passwort vergessen / ändern</p>
         </form>
     </div>
 </main>

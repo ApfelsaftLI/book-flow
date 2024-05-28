@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <!doctype html>
 <html lang="de">
@@ -52,7 +51,7 @@ session_start();
     ?>
     <div class="return">
         <?php
-        echo '<button onclick="history.go(-1);" class="outline-button">Zurück </button>';
+        echo '<button onclick="history.go(-1);" class="outline-button back-button">Zurück </button>';
 ?>
     </div>
     <div class="book-box">

@@ -27,7 +27,7 @@ include_once "includes/db.php";
 <body class="grid-container">
 <?php include_once "templates/header.php"; ?>
 <main class="grid-container">
-    <form action="insert_book.php" method="post" class="editForm" enctype="multipart/form-data">
+    <form action="insert_book.php" method="post" class="editForm new-user-form" enctype="multipart/form-data">
         <label for="title">Title*:</label>
         <textarea id="title" name="title" required maxlength="200"></textarea><br>
 
@@ -65,8 +65,8 @@ include_once "includes/db.php";
         </select>
         <p>* Required</p> <br>
         <div class="button-container">
-            <button onclick="history.go(-1);" class="outline-button">Abbrechen </button>
-            <button type="submit" class="big-button">Kunde erfassen</button>
+            <button onclick="history.go(-1);" class="outline-button">Abbrechen</button>
+            <button type="submit" class="big-button">Buch einfügen</button>
         </div>
     </form>
 </main>

@@ -101,8 +101,8 @@ switch ($zustand) {
         </select>
         <p>* Required</p> <br>
         <div class="button-container">
-            <button onclick="history.go(-1);" class="outline-button">Abbrechen </button>
-            <button type="submit" class="big-button">Kunde erfassen</button>
+            <form method="post" action="book.php"><input type="hidden" name="book_id"value="<? echo $id?>"</input> <button type="submit" class="outline-button">Abbrechen</button> </input></form>
+            <button type="submit" class="big-button">Buch ändern</button>
         </div>
     </form>
 </main>
