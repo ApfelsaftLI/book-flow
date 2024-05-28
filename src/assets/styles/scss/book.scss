@@ -4,11 +4,10 @@ a[href="/books.php"] {
   font-weight: bold;
 }
 
-.outline-button{
-    margin-top: 40pt;
+.back-button{
     filter: $drop-shadow;
     grid-column: 2/3;
-
+    margin-top: 40pt;
 }
 
 .book-box {
@@ -42,7 +41,6 @@ a[href="/books.php"] {
     position: relative;
 
   }
-
   .line {
     position: absolute;
     left: 0;
@@ -60,4 +58,15 @@ a[href="/books.php"] {
     justify-content: right;
     gap: 5pt;
   }
+}
+
+.button-container {
+  right: 15pt;
+  top: 35pt;
+  margin-bottom: 5pt;
+  display: flex;
+  margin-top: 25pt;
+  flex-direction: row;
+  gap: 10pt;
+  justify-content: center;
 }

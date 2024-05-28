@@ -27,12 +27,12 @@ include_once "includes/db.php";
 <body class="grid-container">
 <?php include_once "templates/header.php"; ?>
 <main class="grid-container">
-    <form action="insert_book.php" method="post" class="editForm" enctype="multipart/form-data">
+    <form action="insert_book.php" method="post" class="editForm new-user-form" enctype="multipart/form-data">
         <label for="title">Title*:</label>
         <textarea id="title" name="title" required maxlength="200"></textarea><br>
 
         <label for="kurztitle">Kurztitle*:</label>
-        <textarea id="kurztitle" name="kurztitle" required maxlength="20"></textarea><br>
+        <textarea id="kurztitle" name="kurztitle" required maxlength="100"></textarea><br>
 
         <label for="autor">Autor*:</label>
         <textarea id="autor" name="autor" required maxlength="40"></textarea><br>
@@ -64,7 +64,10 @@ include_once "includes/db.php";
             <option value="S">Schlecht</option>
         </select>
         <p>* Required</p> <br>
-        <input type="submit" value="Update">
+        <div class="button-container">
+            <button onclick="history.go(-1);" class="outline-button">Abbrechen</button>
+            <button type="submit" class="big-button">Buch einfügen</button>
+        </div>
     </form>
 </main>
 <?php include_once "templates/footer.php"; ?>

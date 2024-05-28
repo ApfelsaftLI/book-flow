@@ -527,6 +527,10 @@ table {
   margin-bottom: 5px;
 }
 
+.editForm input[type=text],
+.editForm input[type=number],
+.editForm input[type=password],
+.editForm textarea,
 .editForm input[type=text] {
   width: 100%;
   padding: 10px;
@@ -579,11 +583,7 @@ table {
 }
 
 .editForm input[type=submit] {
-  background-color: #FFE4CF;
   color: #4E2323;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 15px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   align-self: flex-start;
@@ -612,6 +612,11 @@ table {
 .new-user-form {
   display: flex;
   flex-direction: column;
+  border-radius: 15px;
+  background-color: #FFEEE0;
+  grid-column: 4/10;
+  padding: 40px 80px;
+  gap: 15px;
   border-radius: 15pt;
   background-color: #FFEEE0;
   grid-column: 4/10;
@@ -623,6 +628,15 @@ table {
   background-position: bottom right;
 }
 
+.new-user-form input[type=password],
+.new-user-form textarea,
+.new-user-form select,
+.new-user-form .image,
+.new-user-form input[type=number] {
+  vertical-align: baseline;
+  color: #4E2323;
+  font-size: 15px;
+  margin-left: 5px;
 .new-user-form input[type=password] {
   vertical-align: baseline;
   color: #4E2323;
@@ -664,6 +678,14 @@ table {
 }
 
 .new-user-form p.text-small-normal {
+  margin-top: 10px;
+}
+
+.new-user-form .button-container {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
   margin-top: 10pt;
 }
 

@@ -68,7 +68,7 @@ switch ($zustand) {
         <textarea id="title" name="title" required maxlength="200"><?php echo htmlspecialchars($title); ?></textarea><br>
 
         <label for="kurztitle">Kurztitle*:</label>
-        <textarea id="kurztitle" name="kurztitle" required maxlength="20"><?php echo htmlspecialchars($kurztitle); ?></textarea><br>
+        <textarea id="kurztitle" name="kurztitle" required maxlength="100"><?php echo htmlspecialchars($kurztitle); ?></textarea><br>
 
         <label for="autor">Autor*:</label>
         <textarea id="autor" name="autor" required maxlength="40"><?php echo htmlspecialchars($autor); ?></textarea><br>
@@ -100,7 +100,10 @@ switch ($zustand) {
             <option value="S">Schlecht</option>
         </select>
         <p>* Required</p> <br>
-        <input type="submit" value="Update">
+        <div class="button-container">
+            <form method="post" action="book.php"><input type="hidden" name="book_id"value="<? echo $id?>"</input> <button type="submit" class="outline-button">Abbrechen</button> </input></form>
+            <button type="submit" class="big-button">Buch ändern</button>
+        </div>
     </form>
 </main>
 <?php include_once "templates/footer.php"; ?>

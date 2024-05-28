@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $maxTitleLength = 200;
     $maxAutorLength = 40;
-    $maxKurztitleLength = 20;
+    $maxKurztitleLength = 100;
     $maxNummerLength = 5;
 
     if (empty($title)) {
