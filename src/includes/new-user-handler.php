@@ -1,32 +1,49 @@
 <?php
+include_once "functions.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $newUser = [];
+    if (isset($_POST['delete']) && isset($_POST['id'])) {
+        deleteCustomer($_POST['id']);
+    } else {
 
-    if (!validateName($_POST)) return;
-    $nameArray = explode(" ", trim($_POST['name']));
-    $newUser['name'] = ucfirst(end($nameArray));
-    $newUser['first-name'] = ucfirst($nameArray[0]);
+        $newUser = [];
 
-    if (!validateEmail($_POST)) return;
-    $newUser['email'] = trim($_POST['email']);
+        if (!validateName($_POST)) return;
+        $nameArray = explode(" ", trim($_POST['name']));
+        $newUser['name'] = ucfirst(end($nameArray));
+        $newUser['first-name'] = ucfirst($nameArray[0]);
 
-    $mailcontact = $_POST['mailcontact'] ?? 0;
-    $mailcontact = in_array($mailcontact, [0, 1]) ? $mailcontact : 0;
-    $newUser['mailcontact'] = $mailcontact;
+        if (!validateEmail($_POST)) return;
+        $newUser['email'] = trim($_POST['email']);
 
-    $newUser['birthdate'] = $_POST['birthdate'] ?? 'null';
+        $mailcontact = $_POST['mailcontact'] ?? 0;
+        $mailcontact = in_array($mailcontact, [0, 1]) ? $mailcontact : 0;
+        $newUser['mailcontact'] = $mailcontact;
 
-    $newUser['gender'] = $_POST['gender'] ?? 'null';
+        if (validateDate($_POST['birthdate'])) {
+            $newUser['birthdate'] = $_POST['birthdate'];
+        } else {
 
-    $newUser['customer-since'] = date("Y-m-d");
+            $newUser['birthdate'] = null;
+        }
 
-    include_once "db.php";
-    if (!addCustomer($newUser)) fail("<br>Der Nutzer konnte nicht in die Datenbank übertragen werden.");
+        $newUser['gender'] = $_POST['gender'] != "N" ? $_POST['gender'] : null;
 
+        $newUser['customer-since'] = date("Y-m-d");
+
+        include_once "db.php";
+
+        if (isset($_POST['id'])) {
+            $newUser['id'] = $_POST['id'];
+            if (!editCustomer($newUser)) fail("<br>Der Nutzer konnte nicht in die Datenbank übertragen werden.");
+        } else {
+            if (!addCustomer($newUser)) fail("<br>Der Nutzer konnte nicht in die Datenbank übertragen werden.");
+        }
+    }
 }
 
-function validateName(array $userArray): bool {
+function validateName(array $userArray): bool
+{
     if (!isset($userArray['name'])) {
         fail("Es wurde kein Name angegeben.");
         return false;
@@ -47,7 +64,8 @@ function validateName(array $userArray): bool {
     return true;
 }
 
-function validateEmail(array $userArray): bool {
+function validateEmail(array $userArray): bool
+{
     if (isset($userArray['email'])) {
         $email = trim($userArray['email']);
         if (strlen($email) > 50) {
@@ -66,14 +84,7 @@ function validateEmail(array $userArray): bool {
     }
 }
 
-function validateDate($date) {
-    $dateArray = explode('-', $date);
-    if (count($dateArray) == 3) {
-        return checkdate($dateArray[1], $dateArray[2], $dateArray[0]);
-    }
-    return false;
-}
-
-function fail(string $message) {
+function fail(string $message)
+{
     echo "<div class='error'><p><b>Nutzer konnte nicht erstellt werden:</b> " . $message . "</p></div>";
 }

@@ -90,7 +90,8 @@ if (count($users) == 0) {
                             </p></div>
                         <div><p class="user-id text-small-normal">#<?= $user['ID'] ?></p>
                             <a class="user-email text-small-semi"
-                               href="mailto:<?= strtolower($user['email']) ?>"><?= strtolower($user['email']) ?></a></div>
+                               href="mailto:<?= strtolower($user['email']) ?>"><?= strtolower($user['email']) ?></a>
+                        </div>
                     </div>
                     <div class="user-admin-status">
                         <form action="<?= './users.php' . $fullQuery ?>" method="post">
@@ -114,14 +115,20 @@ if (count($users) == 0) {
                     <div class="customer-informations">
                         <div>
                             <p class="customer-fullname text-medium-normal"><?= $customer['vorname'] . " " . $customer['name'] ?></p>
-                            <img src="./assets/images/<?= $customer['geschlecht'] == "M" ? "male.svg" : "female.svg" ?>"
-                                 draggable="false">
-                            <p class="customer-birthdate text-small-normal"><?= reformateDate($customer['geburtstag']) ?></p>
+                            <?php if (!($customer['geschlecht'] != "M" && $customer['geschlecht'] != "F")): ?>
+                                <img src="./assets/images/<?= $customer['geschlecht'] == "M" ? "male.svg" : "female.svg" ?>"
+                                     draggable="false">
+                            <?php endif ?>
+
+                            <?php if (validateDate($customer['geburtstag'])): ?>
+                                <p class="customer-birthdate text-small-normal"><?= reformateDate($customer['geburtstag']) ?></p>
+                            <?php endif ?>
                         </div>
                         <div>
                             <p class="customer-id text-small-normal">#<?= $customer['kid'] ?></p>
                             <p class="customer-join-date text-small-normal"><?= reformateDate($customer['kunde_seit']) ?></p>
-                            <img src="./assets/images/<?= $customer['kontaktpermail'] == "1" ? "email_yes.svg" : "email_no.svg" ?>" draggable="false">
+                            <img src="./assets/images/<?= $customer['kontaktpermail'] == "1" ? "email_yes.svg" : "email_no.svg" ?>"
+                                 draggable="false">
                             <a class="user-email text-small-semi"
                                href="mailto:<?= strtolower($customer['email']) ?>"><?= strtolower($customer['email']) ?></a>
                         </div>

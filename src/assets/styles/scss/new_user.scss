@@ -19,26 +19,16 @@ a[href="/users.php"] {
   background-repeat: no-repeat;
   background-position: bottom right;
 
-  input[type=text] {
-    vertical-align: baseline;
-    color: $text-color;
-    font-size: 15pt;
-    margin-left: 5pt;
-    border-bottom: $text-color solid;
-  }
-
-  input[type=email] {
-    vertical-align: baseline;
-    color: $text-color;
-    font-size: 15pt;
-    margin-left: 5pt;
-    border-bottom: $text-color solid;
-    max-width: 48%;
-  }
-
-  input[type=checkbox] {
-    background-color: $background-secondary;
-    vertical-align: baseline;
+  .name {
+    display: flex;
+    input[type=text] {
+      vertical-align: baseline;
+      color: $text-color;
+      font-size: 15pt;
+      margin-left: 5pt;
+      border-bottom: $text-color solid;
+      flex: 1;
+    }
   }
 
   .gender {
@@ -60,21 +50,29 @@ a[href="/users.php"] {
   }
 
   .email {
-    justify-content: center;
+    display: flex;
 
-    input[type=checkbox] {
-      background-color: $background-secondary;
-      width: 10pt;
-      height: 10pt;
-      border-radius: 5%;
+    input[type=email] {
       vertical-align: baseline;
-      border: $text-color 1px solid;
+      color: $text-color;
+      font-size: 15pt;
+      margin-left: 5pt;
+      border-bottom: $text-color solid;
+      flex: 1;
     }
+  }
 
-    input[type=checkbox]:checked {
-      background-color: $accent-color;
-    }
+  input[type=checkbox] {
+    background-color: $background-secondary;
+    width: 10pt;
+    height: 10pt;
+    border-radius: 5%;
+    vertical-align: baseline;
+    border: $text-color 1px solid;
+  }
 
+  input[type=checkbox]:checked {
+    background-color: $accent-color;
   }
 
   input[type=date] {

@@ -15,7 +15,35 @@ try {
     $_SESSION["dbConnection"] = false;
 }
 
-function addCustomer(array $customer): bool {
+function deleteCustomer(int $id): bool
+{
+    if (!$_SESSION["dbConnection"]) return false;
+    global $connection;
+
+    $sqlQuery = "DELETE FROM kunden WHERE kid=:id";
+
+    $statement = $connection->prepare($sqlQuery);
+
+    $statement->bindParam('id', $id, PDO::PARAM_INT);
+    return $statement->execute();
+}
+
+function getCustomer(int $id): array
+{
+    if (!$_SESSION["dbConnection"]) return false;
+    global $connection;
+
+    $sqlQuery = "SELECT vorname, name, email, kontaktpermail, geburtstag, geschlecht, kunde_seit from kunden where kid=:id";
+
+    $statement = $connection->prepare($sqlQuery);
+
+    $statement->bindParam('id', $id, PDO::PARAM_INT);
+    $statement->execute();
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}
+
+function addCustomer(array $customer): bool
+{
     if (!$_SESSION["dbConnection"]) return false;
     global $connection;
 
@@ -24,7 +52,7 @@ function addCustomer(array $customer): bool {
     $statement = $connection->prepare($sqlQuery);
 
     $birthdate = null;
-    if (count(explode("-", $customer['birthdate'])) == 3) {
+    if (count(explode("-", $customer['birthdate'] ?? "")) == 3) {
         $birthdate = $customer['birthdate'];
     }
 
@@ -38,7 +66,32 @@ function addCustomer(array $customer): bool {
     return $statement->execute();
 }
 
-function updateAdminStatus($id, $status): bool {
+function editCustomer(array $customer): bool
+{
+    if (!$_SESSION["dbConnection"]) return false;
+    global $connection;
+
+    $sqlQuery = "UPDATE kunden SET geburtstag = :geburtstag, vorname = :vorname, name = :name, geschlecht = :geschlecht, email = :email, kontaktpermail = :kontaktpermail WHERE kid = :id";
+
+    $statement = $connection->prepare($sqlQuery);
+
+    $birthdate = null;
+    if (count(explode("-", $customer['birthdate'] ?? "")) == 3) {
+        $birthdate = $customer['birthdate'];
+    }
+
+    $statement->bindParam('geburtstag', $birthdate);
+    $statement->bindParam('vorname', $customer['first-name']);
+    $statement->bindParam('name', $customer['name']);
+    $statement->bindParam('geschlecht', $customer['gender']);
+    $statement->bindParam('email', $customer['email']);
+    $statement->bindParam('kontaktpermail', $customer['mailcontact'], PDO::PARAM_INT);
+    $statement->bindParam('id', $customer['id'], PDO::PARAM_INT);
+    return $statement->execute();
+}
+
+function updateAdminStatus($id, $status): bool
+{
     if (!$_SESSION["dbConnection"]) return false;
     global $connection;
 
@@ -53,7 +106,8 @@ function updateAdminStatus($id, $status): bool {
     return $statement->execute();
 }
 
-function getUserArray(string $searchQuery, int $page): array {
+function getUserArray(string $searchQuery, int $page): array
+{
     if (!$_SESSION["dbConnection"]) return [];
     global $connection;
 
@@ -81,7 +135,8 @@ function getUserArray(string $searchQuery, int $page): array {
     return $results;
 }
 
-function getCustomerArray(string $searchQuery, int $page): array {
+function getCustomerArray(string $searchQuery, int $page): array
+{
     if (!$_SESSION["dbConnection"]) return [];
     global $connection;
 
@@ -108,7 +163,8 @@ function getCustomerArray(string $searchQuery, int $page): array {
     return $results;
 }
 
-function getUserPages(string $searchQuery): int {
+function getUserPages(string $searchQuery): int
+{
     if (!$_SESSION["dbConnection"]) return [];
     global $connection;
 
@@ -128,7 +184,8 @@ function getUserPages(string $searchQuery): int {
     return ceil($results[0]['pages'] / 8);
 }
 
-function getCustomerPages(string $searchQuery): int {
+function getCustomerPages(string $searchQuery): int
+{
     if (!$_SESSION["dbConnection"]) return [];
     global $connection;
 
@@ -147,7 +204,8 @@ function getCustomerPages(string $searchQuery): int {
     return ceil($results[0]['pages'] / 8);
 }
 
-function listBooks(string $searchQuery, string $filterInput, string $sortInput, bool $isNumeric) {
+function listBooks(string $searchQuery, string $filterInput, string $sortInput, bool $isNumeric)
+{
     $results = [];
     $resultCount = 0; // Initialize result count
     if (!$_SESSION["dbConnection"])
@@ -192,7 +250,8 @@ function listBooks(string $searchQuery, string $filterInput, string $sortInput, 
     return ['results' => $formattedResults, 'count' => $resultCount];
 }
 
-function listBook($bookID) {
+function listBook($bookID)
+{
     $bookID = intval($bookID);
     $result = [];
     $resultCount = 0;
@@ -235,7 +294,8 @@ function listBook($bookID) {
     ];
 }
 
-function getRandomBooks(int $amount) {
+function getRandomBooks(int $amount)
+{
     if (!$_SESSION["dbConnection"]) return;
     global $connection;
 
@@ -259,7 +319,8 @@ function getRandomBooks(int $amount) {
     }
 }
 
-function getPasswordHash(string $email): string {
+function getPasswordHash(string $email): string
+{
     if (!$_SESSION["dbConnection"]) return false;
     global $connection;
 
@@ -270,7 +331,8 @@ function getPasswordHash(string $email): string {
     return $statement->fetchColumn();
 }
 
-function getUser(string $email) {
+function getUser(string $email)
+{
     if (!$_SESSION["dbConnection"]) return false;
     global $connection;
 
@@ -283,12 +345,14 @@ function getUser(string $email) {
     return ["admin" => translateAdmin($result), "name" => $result['name'], "vorname" => $result['vorname'], "benutzername" => $result['benutzername']];
 }
 
-function translateAdmin(array $user) {
+function translateAdmin(array $user)
+{
     if (empty($user['admin'])) return "false";
     return "true";
 }
 
-function getKategorie($kategorie) {
+function getKategorie($kategorie)
+{
     $kategorie = intval($kategorie);
     $resultKateorien = [];
     $resultCount = 0;
@@ -303,7 +367,8 @@ function getKategorie($kategorie) {
     return ["kategorie" => $resultKateorien['kategorie']];
 }
 
-function getImage($book_id) {
+function getImage($book_id)
+{
     if (!$_SESSION["dbConnection"])
         echo "Connection Failed";
     require_once 'db.php';
@@ -315,7 +380,8 @@ function getImage($book_id) {
     return ["foto" => $resultKateorien['foto']];
 }
 
-function updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie, $fileNameComplet) {
+function updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie, $fileNameComplet)
+{
     global $connection;
     try {
         $sqlQuery = "UPDATE buecher SET 
@@ -346,7 +412,8 @@ function updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $se
     }
 }
 
-function addBook(string $title, string $autor, string $kurztitle, int $nummer, string $zustand, int $selectedKategorie, string $fileNameComplet, int $katalog, int $kaufer, string $sprachen, int $verfassung, int $verkauft) {
+function addBook(string $title, string $autor, string $kurztitle, int $nummer, string $zustand, int $selectedKategorie, string $fileNameComplet, int $katalog, int $kaufer, string $sprachen, int $verfassung, int $verkauft)
+{
     global $connection;
 
     try {
@@ -382,8 +449,8 @@ function addBook(string $title, string $autor, string $kurztitle, int $nummer, s
     }
 }
 
-
-function deleteBook($book_id) {
+function deleteBook($book_id)
+{
     global $connection;
     try {
         $sqlQuery = "DELETE FROM buecher WHERE id = :book_id";
