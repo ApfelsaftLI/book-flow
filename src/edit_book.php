@@ -64,23 +64,23 @@ switch ($zustand) {
     <form action="update_book.php" method="post" class="editForm" enctype="multipart/form-data">
         <input type="hidden" name="book_id" value="<?php echo $id; ?>">
 
-        <label for="title">Title:</label>
-        <textarea id="title" name="title" required><?php echo htmlspecialchars($title); ?></textarea><br>
+        <label for="title">Title*:</label>
+        <textarea id="title" name="title" required maxlength="200"><?php echo htmlspecialchars($title); ?></textarea><br>
 
-        <label for="kurztitle">Kurztitle:</label>
-        <textarea id="kurztitle" name="kurztitle" required><?php echo htmlspecialchars($kurztitle); ?></textarea><br>
+        <label for="kurztitle">Kurztitle*:</label>
+        <textarea id="kurztitle" name="kurztitle" required maxlength="20"><?php echo htmlspecialchars($kurztitle); ?></textarea><br>
 
-        <label for="autor">Autor:</label>
-        <textarea id="autor" name="autor" required><?php echo htmlspecialchars($autor); ?></textarea><br>
+        <label for="autor">Autor*:</label>
+        <textarea id="autor" name="autor" required maxlength="40"><?php echo htmlspecialchars($autor); ?></textarea><br>
 
-        <label for="nummer">Nummer:</label>
-        <input type="text" id="nummer" name="nummer" value="<?php echo htmlspecialchars($nummer); ?>" required><br>
+        <label for="nummer">Nummer*:</label>
+        <input type="number" id="nummer" name="nummer" value="<?php echo htmlspecialchars($nummer); ?>" required maxlength="5" min="0"><br>
 
         <label for="lol">Bild:</label><br>
         <label for="image" class="image">Klicken Sie hier um ein Bild hochzuladen</label>
         <input type="file" id="image" name="file"><br>
 
-        <label for="kategorie">Kategorie:</label>
+        <label for="kategorie">Kategorie*:</label>
         <select name="kategorie" id="kategorie" required>
             <option value="<?php echo $kategorie; ?>"><?php echo $kategorieClean; ?></option>
             <?php
@@ -92,13 +92,14 @@ switch ($zustand) {
             ?>
         </select>
 
-        <label for="zustand">Zustand:</label>
+        <label for="zustand">Zustand*:</label>
         <select name="zustand" id="zustand" required>
             <option value="<?php echo htmlspecialchars($zustand); ?>"><?php echo htmlspecialchars($zustandSelect); ?></option>
             <option value="G">Gut</option>
             <option value="M">Mittel</option>
             <option value="S">Schlecht</option>
         </select>
+        <p>* Required</p> <br>
         <input type="submit" value="Update">
     </form>
     <script>

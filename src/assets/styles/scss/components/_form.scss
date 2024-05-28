@@ -43,6 +43,27 @@ $form-padding: 20px;
     word-wrap: break-word;
   }
 
+  input[type=number] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: $background-secondary;
+    color: $text-color;
+    resize: vertical;
+    word-wrap: break-word;
+  }
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: $background-secondary;
+    color: $text-color;
+    resize: vertical;
+    word-wrap: break-word;
+  }
+
   input[type="submit"] {
     background-color: $background-secondary;
     color: $text-color;
