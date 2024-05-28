@@ -9,14 +9,49 @@ if (!$isAdmin) {
     header("Location: index.php");
     exit;
 }
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $book_id = htmlspecialchars($_POST["book_id"]);
-    $title = htmlspecialchars($_POST["title"]);
-    $autor = htmlspecialchars($_POST["autor"]);
-    $kurztitle = htmlspecialchars($_POST["kurztitle"]);
-    $nummer = htmlspecialchars($_POST["nummer"]);
-    $zustand = htmlspecialchars($_POST["zustand"]);
-    $selectedKategorie = htmlspecialchars($_POST['kategorie']);
+    $title = isset($_POST["title"]) ? htmlspecialchars(trim($_POST["title"])) : '';
+    $autor = isset($_POST["autor"]) ? htmlspecialchars(trim($_POST["autor"])) : '';
+    $kurztitle = isset($_POST["kurztitle"]) ? htmlspecialchars(trim($_POST["kurztitle"])) : '';
+    $nummer = isset($_POST["nummer"]) ? intval(trim($_POST["nummer"])) : 0;
+    $zustand = isset($_POST["zustand"]) ? htmlspecialchars(trim($_POST["zustand"])) : 0;
+    $selectedKategorie = isset($_POST['kategorie']) ? intval(trim($_POST['kategorie'])) : 0;
+    $katalog = 0;
+    $kaufer = 0;
+    $sprachen = "-";
+    $verfassung = 0;
+    $verkauft = 0;
+
+    $maxTitleLength = 200;
+    $maxAutorLength = 40;
+    $maxKurztitleLength = 100;
+    $maxNummerLength = 5;
+
+    if (empty($title)) {
+        $errors[] = "Title is required.";
+    } elseif (strlen($title) > $maxTitleLength) {
+        $errors[] = "Title cannot exceed $maxTitleLength characters.";
+    }
+
+    if (empty($autor)) {
+        $errors[] = "Autor is required.";
+    } elseif (strlen($autor) > $maxAutorLength) {
+        $errors[] = "Autor cannot exceed $maxAutorLength characters.";
+    }
+
+    if (empty($kurztitle)) {
+        $errors[] = "Kurztitle is required.";
+    } elseif (strlen($kurztitle) > $maxKurztitleLength) {
+        $errors[] = "Kurztitle cannot exceed $maxKurztitleLength characters.";
+    }
+
+    if (empty($nummer)) {
+        $errors[] = "Nummer is required.";
+    } elseif (strlen($nummer) > $maxNummerLength) {
+        $errors[] = "Nummer cannot exceed $maxNummerLength characters.";
+    }
 
     if (!filter_var($book_id, FILTER_VALIDATE_INT)) {
         die("Invalid book ID");

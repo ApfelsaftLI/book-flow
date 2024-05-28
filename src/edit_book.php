@@ -68,7 +68,7 @@ switch ($zustand) {
         <textarea id="title" name="title" required maxlength="200"><?php echo htmlspecialchars($title); ?></textarea><br>
 
         <label for="kurztitle">Kurztitle*:</label>
-        <textarea id="kurztitle" name="kurztitle" required maxlength="20"><?php echo htmlspecialchars($kurztitle); ?></textarea><br>
+        <textarea id="kurztitle" name="kurztitle" required maxlength="100"><?php echo htmlspecialchars($kurztitle); ?></textarea><br>
 
         <label for="autor">Autor*:</label>
         <textarea id="autor" name="autor" required maxlength="40"><?php echo htmlspecialchars($autor); ?></textarea><br>

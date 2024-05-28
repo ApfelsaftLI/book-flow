@@ -32,7 +32,7 @@ include_once "includes/db.php";
         <textarea id="title" name="title" required maxlength="200"></textarea><br>
 
         <label for="kurztitle">Kurztitle*:</label>
-        <textarea id="kurztitle" name="kurztitle" required maxlength="20"></textarea><br>
+        <textarea id="kurztitle" name="kurztitle" required maxlength="100"></textarea><br>
 
         <label for="autor">Autor*:</label>
         <textarea id="autor" name="autor" required maxlength="40"></textarea><br>
