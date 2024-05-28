@@ -26,7 +26,7 @@ include_once "includes/db.php";
 <body class="grid-container">
 <?php include_once "templates/header.php"; ?>
 <main class="grid-container">
-    <form class="new-user-form" action="./users.php" method="post">
+    <form class="new-user-form" action="./users.php?filter=customers" method="post">
         <h1 class="text-large-bold">Kunde erfassen</h1>
         <div>
             <label for="name" class="text-medium-normal">Voller Name*:</label>
