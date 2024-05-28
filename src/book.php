@@ -52,9 +52,7 @@ session_start();
     ?>
     <div class="return">
         <?php
-
-        echo '<a href="books.php?search='.$_POST['$searchQuery'].'&filter='.$_POST['filterInput'].'&sort'. $_POST['sortInput'].'&filter='.$_POST['filterInput'].'&sort'. $_POST['sortInput'].'">lol</a>';
-        echo "http://localhost:8080/books.php?search=&filter=id&sort=default&filter=id&sort=default";
+        echo '<a href="books.php?search='.$_POST['$searchQuery'].'&filter='.$_POST['filterInput'].'&sort'. $_POST['sortInput'].'&filter='.$_POST['filterInput'].'&sort'. $_POST['sortInput'].'" class="outline-button">Zurück</a>';
 ?>
     </div>
     <div class="book-box">

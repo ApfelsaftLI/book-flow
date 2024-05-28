@@ -4,6 +4,13 @@ a[href="/books.php"] {
   font-weight: bold;
 }
 
+.outline-button{
+    margin-top: 40pt;
+    filter: $drop-shadow;
+    grid-column: 2/3;
+
+}
+
 .book-box {
   padding: 15pt 35pt;
   grid-column: 4/10;

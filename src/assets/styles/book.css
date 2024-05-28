@@ -2,8 +2,14 @@ a[href="/books.php"] {
   font-weight: bold;
 }
 
+.outline-button {
+  margin-top: 40pt;
+  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+  grid-column: 2/3;
+}
+
 .book-box {
-  padding: 6pt;
+  padding: 15pt 35pt;
   grid-column: 4/10;
   margin-top: 40pt;
   border-radius: 15pt;
@@ -39,28 +45,15 @@ a[href="/books.php"] {
   background-color: #4E2323;
 }
 
-.book-box .send-value-button {
-  border-radius: 15pt;
-  font-size: 11pt;
-  font-weight: 600;
-  color: #FFEEE0;
-  background-color: #38703E;
-  padding: 7pt 10pt;
-  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+.book-box .buttonsBook {
   position: absolute;
-  right: 10px;
-}
-
-.book-box .send-value-button2 {
-  border-radius: 15pt;
-  font-size: 11pt;
-  font-weight: 600;
-  color: #FFEEE0;
-  background-color: #38703E;
-  padding: 7pt 10pt;
-  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
-  position: absolute;
-  left: 10px;
+  right: 15pt;
+  top: 35pt;
+  margin-bottom: 5pt;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  gap: 5pt;
 }
 
 

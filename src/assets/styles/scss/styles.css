@@ -539,6 +539,16 @@ table {
   resize: vertical;
   word-wrap: break-word;
 }
+.editForm input[type=number] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  background-color: #FFE4CF;
+  color: #4E2323;
+  resize: vertical;
+  word-wrap: break-word;
+}
 .editForm input[type=submit] {
   background-color: #FFE4CF;
   color: #4E2323;

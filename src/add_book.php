@@ -66,26 +66,6 @@ include_once "includes/db.php";
         <p>* Required</p> <br>
         <input type="submit" value="Update">
     </form>
-    <script>
-        document.querySelector('form').addEventListener('submit', function(event) {
-            let isValid = true;
-            const requiredFields = document.querySelectorAll('textarea[required], input[required], select[required]');
-            requiredFields.forEach(function(field) {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.style.borderColor = 'red';
-                } else {
-                    field.style.borderColor = '';
-                }
-            });
-
-            if (!isValid) {
-                event.preventDefault();
-                alert('Please fill out all required fields.');
-            }
-        });
-    </script>
-
 </main>
 <?php include_once "templates/footer.php"; ?>
 </body>
