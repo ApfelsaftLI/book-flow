@@ -8,19 +8,21 @@ function getFirstLetter(string $str)
 {
     return substr($str, 0, 1);
 }
-
+//shorten titles so they look pretty when shown
 function shortenShortTitlesShorter(array $dbResults)
 {
     $dbResults['kurztitle'] = substr($dbResults['kurztitle'], 0, 12);;
     return $dbResults;
 }
 
+//shorten autor so they look pretty
 function shortenAutor(array $dbResults)
 {
     $dbResults['autor'] = substr($dbResults['autor'], 0, 20);;
     return $dbResults;
 }
 
+//Check the file extension so only allowed file types are uploaded
 function checkFileExtension($ext)
 {
     if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png') {

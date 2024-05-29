@@ -56,7 +56,7 @@ if (!checkPassword(cleanString($_POST['email']))) return;
 
 }}
 
-
+//check if the email is correct
 function checkEmail(): bool {
     if (isset($_POST['email'])) {
         $email = trim($_POST['email']);
@@ -76,6 +76,7 @@ function checkEmail(): bool {
     }
 }
 
+//check if password is correct
 function checkPassword($email): bool {
     if (isset($_POST['password'])) {
         $password = cleanString($_POST['password']);
@@ -105,7 +106,7 @@ function checkPassword($email): bool {
     }
 }
 
-
+//function for outputting errors
 function fail(string $message) {
     echo "<div class='error'><p><b>Login failed:</b> " . $message . "</p></div>";
 }

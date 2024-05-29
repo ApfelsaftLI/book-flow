@@ -7,6 +7,7 @@ include_once "./includes/user-handler.php";
 include_once "includes/db.php";
 include_once "includes/functions.php";
 
+//change the admin status for users
 if (isset($_POST['admin-status-id']) && isset($_POST['admin-status'])) {
     $successfulUpdate = updateAdminStatus($_POST['admin-status-id'], $_POST['admin-status']);
 

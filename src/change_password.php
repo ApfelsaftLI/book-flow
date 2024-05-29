@@ -2,6 +2,7 @@
 session_start();
 $isLoggedIn = array_key_exists("user", $_SESSION);
 $benutzername = htmlspecialchars($_SESSION["user"]["benutzername"]);
+//include the db file so we can call those functions
 include_once "includes/db.php";
 
 if (!$isLoggedIn) {
@@ -9,6 +10,7 @@ if (!$isLoggedIn) {
     exit;
 }
 
+//get old and new passwords and check if they are the same. Then check if the old password matches and inserts the new one if it does
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $oldPassword = trim($_POST["oldPassword"]);
     $newPassword = trim($_POST["newPassword"]);
@@ -70,6 +72,7 @@ function fail(string $message) {
 <?php include_once "templates/header.php"; ?>
 <main class="grid-container">
     <?php
+    //errorhandling
     if (isset($_SESSION['error_message'])) {
         echo "<div class='error'><p><b>Fehler:</b> " . htmlspecialchars($_SESSION['error_message']) . "</p></div>";
         unset($_SESSION['error_message']);
