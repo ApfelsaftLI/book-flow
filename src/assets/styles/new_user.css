@@ -2,6 +2,7 @@
   grid-column: 4/10;
   margin-top: 40pt;
 }
+
 .search-container .search-bar {
   border-radius: 15pt;
   width: 100%;
@@ -13,6 +14,7 @@
   font-weight: 600;
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
 }
+
 .search-container .search-icon {
   position: absolute;
   right: 16pt;
@@ -23,6 +25,7 @@
   background-image: url("../images/Search_Icon.svg");
   background-size: cover;
 }
+
 .search-container .search-bar-container {
   position: relative;
   margin-bottom: 20px;
@@ -30,11 +33,13 @@
   justify-content: center;
   width: 100%;
 }
+
 .search-container .dropdown {
   padding-top: 10px;
   display: flex;
   gap: 20pt;
 }
+
 .search-container .dropdown .filter-container .filter {
   border-radius: 15pt;
   width: fit-content;
@@ -45,6 +50,7 @@
   padding: 7pt 10pt;
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
 }
+
 .search-container .dropdown .sort-container .sort {
   border-radius: 15pt;
   width: fit-content;
@@ -55,6 +61,7 @@
   padding: 7pt 10pt;
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
 }
+
 .search-container .dropdown a:last-child {
   margin-left: auto;
 }
@@ -105,9 +112,11 @@ a[href="/users.php"] {
   background-repeat: no-repeat;
   background-position: bottom right;
 }
+
 .new-user-form .name {
   display: flex;
 }
+
 .new-user-form .name input[type=text] {
   vertical-align: baseline;
   color: #4E2323;
@@ -116,9 +125,11 @@ a[href="/users.php"] {
   border-bottom: #4E2323 solid;
   flex: 1;
 }
+
 .new-user-form .gender {
   justify-content: center;
 }
+
 .new-user-form .gender input[type=radio] {
   background-color: #FFE4CF;
   width: 10pt;
@@ -127,12 +138,15 @@ a[href="/users.php"] {
   vertical-align: baseline;
   border: #4E2323 1px solid;
 }
+
 .new-user-form .gender input[type=radio]:checked {
   background-color: #38703E;
 }
+
 .new-user-form .email {
   display: flex;
 }
+
 .new-user-form .email input[type=email] {
   vertical-align: baseline;
   color: #4E2323;
@@ -141,6 +155,7 @@ a[href="/users.php"] {
   border-bottom: #4E2323 solid;
   flex: 1;
 }
+
 .new-user-form input[type=checkbox] {
   background-color: #FFE4CF;
   width: 10pt;
@@ -149,9 +164,11 @@ a[href="/users.php"] {
   vertical-align: baseline;
   border: #4E2323 1px solid;
 }
+
 .new-user-form input[type=checkbox]:checked {
   background-color: #38703E;
 }
+
 .new-user-form input[type=date] {
   vertical-align: baseline;
   color: #4E2323;
@@ -159,9 +176,11 @@ a[href="/users.php"] {
   margin-left: 5pt;
   border-bottom: #4E2323 solid;
 }
+
 .new-user-form p.text-small-normal {
   margin-top: 10pt;
 }
+
 .new-user-form .button-container {
   margin-top: 25pt;
   display: flex;
@@ -172,5 +191,7 @@ a[href="/users.php"] {
 .delete-form {
   grid-column: 4/6;
 }
+
+
 
 /*# sourceMappingURL=new_user.css.map */
