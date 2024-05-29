@@ -48,6 +48,7 @@ include_once "includes/db.php";
         <select name="kategorie" id="kategorie" required>
             <option value=""></option>
             <?php
+            //printout of all categories as a option for a select
             for ($i = 1; $i <= 14; $i++) {
                 $resultKateorien = getKategorie($i);
                 $kategorieClean = $resultKateorien['kategorie'];
@@ -66,6 +67,7 @@ include_once "includes/db.php";
         <p>* Required</p> <br>
         <div class="button-container">
             <button onclick="history.go(-1);" class="outline-button">Abbrechen</button>
+            <!--- a button to go back in the history with javascript. Stolen from some random reddit post --->
             <button type="submit" class="big-button">Buch einfügen</button>
         </div>
     </form>

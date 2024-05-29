@@ -14,7 +14,7 @@ if (!$isAdmin) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = [];
 
-    // Validate and sanitize inputs
+    //validate and sanitize inputs
     $title = isset($_POST["title"]) ? htmlspecialchars(trim($_POST["title"])) : '';
     $autor = isset($_POST["autor"]) ? htmlspecialchars(trim($_POST["autor"])) : '';
     $kurztitle = isset($_POST["kurztitle"]) ? htmlspecialchars(trim($_POST["kurztitle"])) : '';
@@ -27,11 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $verfassung = 0;
     $verkauft = 0;
 
+    // Set max lengths
     $maxTitleLength = 200;
     $maxAutorLength = 40;
     $maxKurztitleLength = 100;
     $maxNummerLength = 5;
 
+    //check if all inputs are valid
     if (empty($title)) {
         $errors[] = "Title is required.";
     } elseif (strlen($title) > $maxTitleLength) {
@@ -60,10 +62,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fileNameComplete = "book.jpg"; // Default image
     if (isset($_FILES["file"]) && $_FILES['file']['error'] == UPLOAD_ERR_OK) {
 
+        //get file extension and size
         $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
         $fileAccepted = checkFileExtension($ext);
         $fileSize = $_FILES['file']['size'];
 
+        //check the file size, shorten the name, replace " " with "_" and the get the destination
         if ($fileAccepted && $fileSize <= 8388608) {
             $uploadFileName = $_FILES['file']['name'];
             $fileName = strtok($uploadFileName, ".");
@@ -72,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $fileNameComplete = $fileNameFinalized . '.' . $ext;
             $dest = __DIR__ . '/assets/images/books/' . $fileNameComplete;
 
+            //move the file
             if (!move_uploaded_file($_FILES['file']['tmp_name'], $dest)) {
                 $errors[] = "Failed to move uploaded file.";
             }

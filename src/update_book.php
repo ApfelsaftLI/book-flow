@@ -9,7 +9,7 @@ if (!$isAdmin) {
     header("Location: index.php");
     exit;
 }
-
+//validate and sanitize inputs
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $book_id = htmlspecialchars($_POST["book_id"]);
     $title = isset($_POST["title"]) ? htmlspecialchars(trim($_POST["title"])) : '';
@@ -24,11 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $verfassung = 0;
     $verkauft = 0;
 
+    // Set max lengths
     $maxTitleLength = 200;
     $maxAutorLength = 40;
     $maxKurztitleLength = 100;
     $maxNummerLength = 5;
 
+    //check if all inputs are valid
     if (empty($title)) {
         $errors[] = "Title is required.";
     } elseif (strlen($title) > $maxTitleLength) {
@@ -65,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fileAccepted = checkFileExtension($ext);
         $fileSize = $_FILES['file']['size'];
 
+        //check the file size, shorten the name, replace " " with "_" and the get the destination
         if ($fileAccepted && $fileSize <= 8388608) {
             $uploadFileName = $_FILES['file']['name'];
             $fileName = strtok($uploadFileName, ".");
@@ -73,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $fileNameComplet = $fileNameFinalised . '.' . $ext;
             $dest = __DIR__ . '/assets/images/books/' . $fileNameComplet;
 
+            //move the file
             if (move_uploaded_file($_FILES['file']['tmp_name'], $dest)) {
                 $result = updateBook($book_id, $title, $autor, $kurztitle, $nummer, $zustand, $selectedKategorie, $fileNameComplet);
             } else {
