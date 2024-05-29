@@ -18,10 +18,11 @@ session_start();
     error_reporting(E_ERROR | E_PARSE);
     include_once "includes/functions.php";
     include_once "includes/db.php";
-
+    //get some session stuff for check if admin and user
     $isLoggedIn = array_key_exists("user", $_SESSION);
     $isAdmin = $isLoggedIn && $_SESSION["user"]["admin"] == "true";
 
+    //get everything from POST
     $book_id = $_POST["book_id"];
     $result = listBook($book_id);
     $id = $result['id'];
@@ -57,6 +58,7 @@ session_start();
     <div class="book-box">
         <?php
         $book_id = intval($book_id);
+        //some extra buttons for the admin for changing the book or delete this
         if ($isAdmin) {
             echo '<div class="buttonsBook">
             <a href="edit_book.php?book_id=' . $id . '" class="big-button">Buch bearbeiten</a>

@@ -1,70 +1,55 @@
 .search-container {
   grid-column: 4/10;
-  margin-top: 40pt;
-}
-
-.search-container .search-bar {
-  border-radius: 15pt;
-  width: 100%;
-  background-color: #FFEEE0;
-  text-indent: 10px;
-  padding: 6pt;
-  font-size: 14pt;
-  color: #4E2323;
-  font-weight: 600;
-  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
-}
-
-.search-container .search-icon {
-  position: absolute;
-  right: 16pt;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 14pt;
-  aspect-ratio: 1;
-  background-image: url("../images/Search_Icon.svg");
-  background-size: cover;
-}
-
-.search-container .search-bar-container {
-  position: relative;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.search-container .dropdown {
-  padding-top: 10px;
-  display: flex;
-  gap: 20pt;
-}
-
-.search-container .dropdown .filter-container .filter {
-  border-radius: 15pt;
-  width: fit-content;
-  font-size: 11pt;
-  font-weight: 600;
-  color: #4E2323;
-  background-color: #FFEEE0;
-  padding: 7pt 10pt;
-  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
-}
-
-.search-container .dropdown .sort-container .sort {
-  border-radius: 15pt;
-  width: fit-content;
-  font-size: 11pt;
-  font-weight: 600;
-  color: #4E2323;
-  background-color: #FFEEE0;
-  padding: 7pt 10pt;
-  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
-}
-
-.search-container .dropdown a:last-child {
-  margin-left: auto;
-}
+  margin-top: 40pt; }
+  .search-container .search-bar {
+    border-radius: 15pt;
+    width: 100%;
+    background-color: #FFEEE0;
+    text-indent: 10px;
+    padding: 6pt;
+    font-size: 14pt;
+    color: #4E2323;
+    font-weight: 600;
+    filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15)); }
+  .search-container .search-icon {
+    position: absolute;
+    right: 16pt;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14pt;
+    aspect-ratio: 1;
+    background-image: url("../images/Search_Icon.svg");
+    background-size: cover; }
+  .search-container .search-bar-container {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%; }
+  .search-container .dropdown {
+    padding-top: 10px;
+    display: flex;
+    gap: 20pt; }
+    .search-container .dropdown .filter-container .filter {
+      border-radius: 15pt;
+      width: fit-content;
+      font-size: 11pt;
+      font-weight: 600;
+      color: #4E2323;
+      background-color: #FFEEE0;
+      padding: 7pt 10pt;
+      filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15)); }
+    .search-container .dropdown .sort-container .sort {
+      border-radius: 15pt;
+      width: fit-content;
+      font-size: 11pt;
+      font-weight: 600;
+      color: #4E2323;
+      background-color: #FFEEE0;
+      padding: 7pt 10pt;
+      filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15)); }
+    .search-container .dropdown a:last-child {
+      margin-left: auto; }
 
 .highlighted-button {
   text-decoration: none;
@@ -76,135 +61,101 @@
   padding: 7pt 10pt;
   display: inline-block;
   text-align: center;
-  justify-content: center;
-}
+  justify-content: center; }
 
 a[href="/users.php"] {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 .result-container {
   grid-column: 3/11;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   gap: 6pt;
-  margin-top: 60pt;
-}
-
-.result-container .userbox {
-  grid-column: 2/8;
-  display: flex;
-  gap: 15pt;
-  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
-  border-radius: 15pt;
-  align-items: center;
-  padding: 20pt;
-  background-color: #FFEEE0;
-  margin-bottom: 5pt;
-}
-
-.result-container .userbox .profile-picture {
-  display: inline-block;
-  width: 40pt;
-  height: 40pt;
-  border-radius: 50%;
-  background-image: linear-gradient(#FFEEE0, #737373);
-}
-
-.result-container .userbox .user-informations > div {
-  display: flex;
-  flex-direction: row;
-  gap: 10pt;
-  align-items: baseline;
-}
-
-.result-container .userbox .user-admin-status {
-  margin-left: auto;
-}
-
-.result-container .userbox .user-admin-status select {
-  border-radius: 15pt;
-  width: fit-content;
-  font-size: 11pt;
-  font-weight: 600;
-  color: #4E2323;
-  background-color: #FFEEE0;
-  padding: 7pt 10pt;
-  border: 1px solid #4E2323;
-}
-
-.result-container .customerbox {
-  grid-column: 1/9;
-  display: flex;
-  gap: 15pt;
-  filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
-  border-radius: 15pt;
-  align-items: center;
-  padding: 20pt;
-  background-color: #FFEEE0;
-  margin-bottom: 5pt;
-}
-
-.result-container .customerbox .profile-picture {
-  display: inline-block;
-  width: 40pt;
-  height: 40pt;
-  border-radius: 50%;
-  background-image: linear-gradient(#FFEEE0, #737373);
-}
-
-.result-container .customerbox .customer-informations {
-  display: flex;
-  flex-direction: column;
-  gap: 5pt;
-}
-
-.result-container .customerbox .customer-informations > div {
-  display: flex;
-  flex-direction: row;
-  gap: 10pt;
-  align-items: center;
-}
-
-.result-container .customerbox .customer-informations > div img {
-  height: 15pt;
-}
-
-.result-container .customerbox .customer-edit-button {
-  aspect-ratio: 1/1;
-  width: 20pt;
-  background-image: url("../images/edit.svg");
-  background-size: contain;
-  display: block;
-  margin-left: auto;
-}
+  margin-top: 60pt; }
+  .result-container .userbox {
+    grid-column: 2/8;
+    display: flex;
+    gap: 15pt;
+    filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+    border-radius: 15pt;
+    align-items: center;
+    padding: 20pt;
+    background-color: #FFEEE0;
+    margin-bottom: 5pt; }
+    .result-container .userbox .profile-picture {
+      display: inline-block;
+      width: 40pt;
+      height: 40pt;
+      border-radius: 50%;
+      background-image: linear-gradient(#FFEEE0, #737373); }
+    .result-container .userbox .user-informations > div {
+      display: flex;
+      flex-direction: row;
+      gap: 10pt;
+      align-items: baseline; }
+    .result-container .userbox .user-admin-status {
+      margin-left: auto; }
+      .result-container .userbox .user-admin-status select {
+        border-radius: 15pt;
+        width: fit-content;
+        font-size: 11pt;
+        font-weight: 600;
+        color: #4E2323;
+        background-color: #FFEEE0;
+        padding: 7pt 10pt;
+        border: 1px solid #4E2323; }
+  .result-container .customerbox {
+    grid-column: 1/9;
+    display: flex;
+    gap: 15pt;
+    filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
+    border-radius: 15pt;
+    align-items: center;
+    padding: 20pt;
+    background-color: #FFEEE0;
+    margin-bottom: 5pt; }
+    .result-container .customerbox .profile-picture {
+      display: inline-block;
+      width: 40pt;
+      height: 40pt;
+      border-radius: 50%;
+      background-image: linear-gradient(#FFEEE0, #737373); }
+    .result-container .customerbox .customer-informations {
+      display: flex;
+      flex-direction: column;
+      gap: 5pt; }
+      .result-container .customerbox .customer-informations > div {
+        display: flex;
+        flex-direction: row;
+        gap: 10pt;
+        align-items: center; }
+        .result-container .customerbox .customer-informations > div img {
+          height: 15pt; }
+    .result-container .customerbox .customer-edit-button {
+      aspect-ratio: 1/1;
+      width: 20pt;
+      background-image: url("../images/edit.svg");
+      background-size: contain;
+      display: block;
+      margin-left: auto; }
 
 .pagination {
   grid-column: 4/10;
   margin-top: 20px;
   margin-bottom: 50pt;
   display: flex;
-  justify-content: center;
-}
-
-.pagination a {
-  position: relative;
-  padding: 8px 16px;
-  text-decoration: none;
-  color: #4E2323;
-  border-right: 2px solid #4E2323;
-  font-size: 13pt;
-  font-weight: bold;
-}
-
-.pagination a:last-child {
-  border-right: none;
-}
-
-.pagination a.active {
-  color: #38703E;
-}
-
-
+  justify-content: center; }
+  .pagination a {
+    position: relative;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #4E2323;
+    border-right: 2px solid #4E2323;
+    font-size: 13pt;
+    font-weight: bold; }
+    .pagination a:last-child {
+      border-right: none; }
+    .pagination a.active {
+      color: #38703E; }
 
 /*# sourceMappingURL=users.css.map */

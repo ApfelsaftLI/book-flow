@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
 
         $newUser = [];
-
+        //here a new user gets inserted
         if (!validateName($_POST)) return;
         $nameArray = explode(" ", trim($_POST['name']));
         $newUser['name'] = ucfirst(end($nameArray));
