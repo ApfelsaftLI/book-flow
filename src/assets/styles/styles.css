@@ -455,6 +455,58 @@ table {
   margin: 0 auto;
   flex-direction: column;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.editForm label {
+  color: #4E2323;
+  margin-bottom: 5px;
+}
+
+.editForm input[type=text],
+.editForm input[type=number],
+.editForm input[type=password],
+.editForm textarea,
+.editForm select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  background-color: #FFE4CF;
+  color: #4E2323;
+}
+
+.editForm textarea {
+  resize: vertical;
+  word-wrap: break-word;
+}
+
+.editForm input[type=submit] {
+  color: #4E2323;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.editForm input[type=submit]:hover {
+  background-color: #ffc79c;
+}
+
+.editForm input[type=file] {
+  display: none;
+}
+
+.editForm .image {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  background-color: #FFE4CF;
+  color: #4E2323;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+}
   flex-wrap: wrap; }
   .editForm label {
     color: #4E2323;
@@ -492,7 +544,6 @@ table {
     border: none;
     display: inline-block;
     cursor: pointer; }
-
 .new-user-form {
   display: flex;
   flex-direction: column;
@@ -504,6 +555,33 @@ table {
   filter: drop-shadow(0pt 2pt 5pt rgba(0, 0, 0, 0.15));
   background-image: url("../images/gradient.svg");
   background-repeat: no-repeat;
+
+  background-position: bottom right;
+}
+
+.new-user-form input[type=password],
+.new-user-form textarea,
+.new-user-form select,
+.new-user-form .image,
+.new-user-form input[type=number] {
+  vertical-align: baseline;
+  color: #4E2323;
+  font-size: 15px;
+  margin-left: 5px;
+  border-bottom: #4E2323 solid;
+}
+
+.new-user-form p.text-small-normal {
+  margin-top: 10px;
+}
+
+.new-user-form .button-container {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
   background-position: bottom right; }
   .new-user-form input[type="password"],
   .new-user-form textarea,
